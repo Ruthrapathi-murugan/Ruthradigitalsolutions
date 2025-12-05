@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+@layer utilities {
+  /* 3D Animation Keyframes */
+  @keyframes float3d {
+    0%, 100% {
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    33% {
+      transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+    }
+    66% {
+      transform: translateY(-10px) rotateX(-5deg) rotateY(-5deg);
+    }
+  }
+
+  @keyframes rotate3d {
+    0% {
+      transform: rotateY(0deg) rotateX(0deg);
+    }
+    100% {
+      transform: rotateY(360deg) rotateX(360deg);
+    }
+  }
+
+  @keyframes pulse3d {
+    0%, 100% {
+      transform: scale(1) translateZ(0);
+    }
+    50% {
+      transform: scale(1.1) translateZ(50px);
+    }
+  }
+
+  @keyframes slideIn3d {
+    0% {
+      transform: translateZ(-100px) rotateX(90deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(0) rotateX(0deg);
+      opacity: 1;
+    }
+  }
+
+  .animate-float3d {
+    animation: float3d 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+
+  .animate-rotate3d {
+    animation: rotate3d 20s linear infinite;
+    transform-style: preserve-3d;
+  }
+
+  .animate-pulse3d {
+    animation: pulse3d 3s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+
+  .animate-slide-in-3d {
+    animation: slideIn3d 1s ease-out forwards;
+    transform-style: preserve-3d;
+  }
+
+  .perspective-3d {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+}
+
