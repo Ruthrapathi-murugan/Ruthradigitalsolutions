@@ -3,44 +3,55 @@ import React, { useState, useEffect } from 'react'
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'CEO, TechStart Inc.',
-      content:
-        'Ruthra Digital Solutions transformed our online presence. Their web development team created a stunning website that increased our conversions by 300%. Highly recommended!',
-      rating: 5,
-      image: '👩‍💼',
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      role: 'Hotel Manager, Grand Plaza',
-      content:
-        'The hotel management system they built for us streamlined all our operations. Booking management, guest services, everything is now seamless. Outstanding work!',
-      rating: 5,
-      image: '👨‍💼',
-    },
-    {
-      id: 3,
-      name: 'Emily Rodriguez',
-      role: 'Marketing Director, Fashion Brand',
-      content:
-        'Their digital marketing strategies helped us reach new audiences and grow our brand significantly. The ROI has been incredible. Thank you Ruthra Digital Solutions!',
-      rating: 5,
-      image: '👩‍💻',
-    },
-    {
-      id: 4,
-      name: 'David Thompson',
-      role: 'Founder, E-Commerce Store',
-      content:
-        'Working with Ruthra Digital Solutions was a game-changer. They built our e-commerce platform from scratch and it has exceeded all our expectations. Professional and reliable.',
-      rating: 5,
-      image: '👨‍💻',
-    },
-  ]
+ const testimonials = [
+  {
+    id: 1,
+    name: 'Sampath Kumar',
+    role: 'Owner, Sampath Residency – Palani',
+    content:
+      'Ruthra Digital Solutions created a complete digital system for our hotel. From online booking to guest management, everything became smooth and organized. Our customer flow increased noticeably. Excellent service and support!',
+    rating: 5,
+    image: '🏨',
+  },
+  {
+    id: 2,
+    name: 'Sawan Kumar',
+    role: 'Founder, Just Creative Designs',
+    content:
+      'They built our professional portfolio website and optimized the branding. The UI/UX quality, loading speed, and SEO performance were top-notch. We confidently showcase our brand because of their work.',
+    rating: 5,
+    image: '🎨',
+  },
+  {
+    id: 3,
+    name: 'Aravind Murugan',
+    role: 'E-Commerce Business Owner',
+    content:
+      'Our online store was completely redesigned by Ruthra Digital Solutions. Sales improved, page performance increased, and our customers love the new interface. Highly reliable and skilled development team.',
+    rating: 5,
+    image: '🛒',
+  },
+  {
+    id: 4,
+    name: 'Vignesh S',
+    role: 'Restaurant Owner',
+    content:
+      'We needed a digital marketing strategy, and Ruthra Digital Solutions delivered beyond expectations. Our Google ranking improved and we gained more walk-in customers. Very professional and result-oriented.',
+    rating: 5,
+    image: '🍽️',
+  },
+   {
+    id: 5,
+    name: 'Ravichandran S',
+    role: 'Owner, PVT  Residency – Palani',
+    content:
+      'Ruthra Digital Solutions created a complete digital system for our hotel. From online booking to guest management, everything became smooth and organized. Our customer flow increased noticeably. Excellent service and support!',
+    rating: 5,
+    image: '🍽️',
+  },
+]
+
+
 
   useEffect(() => {
     const interval = setInterval(() => {
