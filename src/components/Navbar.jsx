@@ -34,7 +34,7 @@ const Navbar = () => {
           {/* Logo Section */}
           <div className="flex items-center space-x-3 flex-shrink-0">
             <img
-              src="/ruthra-logo.png"
+              src="./ruthra-logo.png"
               alt="Ruthra Digital Solutions Logo"
               className="h-10 w-10 object-contain"
             />
