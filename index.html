@@ -57,6 +57,18 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- public/index.html -->
+<!-- Hidden static form so Netlify detects "contact" form at build time -->
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="honey" hidden>
+  <input type="hidden" name="form-name" value="contact" />
+  <input name="name" />
+  <input name="email" />
+  <input name="phone" />
+  <input name="service" />
+  <textarea name="message"></textarea>
+  <input name="honey" />
+</form>
+
   </body>
 </html>
 

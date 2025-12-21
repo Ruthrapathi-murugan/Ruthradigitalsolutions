@@ -17,15 +17,15 @@ const About = () => {
             </p>
             <div className="mt-8 grid grid-cols-2 gap-6">
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">100+</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">20+</div>
                 <div className="text-gray-600">Projects Completed</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">10+</div>
                 <div className="text-gray-600">Happy Clients</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">5+</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">2+</div>
                 <div className="text-gray-600">Years Experience</div>
               </div>
               <div>

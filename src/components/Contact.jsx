@@ -107,11 +107,6 @@ const contactMethods = [
   },
 ]
 
-/* helper to url-encode form data for Netlify */
-const encode = (data) =>
-  Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -120,10 +115,7 @@ const Contact = () => {
     phone: '',
     service: '',
     message: '',
-    // optional honeypot field (leave empty in UI)
-    honey: '',
   })
-  const [submitting, setSubmitting] = useState(false)
 
   const handleChange = (e) => {
     setFormData({
@@ -132,61 +124,32 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    // simple honeypot spam check
-    if (formData.honey) {
-      // bot detected — silently ignore
-      return
-    }
-    setSubmitting(true)
-
-    const payload = {
-      'form-name': 'contact',
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      service: formData.service,
-      message: formData.message,
-    }
-
-    try {
-      const res = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode(payload),
-      })
-
-      if (!res.ok) throw new Error('Network response was not ok')
-
-      alert('Thank you for your message! We will get back to you soon.')
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-        honey: '',
-      })
-    } catch (err) {
-      console.error('Form submit error:', err)
-      alert('There was a problem submitting the form. Please try again.')
-    } finally {
-      setSubmitting(false)
-    }
+    console.log('Form submitted:', formData)
+    alert('Thank you for your message! We will get back to you soon.')
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: '',
+    })
   }
 
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-sm uppercase tracking-[0.4em] text-primary-500 mb-3">Contact</p>
+          <p className="text-sm uppercase tracking-[0.4em] text-primary-500 mb-3">
+            Contact
+          </p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Connect directly with Ruthra Digital Solutions
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            These are the same touch points listed on Ruthrapathi’s public portfolio. Drop a line
-            and you’ll usually hear back within 12 hours.
+            These are the same touch points listed on Ruthrapathi’s public portfolio. Drop a
+            line and you’ll usually hear back within 12 hours.
           </p>
         </div>
 
@@ -198,25 +161,7 @@ const Contact = () => {
               Tell us about your website, hotel solution, or marketing idea—everything stays
               confidential.
             </p>
-
-            {/* Netlify form (data-netlify + hidden form-name). We keep controlled inputs and submit via fetch. */}
-            <form
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              onSubmit={handleSubmit}
-              className="space-y-6"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-
-              {/* honeypot (hidden) */}
-              <div style={{ display: 'none' }}>
-                <label>
-                  Don’t fill this out if you’re human:
-                  <input name="honey" value={formData.honey} onChange={handleChange} />
-                </label>
-              </div>
-
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                   Full name
@@ -232,7 +177,6 @@ const Contact = () => {
                   placeholder="Ruthra Digital Solutions Client"
                 />
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -264,7 +208,6 @@ const Contact = () => {
                   />
                 </div>
               </div>
-
               <div>
                 <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                   What do you need help with?
@@ -283,7 +226,6 @@ const Contact = () => {
                   <option value="other">Something else</option>
                 </select>
               </div>
-
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   Project summary
@@ -299,13 +241,11 @@ const Contact = () => {
                   placeholder="Share business goals, timelines, or links to references…"
                 />
               </div>
-
               <button
                 type="submit"
-                disabled={submitting}
-                className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-60"
+                className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
-                {submitting ? 'Sending...' : 'Send Message'}
+                Send Message
               </button>
             </form>
           </div>
@@ -315,8 +255,8 @@ const Contact = () => {
             <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Direct lines</h3>
               <p className="text-gray-600 mb-6">
-                Based in India (Chennai · Bangalore + remote). Reach out through any of the verified
-                links used on{' '}
+                Based in India (Chennai · Bangalore + remote). Reach out through any of the
+                verified links used on{' '}
                 <a
                   href="https://ruthrapathi-info.netlify.app/"
                   target="_blank"
@@ -328,46 +268,41 @@ const Contact = () => {
                 .
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {contactMethods.map((method) => (
-                  <a
-                    key={method.label}
-                    href={method.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
-                  >
-                    <div className="flex items-center gap-3 w-full">
-                      <svg
-                        className="w-5 h-5 flex-shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        aria-hidden
-                      >
-                        {method.icon}
-                      </svg>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  {contactMethods.map((method) => (
+    <a
+      key={method.label}
+      href={method.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
+    >
+      <div className="flex items-center gap-3 w-full">
+        <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
+          {method.icon}
+        </svg>
 
-                      {/* label */}
-                      <div className="text-sm uppercase tracking-widest opacity-90">
-                        {method.label}
-                      </div>
-                    </div>
+        {/* label */}
+        <div className="text-sm uppercase tracking-widest opacity-90">
+          {method.label}
+        </div>
+      </div>
 
-                    {/* value (wraps) */}
-                    <span className="text-lg sm:text-xl font-semibold max-w-full break-words break-all">
-                      {method.value}
-                    </span>
-                  </a>
-                ))}
-              </div>
+      {/* value (wraps) */}
+      <span className="text-lg sm:text-xl font-semibold max-w-full break-words break-all">
+        {method.value}
+      </span>
+    </a>
+  ))}
+</div>
+
             </div>
 
             <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl shadow-xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Preferred response window</h3>
               <p className="text-white/80 mb-6">
-                WhatsApp and calls are monitored daily between 09:00 and 21:00 IST. Emails and form
-                submissions receive a reply within 12 working hours.
+                WhatsApp and calls are monitored daily between 09:00 and 21:00 IST. Emails and
+                form submissions receive a reply within 12 working hours.
               </p>
               <div className="space-y-2 text-sm uppercase tracking-wide">
                 <p className="flex justify-between border-b border-white/20 pb-2">
@@ -388,3 +323,5 @@ const Contact = () => {
 }
 
 export default Contact
+
+

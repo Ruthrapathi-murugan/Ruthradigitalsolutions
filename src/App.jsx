@@ -9,6 +9,7 @@ import About from './components/About'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import LogoMarquee from './components/LogoMarquee'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Services />  
       <Portfolio />
       <Testimonials />
+      <LogoMarquee />
       <Process />
       <About />
       <FAQ />

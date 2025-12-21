@@ -3,62 +3,54 @@ import React, { useState } from 'react'
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all')
 
-  const projects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      category: 'web',
-      description: 'Modern e-commerce solution with advanced features',
-      image: '🛒',
-      link: '#',
-      tags: ['React', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 2,
-      title: 'Luxury Hotel Booking System',
-      category: 'hotel',
-      description: 'Complete hotel management and booking platform',
-      image: '🏨',
-      link: 'https://sampathresidency-palani.netlify.app/',
-      tags: ['React', 'Express', 'PostgreSQL'],
-    },
-    {
-      id: 3,
-      title: 'Digital Marketing Campaign',
-      category: 'marketing',
-      description: 'Successful social media and SEO campaign',
-      image: '📈',
-      link: 'https://marketing.example.com',
-      tags: ['SEO', 'Social Media', 'Analytics'],
-    },
-    {
-      id: 4,
-      title: 'Corporate Website',
-      category: 'web',
-      description: 'Professional corporate website with CMS',
-      image: '💼',
-      link: 'https://www.jcdinterior.com/',
-      tags: ['NextJS', 'Contentful', 'Tailwind'],
-    },
-    {
-      id: 5,
-      title: 'Resort Management System',
-      category: 'hotel',
-      description: 'Comprehensive resort booking and management',
-      image: '🏖️',
-      link: 'https://pvtresidency.netlify.app/',
-      tags: ['React.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 6,
-      title: 'Brand Identity Campaign',
-      category: 'marketing',
-      description: 'Complete brand redesign and marketing strategy',
-      image: '🎨',
-      link: 'https://branding.example.com',
-      tags: ['Branding', 'Content', 'PPC'],
-    },
-  ]
+const projects = [
+  {
+    id: 1,
+    title: 'business website',
+    category: 'web',
+    description: 'Modern e-commerce solution with advanced features',
+    image: '/logos/logodheena.jpeg',
+    link: 'https://ultrawavendtservices.netlify.app/',
+    tags: ['React', 'Node.js', 'MongoDB'],
+  },
+  {
+    id: 2,
+    title: 'Luxury Hotel Booking System',
+    category: 'hotel',
+    description: 'Complete hotel management and booking platform',
+    image: '/logos/logo.jpg',
+    link: 'https://sampathresidency-palani.netlify.app/',
+    tags: ['React', 'Express', 'PostgreSQL'],
+  },
+  {
+    id: 3,
+    title: 'Corporate Website',
+    category: 'marketing',
+    description: 'Successful social media and SEO campaign',
+    image: '/logos/jcd.png',
+    link: 'https://www.jcdinterior.com/',
+    tags: ['SEO', 'Social Media', 'Analytics'],
+  },
+  {
+    id: 4,
+    title: 'Business Website',
+    category: 'web',
+    description: 'Professional corporate website with CMS',
+    image: '/logos/ruthra-logo.png',
+    link: 'https://ruthradigitalsolutions.netlify.app/',
+    tags: ['NextJS', 'Tailwind'],
+  },
+  {
+    id: 5,
+    title: 'Resort Management System',
+    category: 'hotel',
+    description: 'Comprehensive resort booking and management',
+    image: '/logos/Logo.jpeg',
+    link: 'https://pvtresidency.netlify.app/',
+    tags: ['React.js', 'MongoDB'],
+  },
+];
+
 
   const filters = [
     { id: 'all', name: 'All Projects' },
@@ -112,9 +104,14 @@ const Portfolio = () => {
               rel="noopener noreferrer"
               className="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
-              <div className="h-48 bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
-                {project.image}
-              </div>
+              <div className="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+  <img
+    src={project.image}
+    alt={project.title}
+    className="h-full w-full object-contain p-6 transition-transform duration-300 group-hover:scale-110"
+  />
+</div>
+
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   {project.title}
