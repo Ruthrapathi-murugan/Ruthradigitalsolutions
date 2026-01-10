@@ -61,50 +61,7 @@ const contactMethods = [
     ),
   },
 
-  {
-    label: 'GitHub',
-    value: 'Ruthrapathi-murugan',
-    href: 'https://github.com/Ruthrapathi-murugan',
-    accent: 'from-gray-700 to-gray-900',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M15 22v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0018.5 4a5.07 5.07 0 00-.09-3.73S17 0 15 1.79a13.38 13.38 0 00-6 0C7 0 5.59.27 5.59.27A5.07 5.07 0 005.5 4a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 00-.94 2.6V22"
-      />
-    ),
-  },
-
-  {
-    label: 'Facebook',
-    value: '/ruthrapathi.m',
-    href: 'https://www.facebook.com/ruthrapathi.m',
-    accent: 'from-blue-600 to-indigo-500',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v9h4v-9h3l1-4h-4V6a1 1 0 011-1h3z"
-      />
-    ),
-  },
-
-  {
-    label: 'Twitter / X',
-    value: '@ruthrapathi1',
-    href: 'https://x.com/ruthrapathi1',
-    accent: 'from-slate-800 to-gray-900',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M4 4l16 16M20 4l-7.5 7.5M4 20l7.5-7.5"
-      />
-    ),
-  },
+  
 ]
 
 
