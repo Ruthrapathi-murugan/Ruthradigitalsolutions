@@ -61,11 +61,12 @@ const contactMethods = [
     ),
   },
 
-  
+
 ]
 
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -81,17 +82,41 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: '',
-    })
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/ruthrapathimurugan@outlook.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: "New Contact from Ruthra Digital Solutions Website"
+        })
+      });
+
+      if (response.ok) {
+        alert('Thank you! Your message has been sent successfully. Check your email to activate if this is your first time.')
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+        })
+      } else {
+        alert('Something went wrong. Please try again or contact us directly.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('There was an error sending your message. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -200,9 +225,10 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
@@ -225,33 +251,33 @@ const Contact = () => {
                 .
               </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  {contactMethods.map((method) => (
-    <a
-      key={method.label}
-      href={method.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
-    >
-      <div className="flex items-center gap-3 w-full">
-        <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
-          {method.icon}
-        </svg>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {contactMethods.map((method) => (
+                  <a
+                    key={method.label}
+                    href={method.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
+                  >
+                    <div className="flex items-center gap-3 w-full">
+                      <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
+                        {method.icon}
+                      </svg>
 
-        {/* label */}
-        <div className="text-sm uppercase tracking-widest opacity-90">
-          {method.label}
-        </div>
-      </div>
+                      {/* label */}
+                      <div className="text-sm uppercase tracking-widest opacity-90">
+                        {method.label}
+                      </div>
+                    </div>
 
-      {/* value (wraps) */}
-      <span className="text-lg sm:text-xl font-semibold max-w-full break-words break-all">
-        {method.value}
-      </span>
-    </a>
-  ))}
-</div>
+                    {/* value (wraps) */}
+                    <span className="text-lg sm:text-xl font-semibold max-w-full break-words break-all">
+                      {method.value}
+                    </span>
+                  </a>
+                ))}
+              </div>
 
             </div>
 
