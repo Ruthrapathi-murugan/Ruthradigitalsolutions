@@ -10,7 +10,7 @@ const projects = [
     category: 'web',
     description: 'Modern e-commerce solution with advanced features',
     image: '/logos/logodheena.jpeg',
-    link: 'https://ultrawavendtservices.netlify.app/',
+    link: 'https://ultrawavesndtservices.netlify.app/',
     tags: ['React', 'Node.js', 'MongoDB'],
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     description: 'Complete hotel management and booking platform',
     image: '/logos/logo.jpg',
     link: 'https://sampathresidency-palani.netlify.app/',
-    tags: ['React', 'Express', 'PostgreSQL'],
+    tags: ['React', 'Express', 'MongoDB'],
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const projects = [
     description: 'Successful social media and SEO campaign',
     image: '/logos/jcd.png',
     link: 'https://www.jcdinterior.com/',
-    tags: ['SEO', 'Social Media', 'Analytics'],
+    tags: ['Next.JS','SEO', 'Social Media', 'Analytics'],
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const projects = [
     category: 'web',
     description: 'Professional corporate website with CMS',
     image: '/logos/ruthra-logo.png',
-    link: 'https://ruthradigitalsolutions.netlify.app/',
+    link: 'https://www.ruthradigitalsolutions.com/',
     tags: ['NextJS', 'Tailwind'],
   },
   {
