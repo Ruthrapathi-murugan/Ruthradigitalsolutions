@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Services = () => {
   const services = [
     {
       title: 'Web Development',
+      href: '/service/web-development',
       description: 'Custom website creation tailored to your business needs. We build responsive, fast, and SEO-friendly websites using modern technologies.',
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,6 +23,7 @@ const Services = () => {
     },
     {
       title: 'Hotel Management',
+      href: '/service/hotel-management',
       description: 'Comprehensive hotel management solutions to streamline operations, manage bookings, and enhance guest experiences.',
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,6 +42,7 @@ const Services = () => {
     },
     {
       title: 'Digital Marketing',
+      href: '/service/digital-marketing',
       description: 'Boost your online presence with strategic digital marketing campaigns that drive traffic, engagement, and conversions.',
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,9 +73,10 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
+            <Link
+              to={service.href}
               key={index}
-              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              className="block bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
             >
               <div className="text-primary-600 mb-6">{service.icon}</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -96,7 +101,13 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+              <div className="mt-6 text-primary-600 font-semibold group-hover:text-primary-700 flex items-center">
+                Learn More
+                <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
