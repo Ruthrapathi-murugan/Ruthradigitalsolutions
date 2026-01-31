@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaPhone, FaEnvelope, FaWhatsapp, FaLinkedin, FaCheckCircle, FaTimes } from 'react-icons/fa'
 
 const contactMethods = [
   {
@@ -6,67 +8,35 @@ const contactMethods = [
     value: '+91 96263 80310',
     href: 'tel:+919626380310',
     accent: 'from-amber-500 to-orange-500',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M2 5a2 2 0 012-2h1.74a2 2 0 011.94 1.43l.7 2.34a2 2 0 01-.95 2.3l-1.02.58a13.05 13.05 0 006.64 6.64l.58-1.02a2 2 0 012.3-.95l2.34.7A2 2 0 0121 18.26V20a2 2 0 01-2 2h-.75C9.31 22 2 14.69 2 5.75V5z"
-      />
-    ),
+    icon: <FaPhone className="w-5 h-5 flex-shrink-0" />,
   },
-
   {
     label: 'Email',
-    value: 'ruthrapathimurugan@outlook.com',
-    href: 'mailto:ruthrapathimurugan@outlook.com',
+    value: 'ruthradigitalsolutions@outlook.com',
+    href: 'mailto:ruthradigitalsolutions@outlook.com',
     accent: 'from-purple-500 to-violet-600',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M4 4h16v16H4z M22 6l-10 7L2 6"
-      />
-    ),
+    icon: <FaEnvelope className="w-5 h-5 flex-shrink-0" />,
   },
-
   {
     label: 'WhatsApp',
     value: '+91 96263 80310',
     href: 'https://wa.me/+919626380310',
     accent: 'from-emerald-500 to-lime-500',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M21 12.08A9 9 0 1111.92 3a9 9 0 019.08 9.08zM10 9h.01M14 9h.01M9 13c.87.63 1.92 1 3 1s2.13-.37 3-1"
-      />
-    ),
+    icon: <FaWhatsapp className="w-5 h-5 flex-shrink-0" />,
   },
-
   {
     label: 'LinkedIn',
     value: '@ruthrapathim',
     href: 'https://www.linkedin.com/in/ruthrapathim/',
     accent: 'from-sky-500 to-blue-600',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4v-6a6 6 0 016-6zM2 9h4v11H2zM4 5a2 2 0 110 4 2 2 0 010-4z"
-      />
-    ),
+    icon: <FaLinkedin className="w-5 h-5 flex-shrink-0" />,
   },
-
-
 ]
 
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -87,7 +57,7 @@ const Contact = () => {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/ruthrapathimurugan@outlook.com", {
+      const response = await fetch("https://formsubmit.co/ajax/ruthradigitalsolutions@outlook.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +70,7 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert('Thank you! Your message has been sent successfully. Check your email to activate if this is your first time.')
+        setShowModal(true)
         setFormData({
           name: '',
           email: '',
@@ -120,7 +90,49 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-gray-50 relative">
+      {/* Success Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-emerald-600"></div>
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                aria-label="Close modal"
+              >
+                <FaTimes className="w-5 h-5" />
+              </button>
+
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                  <FaCheckCircle className="w-8 h-8 text-green-600" />
+                </div>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
+                <p className="text-gray-600 mb-6">
+                  Thank you for reaching out. We've received your message and will get back to you within 12 hours.
+                </p>
+
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="bg-green-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors shadow-lg hover:shadow-green-500/30"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-sm uppercase tracking-[0.4em] text-primary-500 mb-3">
@@ -261,9 +273,7 @@ const Contact = () => {
                     className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
                   >
                     <div className="flex items-center gap-3 w-full">
-                      <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
-                        {method.icon}
-                      </svg>
+                      {method.icon}
 
                       {/* label */}
                       <div className="text-sm uppercase tracking-widest opacity-90">
@@ -306,5 +316,3 @@ const Contact = () => {
 }
 
 export default Contact
-
-

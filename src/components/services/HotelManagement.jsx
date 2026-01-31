@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
+import { FaCalendarCheck, FaConciergeBell, FaBroom, FaCreditCard, FaBoxOpen, FaChartLine } from 'react-icons/fa';
 
 
 const HotelManagement = () => {
@@ -8,32 +9,32 @@ const HotelManagement = () => {
         {
             title: 'Booking Engine',
             desc: 'Seamless reservation system allowing guests to book directly from your website, commission-free.',
-            icon: '📅'
+            icon: <FaCalendarCheck className="text-primary-600" />
         },
         {
             title: 'Front Desk Operations',
             desc: 'Efficient check-in/check-out, room assignment, and guest profile management.',
-            icon: '🛎️'
+            icon: <FaConciergeBell className="text-primary-600" />
         },
         {
             title: 'Housekeeping',
             desc: 'Real-time room status updates and automated task assignment for staff.',
-            icon: '🧹'
+            icon: <FaBroom className="text-primary-600" />
         },
         {
             title: 'Point of Sale (POS)',
             desc: 'Integrated billing for restaurants, spas, and other hotel amenities.',
-            icon: '💳'
+            icon: <FaCreditCard className="text-primary-600" />
         },
         {
             title: 'Inventory Management',
             desc: 'Track stock levels for housekeeping, restaurant, and bar supplies automatically.',
-            icon: '📦'
+            icon: <FaBoxOpen className="text-primary-600" />
         },
         {
             title: 'Analytics & Reporting',
             desc: 'Comprehensive reports on occupancy, revenue, and guest demographics.',
-            icon: '📈'
+            icon: <FaChartLine className="text-primary-600" />
         }
     ];
 
@@ -44,15 +45,15 @@ const HotelManagement = () => {
 
     const navigate = useNavigate();
 
-const goToContact = () => {
-  navigate("/");
+    const goToContact = () => {
+        navigate("/");
 
-  setTimeout(() => {
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  }, 150);
-};
+        setTimeout(() => {
+            document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+            });
+        }, 150);
+    };
 
     return (
         <div className="pt-20 min-h-screen bg-white">
@@ -79,11 +80,11 @@ const goToContact = () => {
                         </p>
                         <div className="flex justify-center space-x-4">
                             <button
-  onClick={goToContact}
-  className="bg-primary-600 border border-transparent text-white font-bold py-3 px-8 rounded-md hover:bg-primary-700 transition duration-300 shadow-lg"
->
-  Request Demo
-</button>
+                                onClick={goToContact}
+                                className="bg-primary-600 border border-transparent text-white font-bold py-3 px-8 rounded-md hover:bg-primary-700 transition duration-300 shadow-lg"
+                            >
+                                Request Demo
+                            </button>
 
                             <button className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-gray-900 transition duration-300">
                                 View Features

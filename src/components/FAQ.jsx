@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FaChevronDown } from 'react-icons/fa'
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null)
@@ -71,26 +72,14 @@ const FAQ = () => {
                 <span className="text-lg font-semibold text-gray-900 pr-4">
                   {faq.question}
                 </span>
-                <svg
-                  className={`w-6 h-6 text-primary-600 flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? 'transform rotate-180' : ''
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                <FaChevronDown
+                  className={`w-6 h-6 text-primary-600 flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180' : ''
+                    }`}
+                />
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? 'max-h-96' : 'max-h-0'
-                }`}
+                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'
+                  }`}
               >
                 <div className="px-6 pb-5 text-gray-600">{faq.answer}</div>
               </div>

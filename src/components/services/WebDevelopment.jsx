@@ -1,19 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { SiNextdotjs, SiTailwindcss, SiMongodb } from 'react-icons/si';
 
 
 const WebDevelopment = () => {
   const techStack = [
-    { name: 'HTML5', icon: '🌐' },
-    { name: 'CSS3', icon: '🎨' },
-    { name: 'JavaScript', icon: '⚡' },
-    { name: 'React', icon: '⚛️' },
-    { name: 'Node.js', icon: '🟢' },
-    { name: 'Next.js', icon: '▲' },
-    { name: 'Tailwind CSS', icon: '🌊' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'SQL', icon: '💾' },
+    { name: 'HTML5', icon: <FaHtml5 className="text-orange-600" /> },
+    { name: 'CSS3', icon: <FaCss3Alt className="text-blue-600" /> },
+    { name: 'JavaScript', icon: <FaJs className="text-yellow-500" /> },
+    { name: 'React', icon: <FaReact className="text-blue-400" /> },
+    { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
+    { name: 'Next.js', icon: <SiNextdotjs className="text-black" /> },
+    { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-400" /> },
+    { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
+    { name: 'SQL', icon: <FaDatabase className="text-gray-600" /> },
   ];
 
   const processSteps = [
@@ -32,14 +34,14 @@ const WebDevelopment = () => {
 
   const navigate = useNavigate();
 
-const goToContact = () => {
-  navigate("/");
+  const goToContact = () => {
+    navigate("/");
 
-  setTimeout(() => {
-    const el = document.getElementById("contact");
-    el?.scrollIntoView({ behavior: "smooth" });
-  }, 150);
-};
+    setTimeout(() => {
+      const el = document.getElementById("contact");
+      el?.scrollIntoView({ behavior: "smooth" });
+    }, 150);
+  };
 
   return (
     <div className="pt-20 min-h-screen bg-gray-50">
@@ -60,12 +62,12 @@ const goToContact = () => {
             <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto mb-8">
               Building scalable, high-performance, and beautiful websites that drive growth and engagement.
             </p>
-        <button
-  onClick={goToContact}
-  className="bg-white text-primary-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 shadow-lg"
->
-  Start Your Project
-</button>
+            <button
+              onClick={goToContact}
+              className="bg-white text-primary-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 shadow-lg"
+            >
+              Start Your Project
+            </button>
 
 
           </motion.div>
@@ -186,12 +188,12 @@ const goToContact = () => {
           <p className="text-primary-100 mb-8 max-w-2xl mx-auto">
             Let's discuss your project and create a digital experience that stands out.
           </p>
-  <button
-  onClick={goToContact}
-  className="bg-white text-primary-900 font-bold py-4 px-10 rounded-full hover:bg-gray-100 transition duration-300 shadow-xl transform hover:scale-105"
->
-  Contact Us Today
-</button>
+          <button
+            onClick={goToContact}
+            className="bg-white text-primary-900 font-bold py-4 px-10 rounded-full hover:bg-gray-100 transition duration-300 shadow-xl transform hover:scale-105"
+          >
+            Contact Us Today
+          </button>
 
         </div>
       </div>

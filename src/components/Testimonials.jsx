@@ -1,171 +1,210 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaHotel, FaPalette, FaShoppingCart, FaUtensils, FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
- const testimonials = [
-  {
-    id: 1,
-    name: 'Sampath Kumar',
-    role: 'Owner, Sampath Residency – Palani',
-    content:
-      'Ruthra Digital Solutions created a complete digital system for our hotel. From online booking to guest management, everything became smooth and organized. Our customer flow increased noticeably. Excellent service and support!',
-    rating: 5,
-    image: '🏨',
-  },
-  {
-    id: 2,
-    name: 'Sawan Kumar',
-    role: 'Founder, Just Creative Designs',
-    content:
-      'They built our professional portfolio website and optimized the branding. The UI/UX quality, loading speed, and SEO performance were top-notch. We confidently showcase our brand because of their work.',
-    rating: 5,
-    image: '🎨',
-  },
-  {
-    id: 3,
-    name: 'Aravind Murugan',
-    role: 'E-Commerce Business Owner',
-    content:
-      'Our online store was completely redesigned by Ruthra Digital Solutions. Sales improved, page performance increased, and our customers love the new interface. Highly reliable and skilled development team.',
-    rating: 5,
-    image: '🛒',
-  },
-  {
-    id: 4,
-    name: 'Vignesh S',
-    role: 'Restaurant Owner',
-    content:
-      'We needed a digital marketing strategy, and Ruthra Digital Solutions delivered beyond expectations. Our Google ranking improved and we gained more walk-in customers. Very professional and result-oriented.',
-    rating: 5,
-    image: '🍽️',
-  },
-   {
-    id: 5,
-    name: 'Ravichandran S',
-    role: 'Owner, PVT  Residency – Palani',
-    content:
-      'Ruthra Digital Solutions created a complete digital system for our hotel. From online booking to guest management, everything became smooth and organized. Our customer flow increased noticeably. Excellent service and support!',
-    rating: 5,
-    image: '🍽️',
-  },
-]
-
-
+  const testimonials = [
+    {
+      id: 1,
+      name: 'Sampath Kumar',
+      role: 'Owner, Sampath Residency – Palani',
+      content:
+        'Ruthra Digital Solutions created a complete digital system for our hotel. From online booking to guest management, everything became smooth and organized. Our customer flow increased noticeably.',
+      rating: 5,
+      image: <FaHotel className="text-white w-8 h-8" />,
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      id: 2,
+      name: 'Sawan Kumar',
+      role: 'Founder, Just Creative Designs',
+      content:
+        'They built our professional portfolio website and optimized the branding. The UI/UX quality, loading speed, and SEO performance were top-notch. We confidently showcase our brand because of their work.',
+      rating: 5,
+      image: <FaPalette className="text-white w-8 h-8" />,
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      id: 3,
+      name: 'Aravind Murugan',
+      role: 'E-Commerce Business Owner',
+      content:
+        'Our online store was completely redesigned by Ruthra Digital Solutions. Sales improved, page performance increased, and our customers love the new interface. Highly reliable and skilled team.',
+      rating: 5,
+      image: <FaShoppingCart className="text-white w-8 h-8" />,
+      color: 'from-orange-500 to-red-500'
+    },
+    {
+      id: 4,
+      name: 'Vignesh S',
+      role: 'Restaurant Owner',
+      content:
+        'We needed a digital marketing strategy, and Ruthra Digital Solutions delivered beyond expectations. Our Google ranking improved and we gained more walk-in customers. Very professional and result-oriented.',
+      rating: 5,
+      image: <FaUtensils className="text-white w-8 h-8" />,
+      color: 'from-green-500 to-emerald-600'
+    },
+    {
+      id: 5,
+      name: 'Ravichandran S',
+      role: 'Owner, PVT Residency – Palani',
+      content:
+        'Ruthra Digital Solutions created a complete digital system for our hotel. From online booking to guest management, everything became smooth and organized. Excellent service and support!',
+      rating: 5,
+      image: <FaHotel className="text-white w-8 h-8" />,
+      color: 'from-blue-600 to-indigo-600'
+    },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [testimonials.length])
+      nextTestimonial();
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  const nextTestimonial = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.5
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: 'spring', stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      },
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.5,
+      transition: {
+        x: { type: 'spring', stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      },
+    }),
+  };
 
   return (
-    <section id="testimonials" className="py-20 bg-gradient-to-br from-primary-50 to-primary-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gray-50 overflow-hidden relative">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-primary-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-0 left-20 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            What Our Clients Say
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied clients have to say about working with us.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+              Client Success Stories
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Trusted by businesses to deliver digital excellence. Here's what they experience working with us.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Testimonial Card */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 transform transition-all duration-500">
-            <div className="text-center">
-              <div className="text-6xl mb-6">{testimonials[currentIndex].image}</div>
-              <div className="flex justify-center mb-4">
-                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-6 h-6 text-yellow-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-xl text-gray-700 mb-6 italic">
-                "{testimonials[currentIndex].content}"
-              </p>
-              <div>
-                <h4 className="text-xl font-bold text-gray-900">
-                  {testimonials[currentIndex].name}
-                </h4>
-                <p className="text-gray-600">{testimonials[currentIndex].role}</p>
-              </div>
-            </div>
-          </div>
+        <div className="relative h-[600px] md:h-[450px] flex items-center justify-center">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute w-full max-w-4xl"
+            >
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden relative border border-gray-100 transform transition-all hover:shadow-primary-500/10">
+                <div className="grid grid-cols-1 md:grid-cols-5 h-full">
+                  {/* Left Side (Gradient & Icon) */}
+                  <div className={`md:col-span-2 bg-gradient-to-br ${testimonials[currentIndex].color} p-10 flex flex-col justify-center items-center text-white relative overflow-hidden`}>
+                    <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                    <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-lg border border-white/30">
+                      {testimonials[currentIndex].image}
+                    </div>
+                    <h3 className="text-2xl font-bold text-center mb-2">{testimonials[currentIndex].name}</h3>
+                    <p className="text-white/80 text-center text-sm font-medium uppercase tracking-wider">{testimonials[currentIndex].role}</p>
+                  </div>
 
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-8 gap-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'w-8 bg-primary-600'
-                    : 'w-3 bg-gray-300 hover:bg-gray-400'
+                  {/* Right Side (Content) */}
+                  <div className="md:col-span-3 p-10 md:p-12 flex flex-col justify-center relative bg-white">
+                    <FaQuoteLeft className="text-primary-100 text-6xl absolute top-8 left-8 -z-10 opacity-50" />
+                    <div className="flex mb-6 text-yellow-400">
+                      {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                        <FaStar key={i} className="w-5 h-5" />
+                      ))}
+                    </div>
+                    <p className="text-gray-700 text-lg md:text-xl leading-relaxed italic mb-8">
+                      "{testimonials[currentIndex].content}"
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation Buttons (Desktop) */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 justify-between items-center px-4 hidden md:flex pointer-events-none">
+            <button
+              onClick={prevTestimonial}
+              className="pointer-events-auto bg-white p-4 rounded-full shadow-lg hover:bg-primary-50 text-primary-600 transition-all transform hover:scale-110 focus:outline-none"
+              aria-label="Previous Testimonial"
+            >
+              <FaChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={nextTestimonial}
+              className="pointer-events-auto bg-white p-4 rounded-full shadow-lg hover:bg-primary-50 text-primary-600 transition-all transform hover:scale-110 focus:outline-none"
+              aria-label="Next Testimonial"
+            >
+              <FaChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* Dots Navigation */}
+        <div className="flex justify-center mt-12 gap-3">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setDirection(index > currentIndex ? 1 : -1);
+                setCurrentIndex(index);
+              }}
+              className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'w-10 bg-primary-600' : 'w-3 bg-gray-300 hover:bg-gray-400'
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={() =>
-              setCurrentIndex(
-                (currentIndex - 1 + testimonials.length) % testimonials.length
-              )
-            }
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-white rounded-full p-3 shadow-lg hover:bg-primary-50 transition-colors"
-            aria-label="Previous testimonial"
-          >
-            <svg
-              className="w-6 h-6 text-primary-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <button
-            onClick={() => setCurrentIndex((currentIndex + 1) % testimonials.length)}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-white rounded-full p-3 shadow-lg hover:bg-primary-50 transition-colors"
-            aria-label="Next testimonial"
-          >
-            <svg
-              className="w-6 h-6 text-primary-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Testimonials
-
-
+export default Testimonials;

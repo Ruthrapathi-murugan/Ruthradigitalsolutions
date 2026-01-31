@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaLaptopCode, FaHotel, FaBullhorn, FaCheck } from 'react-icons/fa'
 
 const Services = () => {
   const services = [
@@ -7,11 +8,8 @@ const Services = () => {
       title: 'Web Development',
       href: '/service/web-development',
       description: 'Custom website creation tailored to your business needs. We build responsive, fast, and SEO-friendly websites using modern technologies.',
-      icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
+      description: 'Custom website creation tailored to your business needs. We build responsive, fast, and SEO-friendly websites using modern technologies.',
+      icon: <FaLaptopCode className="w-12 h-12" />,
       features: [
         'Responsive Design',
         'Modern UI/UX',
@@ -25,11 +23,8 @@ const Services = () => {
       title: 'Hotel Management',
       href: '/service/hotel-management',
       description: 'Comprehensive hotel management solutions to streamline operations, manage bookings, and enhance guest experiences.',
-      icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      ),
+      description: 'Comprehensive hotel management solutions to streamline operations, manage bookings, and enhance guest experiences.',
+      icon: <FaHotel className="w-12 h-12" />,
       features: [
         'Booking Management',
         'Room Inventory',
@@ -44,11 +39,8 @@ const Services = () => {
       title: 'Digital Marketing',
       href: '/service/digital-marketing',
       description: 'Boost your online presence with strategic digital marketing campaigns that drive traffic, engagement, and conversions.',
-      icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      ),
+      description: 'Boost your online presence with strategic digital marketing campaigns that drive traffic, engagement, and conversions.',
+      icon: <FaBullhorn className="w-12 h-12" />,
       features: [
         'SEO Services',
         'Social Media Marketing',
@@ -86,17 +78,7 @@ const Services = () => {
               <ul className="space-y-2">
                 {service.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center text-gray-700">
-                    <svg
-                      className="w-5 h-5 text-primary-600 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <FaCheck className="w-5 h-5 text-primary-600 mr-2" />
                     {feature}
                   </li>
                 ))}
