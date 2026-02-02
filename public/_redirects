@@ -1,1 +1,5 @@
-/* https://www.ruthradigitalsolutions.com/:splat 301!
+# 1️⃣ Redirect Netlify subdomain to custom domain
+https://ruthradigitalsolutions.netlify.app/* https://www.ruthradigitalsolutions.com/:splat 301!
+
+# 2️⃣ SPA fallback for custom domain ONLY
+/* /index.html 200
