@@ -8,7 +8,6 @@ const Services = () => {
       title: 'Web Development',
       href: '/service/web-development',
       description: 'Custom website creation tailored to your business needs. We build responsive, fast, and SEO-friendly websites using modern technologies.',
-      description: 'Custom website creation tailored to your business needs. We build responsive, fast, and SEO-friendly websites using modern technologies.',
       icon: <FaLaptopCode className="w-12 h-12" />,
       features: [
         'Responsive Design',
@@ -22,7 +21,6 @@ const Services = () => {
     {
       title: 'Hotel Management',
       href: '/service/hotel-management',
-      description: 'Comprehensive hotel management solutions to streamline operations, manage bookings, and enhance guest experiences.',
       description: 'Comprehensive hotel management solutions to streamline operations, manage bookings, and enhance guest experiences.',
       icon: <FaHotel className="w-12 h-12" />,
       features: [
@@ -38,7 +36,6 @@ const Services = () => {
     {
       title: 'Digital Marketing',
       href: '/service/digital-marketing',
-      description: 'Boost your online presence with strategic digital marketing campaigns that drive traffic, engagement, and conversions.',
       description: 'Boost your online presence with strategic digital marketing campaigns that drive traffic, engagement, and conversions.',
       icon: <FaBullhorn className="w-12 h-12" />,
       features: [

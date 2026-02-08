@@ -43,6 +43,18 @@ const HotelManagement = () => {
         { name: 'PVT Residency', logo: '/logos/Logo.jpeg', link: 'https://pvtresidency.netlify.app/' },
     ];
 
+    const integrations = [
+        { name: 'Make My Trip', logo: '/logos/makemytrip.svg' },
+        { name: 'Goibibo', logo: '/logos/goibibo.svg' },
+        { name: 'Agoda', logo: '/logos/agoda.svg' },
+        { name: 'Booking.com', logo: '/logos/booking.svg' },
+        { name: 'Expedia', logo: '/logos/expedia.svg' },
+        { name: 'Airbnb', logo: '/logos/airbnb.svg' },
+        { name: 'TripAdvisor', logo: '/logos/tripadvisor.svg' },
+        { name: 'Stripe', logo: '/logos/stripe.svg' },
+        { name: 'Razorpay', logo: '/logos/razorpay.svg' },
+    ];
+
     const navigate = useNavigate();
 
     const goToContact = () => {
@@ -147,10 +159,15 @@ const HotelManagement = () => {
             <div className="bg-indigo-900 py-16 text-white text-center">
                 <h2 className="text-3xl font-bold mb-8">Seamless Integrations & OTAs</h2>
                 <p className="mb-10 opacity-80 max-w-2xl mx-auto">We connect with your favorite tools including OTAs, Payment Gateways, and Accounting Software.</p>
-                <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
-                    {['Make My Trip', 'Goibibo', 'Agoda', 'Booking.com', 'Expedia', 'Airbnb', 'TripAdvisor', 'Stripe', 'Razorpay'].map((ota, i) => (
-                        <div key={i} className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-lg font-semibold border border-white/20 hover:bg-white/20 transition-colors cursor-default">
-                            {ota}
+                <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+                    {integrations.map((integration, i) => (
+                        <div key={i} className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center w-40 h-28">
+                            <img 
+                                src={integration.logo} 
+                                alt={integration.name} 
+                                title={integration.name} 
+                                className="max-h-20 max-w-36 object-contain" 
+                            />
                         </div>
                     ))}
                 </div>

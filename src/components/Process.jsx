@@ -8,15 +8,11 @@ const Process = () => {
       title: 'Discovery & Planning',
       description:
         'We start by understanding your business, goals, and requirements. Our team conducts thorough research and creates a detailed project plan.',
-      description:
-        'We start by understanding your business, goals, and requirements. Our team conducts thorough research and creates a detailed project plan.',
       icon: <FaSearch className="w-8 h-8" />,
     },
     {
       number: '02',
       title: 'Design & Development',
-      description:
-        'Our designers create stunning mockups and prototypes. Once approved, our developers bring the design to life with clean, efficient code.',
       description:
         'Our designers create stunning mockups and prototypes. Once approved, our developers bring the design to life with clean, efficient code.',
       icon: <FaLaptopCode className="w-8 h-8" />,
@@ -26,15 +22,11 @@ const Process = () => {
       title: 'Testing & Quality Assurance',
       description:
         'We rigorously test every feature across different devices and browsers to ensure optimal performance and user experience.',
-      description:
-        'We rigorously test every feature across different devices and browsers to ensure optimal performance and user experience.',
       icon: <FaVial className="w-8 h-8" />,
     },
     {
       number: '04',
       title: 'Launch & Support',
-      description:
-        'We handle the deployment and launch process. After going live, we provide ongoing support and maintenance to ensure everything runs smoothly.',
       description:
         'We handle the deployment and launch process. After going live, we provide ongoing support and maintenance to ensure everything runs smoothly.',
       icon: <FaRocket className="w-8 h-8" />,
