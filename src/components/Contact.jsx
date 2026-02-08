@@ -26,8 +26,8 @@ const contactMethods = [
   },
   {
     label: 'LinkedIn',
-    value: '@ruthrapathim',
-    href: 'https://www.linkedin.com/in/ruthrapathim/',
+    value: 'Ruthra Digital Solutions',
+    href: 'https://www.linkedin.com/company/ruthra-digital-solutions',
     accent: 'from-sky-500 to-blue-600',
     icon: <FaLinkedin className="w-5 h-5 flex-shrink-0" />,
   },
@@ -246,69 +246,73 @@ const Contact = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Direct lines</h3>
-              <p className="text-gray-600 mb-6">
-                Based in India (Chennai · Bangalore + remote). Reach out through any of the
-                verified links used on{' '}
-                <a
-                  href="https://ruthrapathi-info.netlify.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary-600 font-semibold hover:underline"
-                >
-                  Ruthrapathi’s public portfolio
-                </a>
-                .
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {contactMethods.map((method) => (
+            <div className="space-y-9">
+              <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Direct lines</h3>
+                <p className="text-gray-600 mb-6">
+                  Based in India (Chennai · Bangalore + remote). Reach out through any of the
+                  verified links used on{' '}
                   <a
-                    key={method.label}
-                    href={method.href}
+                    href="https://ruthrapathi-info.netlify.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
+                    className="text-primary-600 font-semibold hover:underline"
                   >
-                    <div className="flex items-center gap-3 w-full">
-                      {method.icon}
-
-                      {/* label */}
-                      <div className="text-sm uppercase tracking-widest opacity-90">
-                        {method.label}
-                      </div>
-                    </div>
-
-                    {/* value (wraps) */}
-                    <span className="text-lg sm:text-xl font-semibold max-w-full break-words break-all">
-                      {method.value}
-                    </span>
+                    Ruthrapathi’s public portfolio
                   </a>
-                ))}
+                  .
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {contactMethods.map((method) => (
+                    <a
+                      key={method.label}
+                      href={method.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
+                    >
+                      <div className="flex items-center gap-3 w-full">
+                        {method.icon}
+
+                        {/* label */}
+                        <div className="text-sm uppercase tracking-widest opacity-90">
+                          {method.label}
+                        </div>
+                      </div>
+
+                      {/* value (wraps) */}
+                     <span
+  title={method.value}
+  className="text-lg sm:text-xl font-semibold w-full whitespace-nowrap overflow-hidden text-ellipsis cursor-help"
+>
+  {method.value}
+</span>
+
+                    </a>
+                  ))}
+                </div>
+
               </div>
 
-            </div>
-
-            <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl shadow-xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Preferred response window</h3>
-              <p className="text-white/80 mb-6">
-                WhatsApp and calls are monitored daily between 09:00 and 21:00 IST. Emails and
-                form submissions receive a reply within 12 working hours.
-              </p>
-              <div className="space-y-2 text-sm uppercase tracking-wide">
-                <p className="flex justify-between border-b border-white/20 pb-2">
-                  <span>Weekdays</span>
-                  <span className="font-semibold">09:00 AM – 09:00 PM IST</span>
+              <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl shadow-xl p-8 text-white">
+                <h3 className="text-2xl font-bold mb-4">Preferred response window</h3>
+                <p className="text-white/80 mb-6">
+                  WhatsApp and calls are monitored daily between 09:00 and 21:00 IST. Emails and
+                  form submissions receive a reply within 12 working hours.
                 </p>
-                <p className="flex justify-between pb-2">
-                  <span>Weekends</span>
-                  <span className="font-semibold">On-demand via WhatsApp</span>
-                </p>
+                <div className="space-y-2 text-sm uppercase tracking-wide">
+                  <p className="flex justify-between border-b border-white/20 pb-2">
+                    <span>Weekdays</span>
+                    <span className="font-semibold">09:00 AM – 09:00 PM IST</span>
+                  </p>
+                  <p className="flex justify-between pb-2">
+                    <span>Weekends</span>
+                    <span className="font-semibold">On-demand via WhatsApp</span>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </section>
