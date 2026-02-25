@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
-import { FaFacebook, FaInstagram, FaGoogle, FaLinkedin, FaYoutube } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaGoogle, FaLinkedin, FaYoutube, FaWhatsapp } from "react-icons/fa6";
 
 const DigitalMarketing = () => {
     const strategies = [
@@ -46,6 +46,7 @@ const DigitalMarketing = () => {
         { name: 'Google Ads', icon: <FaGoogle />, color: 'text-green-600', border: 'border-green-100', bg: 'hover:bg-green-50' },
         { name: 'LinkedIn', icon: <FaLinkedin />, color: 'text-blue-700', border: 'border-blue-100', bg: 'hover:bg-blue-50' },
         { name: 'YouTube', icon: <FaYoutube />, color: 'text-red-600', border: 'border-red-100', bg: 'hover:bg-red-50' },
+        { name: 'Whatsapp', icon: <FaWhatsapp />, color: 'text-green-600', border: 'border-green-100', bg: 'hover:bg-green-50' },
     ];
 
     return (
@@ -55,11 +56,22 @@ const DigitalMarketing = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
-                    className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl shadow-2xl overflow-hidden text-white p-12 md:p-20 text-center relative"
+                    className="relative bg-indigo-900 rounded-3xl shadow-2xl overflow-hidden text-white p-12 md:p-20 text-center"
                 >
+                    {/* Background Image with Overlay */}
+                    <div className="absolute inset-0 z-0">
+                        <div className="absolute inset-0 bg-indigo-900/80 mix-blend-multiply z-10" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-indigo-900/40 to-black/60 z-10" />
+                        <img
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
+                            alt="Digital Marketing Analytics"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+
                     {/* Decorative circles */}
-                    <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-                    <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 opacity-20 rounded-full mix-blend-overlay blur-3xl translate-x-1/3 translate-y-1/3"></div>
+                    <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay blur-3xl -translate-x-1/2 -translate-y-1/2 z-10"></div>
+                    <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 opacity-20 rounded-full mix-blend-overlay blur-3xl translate-x-1/3 translate-y-1/3 z-10"></div>
 
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 relative z-10">Digital Marketing Mastery</h1>
                     <p className="text-xl md:text-2xl mb-10 opacity-90 max-w-2xl mx-auto relative z-10">

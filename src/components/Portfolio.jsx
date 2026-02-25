@@ -50,6 +50,15 @@ const Portfolio = () => {
       link: 'https://pvtresidency.netlify.app/',
       tags: ['React.js', 'MongoDB'],
     },
+    {
+      id: 6,
+      title: 'Eshwaraa Cottage',
+      category: 'hotel',
+      description: 'Premium cottage booking and management platform',
+      image: '/logos/cottage.jpg',
+      link: 'https://eshwaraacottage.netlify.app/',
+      tags: ['React', 'Tailwind'],
+    }
   ]
 
   const filters = [
@@ -84,8 +93,8 @@ const Portfolio = () => {
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeFilter === filter.id
-                  ? 'bg-primary-600 text-white shadow-lg transform scale-105'
-                  : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-primary-600 border border-gray-200'
+                ? 'bg-primary-600 text-white shadow-lg transform scale-105'
+                : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-primary-600 border border-gray-200'
                 }`}
             >
               {filter.icon}

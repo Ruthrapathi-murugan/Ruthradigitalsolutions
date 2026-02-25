@@ -86,12 +86,12 @@ const Footer = () => {
               {[
                 {
                   label: 'Facebook',
-                  href: 'https://www.facebook.com/ruthrapathi.m?mibextid=qi2Omg&rdid=uGGQcy74swtlCaq9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FcnJMbDH8bdM3s31e%2F%3Fmibextid%3Dqi2Omg',
+                  href: 'https://www.facebook.com/share/14GojYU8wad/',
                   icon: <FaFacebook />,
                 },
                 {
                   label: 'LinkedIn',
-                  href: 'https://www.linkedin.com/in/ruthrapathim/',
+                  href: 'https://www.linkedin.com/company/ruthra-digital-solutions/',
                   icon: <FaLinkedin />,
                 },
                 {

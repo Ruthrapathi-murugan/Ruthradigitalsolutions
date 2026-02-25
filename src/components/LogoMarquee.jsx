@@ -17,7 +17,7 @@ const logos = [
     id: 3,
     name: "website for business",
     logo: "/logos/logodheena.jpeg",
-    url: "https://ultrawavendtservices.netlify.app/",
+    url: "https://ultrawavesndtservices.netlify.app/",
   },
   {
     id: 4,
@@ -30,6 +30,12 @@ const logos = [
     name: "PVT Residency",
     logo: "/logos/Logo.jpeg",
     url: "https://www.google.com",
+  },
+  {
+    id: 6,
+    name: "Eshwaraa Cottage",
+    logo: "/logos/cottage.jpg",
+    url: "https://eshwaraacottage.netlify.app/",
   },
 ];
 

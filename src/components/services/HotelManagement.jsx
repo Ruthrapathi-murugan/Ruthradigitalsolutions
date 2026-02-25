@@ -41,6 +41,7 @@ const HotelManagement = () => {
     const clients = [
         { name: 'Sampath Residency Palani', logo: '/logos/logo.jpg', link: 'https://sampathresidency-palani.netlify.app/' },
         { name: 'PVT Residency', logo: '/logos/Logo.jpeg', link: 'https://pvtresidency.netlify.app/' },
+        { name: 'Eshwaraa Cottage', logo: '/logos/cottage.jpg', link: 'https://eshwaraacottage.netlify.app/' },
     ];
 
     const integrations = [

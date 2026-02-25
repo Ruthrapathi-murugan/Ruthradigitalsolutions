@@ -46,11 +46,23 @@ const WebDevelopment = () => {
   return (
     <div className="pt-20 min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="relative bg-primary-900 text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-primary-800 rounded-full opacity-20 transform scale-150 animate-pulse"></div>
+      <div className="relative bg-primary-900 text-white py-32 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-primary-900/80 mix-blend-multiply z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-primary-900/40 to-black/60 z-10" />
+          <img
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
+            alt="Web Development Space"
+            className="w-full h-full object-cover"
+          />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+          <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-primary-500 rounded-full opacity-20 transform scale-150 animate-pulse"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
