@@ -37,6 +37,12 @@ const logos = [
     logo: "/logos/cottage.jpg",
     url: "https://eshwaraacottage.netlify.app/",
   },
+  {
+    id: 7,
+    name: "ayurvedic spa",
+    logo: "/logos/spa_royal.png",
+    url: "https://www.royalayurvedicbodymassage.com/",
+  }
 ];
 
 const LogoMarquee = () => {

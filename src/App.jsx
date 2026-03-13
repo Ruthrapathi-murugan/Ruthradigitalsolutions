@@ -15,12 +15,14 @@ import HotelManagement from './components/services/HotelManagement'
 import DigitalMarketing from './components/services/DigitalMarketing'
 import ScrollToTop from './components/ScrollToTop'
 import WhatsAppButton from './components/WhatsAppButton'
+import ChatBot from './components/ChatBot'
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <WhatsAppButton />
+        <ChatBot />   {/* AI Chatbot added */}
       <div className="min-h-screen">
         <Navbar />
         <Routes>
