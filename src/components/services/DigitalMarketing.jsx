@@ -24,6 +24,11 @@ const DigitalMarketing = () => {
             title: 'Content Marketing',
             desc: 'Create valuable content that educates and converts your audience.',
             points: ['Blog Writing', 'Video Production', 'Infographics']
+        },
+        {
+            title: 'Influencer Marketing',
+            desc: 'Partner with trusted influencers to boost brand awareness and drive authentic engagement.',
+            points: ['Brand Collaborations', 'Micro-Influencer Campaigns', 'Influencer ROI Tracking']
         }
     ];
 
@@ -117,10 +122,10 @@ const DigitalMarketing = () => {
                 <div className="mt-24 py-16 bg-white rounded-3xl overflow-hidden relative shadow-lg">
                     <div className="text-center mb-12 relative z-10">
                         <h2 className="text-3xl font-bold text-gray-900">Social Media Advertisements</h2>
-                        <p className="mt-4 text-gray-600">See how we capture attention on Instagram and Facebook.</p>
+                        <p className="mt-4 text-gray-600">See how we capture attention on Instagram, Facebook, LinkedIn, Google, YouTube, and WhatsApp.</p>
                     </div>
 
-                    <div className="flex flex-col md:flex-row justify-center items-center gap-16 relative z-10 px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-12 relative z-10 px-6">
                         {/* Instagram Reel Mockup */}
                         <motion.div
                             initial={{ y: 20, opacity: 0 }}
@@ -151,7 +156,7 @@ const DigitalMarketing = () => {
                                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent z-20">
                                     <div className="flex items-center mb-2">
                                         <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-purple-600 mr-2"></div>
-                                        <span className="text-white font-bold text-sm">Targeted Brand</span>
+                                        <span className="text-white font-bold text-sm">Ruthra Digital Solutions</span>
                                         <span className="ml-2 px-1 py-0.5 border border-white/50 text-white/[0.8] text-[10px] rounded">Sponsored</span>
                                     </div>
                                     <p className="text-white text-sm mb-4 line-clamp-2">Boost your sales with our proven strategies! 🚀 #marketing #growth</p>
@@ -177,9 +182,9 @@ const DigitalMarketing = () => {
                                 {/* Header */}
                                 <div className="p-3 flex items-center justify-between border-b border-gray-100">
                                     <div className="flex items-center">
-                                        <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold mr-3">B</div>
+                                        <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold mr-3">R</div>
                                         <div>
-                                            <div className="font-bold text-gray-900 text-sm">Business Growth Experts</div>
+                                            <div className="font-bold text-gray-900 text-sm">Ruthra Digital Solutions</div>
                                             <div className="text-xs text-gray-500">Sponsored · 🌍</div>
                                         </div>
                                     </div>
@@ -208,7 +213,7 @@ const DigitalMarketing = () => {
 
                                 {/* CTA Bar */}
                                 <div className="bg-gray-50 px-3 py-2 flex justify-between items-center border-b border-gray-100">
-                                    <div className="text-xs text-gray-500">CORP.WEBSITE.COM</div>
+                                    <div className="text-xs text-gray-500">RUTHRADIGITALSOLUTIONS.COM</div>
                                     <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs px-3 py-1.5 rounded font-semibold transition">Learn More</button>
                                 </div>
 
@@ -223,6 +228,240 @@ const DigitalMarketing = () => {
                                         <button className="flex-1 py-1 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded"><span className="mr-1">💬</span> Comment</button>
                                         <button className="flex-1 py-1 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded"><span className="mr-1">↗️</span> Share</button>
                                     </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* LinkedIn Ad Mockup */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="flex flex-col items-center"
+                        >
+                            <div className="text-blue-700 font-bold mb-4 flex items-center"><span className="text-2xl mr-2">in</span> LinkedIn Sponsored Ad</div>
+                            <div className="w-[340px] bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
+                                {/* Header */}
+                                <div className="p-3 flex items-start gap-3 border-b border-gray-100">
+                                    <div className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white font-bold text-lg shrink-0">R</div>
+                                    <div className="flex-1">
+                                        <div className="font-bold text-gray-900 text-sm">Ruthra Digital Solutions</div>
+                                        <div className="text-xs text-gray-500">12,450 followers</div>
+                                        <div className="text-xs text-gray-400 mt-0.5">Promoted</div>
+                                    </div>
+                                    <div className="text-gray-400">•••</div>
+                                </div>
+
+                                {/* Text Content */}
+                                <div className="px-3 py-3 text-sm text-gray-800">
+                                    🚀 Looking to scale your business digitally? We help brands grow with data-driven marketing, SEO, and social media strategies. Let's connect!
+                                    <span className="text-blue-600 text-xs block mt-1">#DigitalMarketing #SEO #GrowYourBrand</span>
+                                </div>
+
+                                {/* Image Content */}
+                                <div className="relative aspect-[1.91/1] bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-900 flex items-center justify-center">
+                                    <div className="text-center text-white p-6">
+                                        <div className="text-2xl font-bold mb-2">Grow Your Business</div>
+                                        <div className="text-sm opacity-80 mb-4">Digital Marketing Solutions That Deliver Results</div>
+                                        <div className="inline-block bg-white text-blue-700 font-bold px-5 py-2 rounded-full text-sm">Get Started →</div>
+                                    </div>
+                                </div>
+
+                                {/* Engagement Footer */}
+                                <div className="p-3 border-t border-gray-100">
+                                    <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+                                        <div className="flex items-center gap-1">👍 💡 ❤️ <span>1,832</span></div>
+                                        <div>86 comments · 42 reposts</div>
+                                    </div>
+                                    <div className="flex justify-between border-t border-gray-100 pt-2">
+                                        <button className="flex-1 py-1 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded text-xs font-semibold gap-1">👍 Like</button>
+                                        <button className="flex-1 py-1 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded text-xs font-semibold gap-1">💬 Comment</button>
+                                        <button className="flex-1 py-1 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded text-xs font-semibold gap-1">🔄 Repost</button>
+                                        <button className="flex-1 py-1 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded text-xs font-semibold gap-1">✉️ Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Google Search Ad Mockup */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="flex flex-col items-center"
+                        >
+                            <div className="text-green-600 font-bold mb-4 flex items-center"><span className="text-2xl mr-2">G</span> Google Search Ad</div>
+                            <div className="w-[340px] bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
+                                {/* Google Search Bar */}
+                                <div className="p-4 border-b border-gray-100 bg-gray-50">
+                                    <div className="flex items-center bg-white border border-gray-300 rounded-full px-4 py-2.5 shadow-sm">
+                                        <span className="text-xl mr-3">🔍</span>
+                                        <span className="text-gray-800 text-sm">best digital marketing agency</span>
+                                    </div>
+                                </div>
+
+                                {/* Ad Result 1 */}
+                                <div className="p-4 border-b border-gray-100 hover:bg-gray-50 transition">
+                                    <div className="flex items-center gap-1 mb-1">
+                                        <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">Sponsored</span>
+                                    </div>
+                                    <div className="text-xs text-green-700 mb-0.5">www.ruthradigitalsolutions.com</div>
+                                    <div className="text-blue-800 font-semibold text-base mb-1 hover:underline cursor-pointer">Ruthra Digital Solutions — #1 Digital Marketing Agency</div>
+                                    <p className="text-gray-600 text-xs leading-relaxed">Grow your business with expert SEO, social media marketing, PPC campaigns & web development. 150+ happy clients. Get a free consultation today!</p>
+                                    <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2">
+                                        <span className="text-blue-700 text-xs hover:underline cursor-pointer">📞 Call Now</span>
+                                        <span className="text-blue-700 text-xs hover:underline cursor-pointer">📍 Palani, TN</span>
+                                        <span className="text-blue-700 text-xs hover:underline cursor-pointer">⭐ 4.9 Rating</span>
+                                    </div>
+                                </div>
+
+                                {/* Ad Result 2 */}
+                                <div className="p-4 border-b border-gray-100 hover:bg-gray-50 transition">
+                                    <div className="flex items-center gap-1 mb-1">
+                                        <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">Sponsored</span>
+                                    </div>
+                                    <div className="text-xs text-green-700 mb-0.5">www.example-agency.com</div>
+                                    <div className="text-blue-800 font-semibold text-sm mb-1">Example Marketing Agency — Digital Growth Partner</div>
+                                    <p className="text-gray-600 text-xs leading-relaxed">Full-service digital marketing solutions for modern businesses. SEO, PPC, and more.</p>
+                                </div>
+
+                                {/* Organic Result */}
+                                <div className="p-4 hover:bg-gray-50 transition">
+                                    <div className="text-xs text-green-700 mb-0.5">www.another-example.com</div>
+                                    <div className="text-blue-800 font-semibold text-sm mb-1">Top 10 Digital Marketing Agencies in 2025</div>
+                                    <p className="text-gray-600 text-xs leading-relaxed">Discover the best digital marketing agencies that deliver proven results...</p>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* YouTube Ad Mockup */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                            className="flex flex-col items-center"
+                        >
+                            <div className="text-red-600 font-bold mb-4 flex items-center"><span className="text-2xl mr-2">▶️</span> YouTube Pre-Roll Ad</div>
+                            <div className="w-[340px] bg-black rounded-xl shadow-xl border border-gray-800 overflow-hidden">
+                                {/* Video Player Area */}
+                                <div className="relative aspect-video bg-gray-900">
+                                    <video
+                                        className="w-full h-full object-cover"
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                    >
+                                        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    {/* Ad Badge */}
+                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <span className="bg-yellow-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded">Ad</span>
+                                                <span className="text-white text-xs">0:15</span>
+                                            </div>
+                                            <button className="bg-white text-black text-xs font-bold px-3 py-1 rounded hover:bg-gray-200 transition">Skip Ad →</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Ad Info Card */}
+                                <div className="bg-gray-900 p-3 border-t border-gray-700">
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold shrink-0">R</div>
+                                        <div className="flex-1">
+                                            <div className="font-bold text-white text-sm">Ruthra Digital Solutions</div>
+                                            <div className="text-gray-400 text-xs mt-0.5">ruthradigitalsolutions.com</div>
+                                            <p className="text-gray-300 text-xs mt-1">Transform your business with expert digital marketing 🚀</p>
+                                        </div>
+                                    </div>
+                                    <button className="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2 rounded transition">Visit Website</button>
+                                </div>
+
+                                {/* YouTube Controls */}
+                                <div className="bg-gray-900 px-3 pb-3 flex items-center justify-between text-gray-400">
+                                    <div className="flex items-center gap-4 text-xs">
+                                        <span>👍 1.2K</span>
+                                        <span>👎</span>
+                                        <span>↗️ Share</span>
+                                    </div>
+                                    <span className="text-xs">•••</span>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* WhatsApp Business Ad Mockup */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                            className="flex flex-col items-center"
+                        >
+                            <div className="text-green-600 font-bold mb-4 flex items-center"><span className="text-2xl mr-2">💬</span> WhatsApp Business Ad</div>
+                            <div className="w-[280px] bg-[#e5ddd5] rounded-[2rem] border-8 border-gray-900 overflow-hidden shadow-2xl">
+                                {/* WhatsApp Header */}
+                                <div className="bg-[#075e54] px-4 py-3 flex items-center gap-3">
+                                    <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">R</div>
+                                    <div className="flex-1">
+                                        <div className="text-white font-bold text-sm">Ruthra Digital Solutions</div>
+                                        <div className="text-green-200 text-[10px]">Business Account · Online</div>
+                                    </div>
+                                    <div className="flex gap-3 text-white text-sm">
+                                        <span>📹</span>
+                                        <span>📞</span>
+                                        <span>⋮</span>
+                                    </div>
+                                </div>
+
+                                {/* Chat Area */}
+                                <div className="p-3 space-y-3 min-h-[320px] bg-[url('https://i.pinimg.com/originals/97/c0/07/97c00759d90d786d9b6096cb1f08e6f5.jpg')] bg-cover bg-center relative">
+                                    <div className="absolute inset-0 bg-[#e5ddd5]/80"></div>
+                                    <div className="relative z-10 space-y-3">
+                                        {/* Business Message */}
+                                        <div className="bg-white rounded-lg rounded-tl-none p-3 max-w-[85%] shadow-sm">
+                                            <p className="text-gray-800 text-xs leading-relaxed">👋 Welcome to <strong>Ruthra Digital Solutions!</strong></p>
+                                            <p className="text-gray-600 text-xs mt-2">We offer:</p>
+                                            <p className="text-gray-700 text-xs mt-1">🌐 Web Development</p>
+                                            <p className="text-gray-700 text-xs">📱 Social Media Marketing</p>
+                                            <p className="text-gray-700 text-xs">📈 SEO & Google Ads</p>
+                                            <p className="text-gray-700 text-xs">🎯 Influencer Marketing</p>
+                                            <div className="text-[10px] text-gray-400 text-right mt-1">10:30 AM ✓✓</div>
+                                        </div>
+
+                                        {/* Promotional Card */}
+                                        <div className="bg-white rounded-lg rounded-tl-none max-w-[85%] shadow-sm overflow-hidden">
+                                            <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-4 text-center">
+                                                <div className="text-white font-bold text-sm">🔥 Special Offer!</div>
+                                                <div className="text-white/90 text-xs mt-1">Get 20% OFF on your first project</div>
+                                            </div>
+                                            <div className="p-3">
+                                                <p className="text-gray-700 text-xs">Limited time offer for new clients. Start your digital journey today!</p>
+                                                <div className="text-[10px] text-gray-400 text-right mt-1">10:31 AM ✓✓</div>
+                                            </div>
+                                        </div>
+
+                                        {/* Reply */}
+                                        <div className="bg-[#dcf8c6] rounded-lg rounded-tr-none p-3 max-w-[75%] ml-auto shadow-sm">
+                                            <p className="text-gray-800 text-xs">Hi! I'm interested in your services 🙌</p>
+                                            <div className="text-[10px] text-gray-500 text-right mt-1">10:32 AM ✓✓</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Quick Reply Buttons */}
+                                <div className="bg-[#e5ddd5] px-3 pb-2 pt-1 flex flex-wrap gap-1.5 relative z-10">
+                                    <button className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm">📞 Call Us</button>
+                                    <button className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm">💰 Get Quote</button>
+                                    <button className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm">🌐 Visit Site</button>
+                                </div>
+
+                                {/* Input Bar */}
+                                <div className="bg-[#f0f0f0] px-3 py-2 flex items-center gap-2">
+                                    <span className="text-xl">😊</span>
+                                    <div className="flex-1 bg-white rounded-full px-3 py-1.5 text-xs text-gray-400">Type a message...</div>
+                                    <span className="text-xl">🎤</span>
                                 </div>
                             </div>
                         </motion.div>

@@ -7,12 +7,12 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'Business Website',
+      title: 'Royal Ayurvedic Body Massage',
       category: 'web',
-      description: 'Modern e-commerce solution with advanced features',
-      image: '/logos/logodheena.jpeg',
-      link: 'https://ultrawavesndtservices.netlify.app/',
-      tags: ['React', 'Node.js', 'MongoDB'],
+      description: 'Ayurvedic spa & wellness website with booking and SEO optimization',
+      image: '/logos/spa_royal.png',
+      link: 'https://www.royalayurvedicbodymassage.com/',
+      tags: ['React', 'SEO', 'Google Analytics'],
     },
     {
       id: 2,
