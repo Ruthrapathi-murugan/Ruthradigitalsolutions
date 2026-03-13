@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase, FaSearch, FaPalette, FaCode, FaVial, FaRocket } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiMongodb } from 'react-icons/si';
 
 
@@ -19,11 +19,11 @@ const WebDevelopment = () => {
   ];
 
   const processSteps = [
-    { title: 'Discovery', desc: 'We analyze your requirements and business goals.' },
-    { title: 'Design', desc: 'Creating wireframes and prototypes for approval.' },
-    { title: 'Development', desc: 'Writing clean, scalable code with best practices.' },
-    { title: 'Testing', desc: 'Rigorous testing for performance and security.' },
-    { title: 'Launch', desc: 'Deploying your site and providing support.' },
+    { title: 'Discovery', desc: 'We analyze your requirements and business goals.', icon: <FaSearch /> },
+    { title: 'Design', desc: 'Creating wireframes and prototypes for approval.', icon: <FaPalette /> },
+    { title: 'Development', desc: 'Writing clean, scalable code with best practices.', icon: <FaCode /> },
+    { title: 'Testing', desc: 'Rigorous testing for performance and security.', icon: <FaVial /> },
+    { title: 'Launch', desc: 'Deploying your site and providing support.', icon: <FaRocket /> },
   ];
 
   const clients = [
@@ -150,6 +150,157 @@ const WebDevelopment = () => {
         </div>
       </div>
 
+      {/* Responsive Design Section */}
+      <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">📱 Responsive Design</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Pixel-Perfect on Every Device
+              </h2>
+              <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                Your website will look stunning on desktops, tablets, and smartphones. We design mobile-first, ensuring seamless user experiences across all screen sizes with fluid layouts and touch-friendly interactions.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  'Mobile-first design approach',
+                  'Cross-browser compatibility (Chrome, Safari, Firefox, Edge)',
+                  'Touch-optimized navigation & interactions',
+                  'Adaptive images & media for fast loading',
+                  'PWA-ready for app-like experience'
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-gray-700">
+                    <span className="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm flex-shrink-0">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl blur-lg opacity-20"></div>
+              <img
+                src="/images/responsive-design.png"
+                alt="Responsive Web Design on Multiple Devices"
+                className="relative rounded-xl shadow-2xl w-full"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* E-Commerce Section */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1 relative"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur-lg opacity-20"></div>
+              <img
+                src="/images/ecommerce-website.png"
+                alt="E-Commerce Website Development"
+                className="relative rounded-xl shadow-2xl w-full"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
+              <span className="inline-block bg-purple-100 text-purple-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">🛒 E-Commerce Solutions</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Sell Online With Confidence
+              </h2>
+              <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                Launch your online store with a fully customized e-commerce platform. From product catalogs to secure checkout, we build everything you need to sell online and grow your revenue.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { num: '100%', label: 'Secure Payments' },
+                  { num: '50+', label: 'Features Included' },
+                  { num: '2-4', label: 'Weeks to Launch' },
+                  { num: '99.9%', label: 'Uptime Guarantee' }
+                ].map((stat, i) => (
+                  <div key={i} className="bg-gray-50 p-4 rounded-lg text-center">
+                    <div className="text-2xl font-bold text-primary-600">{stat.num}</div>
+                    <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* SEO & Performance Section */}
+      <div className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-block bg-green-100 text-green-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">🚀 SEO & Performance</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Rank Higher, Load Faster
+              </h2>
+              <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                Every website we build is optimized for search engines and blazing-fast performance. Get found on Google, convert more visitors, and deliver an exceptional user experience.
+              </p>
+              <div className="space-y-4">
+                {[
+                  { title: 'On-Page SEO Optimization', desc: 'Meta tags, structured data, sitemaps, and keyword-optimized content built into every page.' },
+                  { title: 'Core Web Vitals Optimized', desc: 'LCP, FID, and CLS scores that meet Google\'s performance standards for top rankings.' },
+                  { title: 'Google Analytics & Search Console', desc: 'Full integration with analytics tools to track traffic, conversions, and user behavior.' }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <div className="w-8 h-8 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">{i + 1}</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">{item.title}</h4>
+                      <p className="text-gray-500 text-sm mt-1">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-teal-400 rounded-2xl blur-lg opacity-20"></div>
+              <img
+                src="/images/seo-performance.png"
+                alt="SEO & Performance Analytics Dashboard"
+                className="relative rounded-xl shadow-2xl w-full"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
       {/* Clients Section */}
       <div className="py-20 bg-gray-50 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -173,21 +324,73 @@ const WebDevelopment = () => {
 
 
       {/* Process Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900">Our Development Process</h2>
-            <p className="mt-4 text-gray-600">A proven workflow to ensure project success.</p>
+      <div className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-primary-50 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-primary-600 uppercase bg-primary-50 rounded-full"
+            >
+              How we work
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-5xl font-bold text-gray-900"
+            >
+              Our Development Process
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto"
+            >
+              A proven workflow that ensures excellence from conception to launch.
+            </motion.p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative">
+            {/* Connecting line (Desktop only) */}
+            <div className="hidden md:block absolute top-[45%] left-0 w-full h-0.5 bg-gradient-to-r from-primary-100 via-primary-300 to-primary-100 z-0"></div>
+
             {processSteps.map((step, index) => (
-              <div key={index} className="relative group">
-                <div className="bg-gray-50 p-6 rounded-xl shadow-sm group-hover:shadow-md transition-all h-full border-t-4 border-primary-500">
-                  <div className="text-5xl font-bold text-gray-200 mb-4 absolute top-4 right-4">{index + 1}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 relative z-10">{step.title}</h3>
-                  <p className="text-sm text-gray-600 relative z-10">{step.desc}</p>
+              <motion.div 
+                key={index} 
+                className="relative z-10 group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+              >
+                <div className="flex flex-col items-center">
+                  {/* Step Bubble */}
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-20 h-20 mb-6 bg-white rounded-2xl shadow-xl flex items-center justify-center text-3xl text-primary-600 border border-primary-50 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300"
+                  >
+                    {step.icon}
+                    <div className="absolute -top-3 -right-3 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-sm font-bold text-primary-600 border-2 border-white shadow-sm group-hover:bg-white transition-colors">
+                      {index + 1}
+                    </div>
+                  </motion.div>
+
+                  {/* Content Card */}
+                  <div className="text-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100 group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-300 h-full">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

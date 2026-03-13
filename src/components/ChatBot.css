@@ -322,14 +322,27 @@
 }
 
 /* ===== Mobile ===== */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .chatbot-wrapper {
-    right: 12px;
-    bottom: 80px;
+    right: 18px;
+    bottom: 90px;
+  }
+
+  .chatbot-fab {
+    width: 56px;
+    height: 56px;
+  }
+
+  .chatbot-fab-icon {
+    width: 26px;
+    height: 26px;
   }
 
   .chatbot-window {
-    width: calc(100vw - 24px);
+    width: calc(100vw - 32px);
     height: 400px;
+    position: fixed;
+    bottom: 90px;
+    right: 16px;
   }
 }

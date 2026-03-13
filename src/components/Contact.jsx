@@ -1,38 +1,41 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaPhone, FaEnvelope, FaWhatsapp, FaLinkedin, FaCheckCircle, FaTimes } from 'react-icons/fa'
+import { FaPhone, FaEnvelope, FaWhatsapp, FaLinkedin, FaCheckCircle, FaTimes, FaPaperPlane, FaClock } from 'react-icons/fa'
 
 const contactMethods = [
   {
     label: 'Call Ruthrapathi',
     value: '+91 96263 80310',
     href: 'tel:+919626380310',
-    accent: 'from-amber-500 to-orange-500',
-    icon: <FaPhone className="w-5 h-5 flex-shrink-0" />,
+    accent: 'from-blue-500 to-indigo-600',
+    icon: <FaPhone />,
+    glow: 'shadow-blue-500/20'
   },
   {
     label: 'Email',
     value: 'ruthradigitalsolutions@outlook.com',
     href: 'mailto:ruthradigitalsolutions@outlook.com',
-    accent: 'from-purple-500 to-violet-600',
-    icon: <FaEnvelope className="w-5 h-5 flex-shrink-0" />,
+    accent: 'from-purple-500 to-indigo-600',
+    icon: <FaEnvelope />,
+    glow: 'shadow-purple-500/20'
   },
   {
     label: 'WhatsApp',
     value: '+91 96263 80310',
     href: 'https://wa.me/+919626380310',
-    accent: 'from-emerald-500 to-lime-500',
-    icon: <FaWhatsapp className="w-5 h-5 flex-shrink-0" />,
+    accent: 'from-emerald-500 to-teal-600',
+    icon: <FaWhatsapp />,
+    glow: 'shadow-emerald-500/20'
   },
   {
     label: 'LinkedIn',
     value: 'Ruthra Digital Solutions',
     href: 'https://www.linkedin.com/company/ruthra-digital-solutions',
-    accent: 'from-sky-500 to-blue-600',
-    icon: <FaLinkedin className="w-5 h-5 flex-shrink-0" />,
+    accent: 'from-sky-500 to-blue-700',
+    icon: <FaLinkedin />,
+    glow: 'shadow-sky-500/20'
   },
 ]
-
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -89,230 +92,254 @@ const Contact = () => {
     }
   }
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  }
+
   return (
-    <section id="contact" className="py-20 bg-gray-50 relative">
+    <section id="contact" className="py-32 bg-white relative overflow-hidden">
+      {/* 3D Background Decorations */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2"></div>
+
       {/* Success Modal */}
       <AnimatePresence>
         {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full relative overflow-hidden"
+              initial={{ opacity: 0, scale: 0.8, rotateX: 20 }}
+              animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+              exit={{ opacity: 0, scale: 0.8, rotateX: 20 }}
+              className="bg-white rounded-[40px] shadow-2xl p-12 max-w-lg w-full relative overflow-hidden text-center border border-white/20"
             >
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-emerald-600"></div>
+              <div className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+                <FaCheckCircle className="w-12 h-12 text-emerald-600" />
+              </div>
+              <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tighter">Transmission Successful!</h3>
+              <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+                Your message has been received. Our team will analyze your requirements and reach out within 12 hours.
+              </p>
               <button
                 onClick={() => setShowModal(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-                aria-label="Close modal"
+                className="w-full bg-gray-900 text-white py-5 rounded-2xl font-bold hover:bg-black transition-colors shadow-xl"
               >
-                <FaTimes className="w-5 h-5" />
+                Done
               </button>
-
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                  <FaCheckCircle className="w-8 h-8 text-green-600" />
-                </div>
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-                <p className="text-gray-600 mb-6">
-                  Thank you for reaching out. We've received your message and will get back to you within 12 hours.
-                </p>
-
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="bg-green-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors shadow-lg hover:shadow-green-500/30"
-                >
-                  Close
-                </button>
-              </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-sm uppercase tracking-[0.4em] text-primary-500 mb-3">
-            Contact
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Connect directly with Ruthra Digital Solutions
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-24"
+        >
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-indigo-600 uppercase bg-indigo-50 rounded-full">
+            Get In Touch
+          </span>
+          <h2 className="text-4xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter leading-tight">
+            Connect with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Ruthra Digital</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            These are the same touch points listed on Ruthrapathi’s public portfolio. Drop a
-            line and you’ll usually hear back within 12 hours.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
+            Ready to scale? Drop a line and let's engineer your success together.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch" style={{ perspective: "2000px" }}>
           {/* Contact Form */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Start a conversation</h3>
-            <p className="text-gray-600 mb-8">
-              Tell us about your website, hotel solution, or marketing idea—everything stays
-              confidential.
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ rotateY: 5, rotateX: -2, translateZ: 20 }}
+            className="bg-white/90 backdrop-blur-xl rounded-[48px] p-10 md:p-14 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-white/50 transition-all duration-500 will-change-transform"
+            style={{ backfaceVisibility: 'hidden' }}
+          >
+            <h3 className="text-3xl font-black text-gray-900 mb-3 tracking-tight">Start a Project</h3>
+            <p className="text-gray-500 font-medium mb-12">
+              Share your vision and we'll handle the digital heavy lifting.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-                  placeholder="Ruthra Digital Solutions Client"
-                />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email
-                  </label>
+            
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8">
+                <motion.div variants={itemVariants}>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3 ml-1">Full Name</label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                    type="text"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-                    placeholder="you@company.com"
+                    className="w-full px-6 py-5 bg-gray-50/50 border border-gray-100 rounded-[24px] focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold text-gray-900 placeholder:text-gray-300"
+                    placeholder="John Doe"
                   />
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <motion.div variants={itemVariants}>
+                    <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3 ml-1">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-6 py-5 bg-gray-50/50 border border-gray-100 rounded-[24px] focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold text-gray-900 placeholder:text-gray-300"
+                      placeholder="hello@company.com"
+                    />
+                  </motion.div>
+                  <motion.div variants={itemVariants}>
+                    <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3 ml-1">Phone</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-6 py-5 bg-gray-50/50 border border-gray-100 rounded-[24px] focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold text-gray-900 placeholder:text-gray-300"
+                      placeholder="+91 90000 00000"
+                    />
+                  </motion.div>
                 </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone / WhatsApp
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
+
+                <motion.div variants={itemVariants}>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3 ml-1">Service Required</label>
+                  <select
+                    name="service"
+                    value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-                    placeholder="+91 90000 00000"
+                    className="w-full px-6 py-5 bg-gray-50/50 border border-gray-100 rounded-[24px] focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold text-gray-900 bg-white"
+                  >
+                    <option value="">Select a strategy</option>
+                    <option value="web-development">web development</option>
+                    <option value="hotel-management">hotel management</option>
+                    <option value="digital-marketing">digital marketing</option>
+                    <option value="other">other</option>
+                  </select>
+                </motion.div>
+
+                <motion.div variants={itemVariants}>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3 ml-1">Project High-Level Summary</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows="4"
+                    className="w-full px-6 py-5 bg-gray-50/50 border border-gray-100 rounded-[24px] focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold text-gray-900 placeholder:text-gray-300 resize-none"
+                    placeholder="Tell us about goals, scale, and timelines..."
                   />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                  What do you need help with?
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition bg-white"
-                >
-                  <option value="">Select</option>
-                  <option value="web-development">Website / Web App</option>
-                  <option value="hotel-management">Hotel or Hospitality Solution</option>
-                  <option value="digital-marketing">Digital Marketing / SEO</option>
-                  <option value="other">Something else</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Project summary
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none"
-                  placeholder="Share business goals, timelines, or links to references…"
-                />
-              </div>
-              <button
+                </motion.div>
+              </motion.div>
+
+              <motion.button
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98, y: 0 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-6 rounded-[24px] font-black text-xl hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] transition-all duration-300 disabled:opacity-70 flex items-center justify-center gap-3 relative overflow-hidden group"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                <span className="relative z-10">{isSubmitting ? 'Transmitting...' : 'Send Message'}</span>
+                {!isSubmitting && <FaPaperPlane className="relative z-10 text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Information */}
-            <div className="space-y-9">
-              <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Direct lines</h3>
-                <p className="text-gray-600 mb-6">
-                  Based in India (Chennai · Bangalore + remote). Reach out through any of the
-                  verified links used on{' '}
-                  <a
-                    href="https://ruthrapathi-info.netlify.app/"
+          <div className="flex flex-col gap-10">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ rotateY: -5, rotateX: -2, translateZ: 20 }}
+              className="bg-gray-900 rounded-[48px] p-10 md:p-14 text-white shadow-2xl relative overflow-hidden flex-grow transition-all duration-500 will-change-transform"
+              style={{ backfaceVisibility: 'hidden' }}
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]"></div>
+              
+              <h3 className="text-3xl font-black mb-8 tracking-tight relative z-10">Direct Infrastructure</h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+                {contactMethods.map((method, i) => (
+                  <motion.a
+                    key={i}
+                    href={method.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-600 font-semibold hover:underline"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className={`p-6 rounded-[32px] bg-gradient-to-br ${method.accent} flex flex-col gap-4 items-start shadow-xl border border-white/5`}
                   >
-                    Ruthrapathi’s public portfolio
-                  </a>
-                  .
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {contactMethods.map((method) => (
-                    <a
-                      key={method.label}
-                      href={method.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`rounded-2xl p-5 bg-gradient-to-br ${method.accent} text-white flex flex-col gap-3 items-start hover:scale-[1.02] transition-transform`}
-                    >
-                      <div className="flex items-center gap-3 w-full">
-                        {method.icon}
-
-                        {/* label */}
-                        <div className="text-sm uppercase tracking-widest opacity-90">
-                          {method.label}
-                        </div>
-                      </div>
-
-                      {/* value (wraps) */}
-                     <span
-  title={method.value}
-  className="text-lg sm:text-xl font-semibold w-full whitespace-nowrap overflow-hidden text-ellipsis cursor-help"
->
-  {method.value}
-</span>
-
-                    </a>
-                  ))}
-                </div>
-
+                    <div className="text-3xl">{method.icon}</div>
+                    <div>
+                      <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">{method.label}</div>
+                      <div className="text-sm font-bold truncate max-w-[150px]">{method.value}</div>
+                    </div>
+                  </motion.a>
+                ))}
               </div>
 
-              <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl shadow-xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Preferred response window</h3>
-                <p className="text-white/80 mb-6">
-                  WhatsApp and calls are monitored daily between 09:00 and 21:00 IST. Emails and
-                  form submissions receive a reply within 12 working hours.
-                </p>
-                <div className="space-y-2 text-sm uppercase tracking-wide">
-                  <p className="flex justify-between border-b border-white/20 pb-2">
-                    <span>Weekdays</span>
-                    <span className="font-semibold">09:00 AM – 09:00 PM IST</span>
-                  </p>
-                  <p className="flex justify-between pb-2">
-                    <span>Weekends</span>
-                    <span className="font-semibold">On-demand via WhatsApp</span>
-                  </p>
+              <div className="mt-12 pt-10 border-t border-white/10 relative z-10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-blue-400">
+                    <FaClock className="text-xl" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-black tracking-tight">Response Matrix</h4>
+                    <p className="text-xs text-white/50 font-bold uppercase tracking-widest">Global Operations</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="font-bold text-white/60">Standard Sync</span>
+                    <span className="font-black text-blue-400">09:00 – 21:00 IST</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="font-bold text-white/60">Fast-Track</span>
+                    <span className="font-black text-emerald-400">WhatsApp 24/7</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-indigo-50/50 rounded-[40px] p-8 border border-indigo-100 flex items-center justify-between group"
+            >
+              <div className="max-w-[70%]">
+                <h4 className="font-black text-gray-900 tracking-tight mb-1">Portfolio Verified</h4>
+                <p className="text-sm font-medium text-gray-500 italic leading-snug">
+                  Integrated with Ruthrapathi's central digital hub. 
+                </p>
+              </div>
+              <a 
+                href="https://ruthrapathi-info.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-indigo-500/20 group-hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-black text-xs">RDS</div>
+              </a>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -7,28 +7,38 @@ const DigitalMarketing = () => {
     const strategies = [
         {
             title: 'Search Engine Optimization (SEO)',
-            desc: 'Improve your website ranking on Google to attract organic traffic.',
-            points: ['Keyword Research', 'On-Page Optimization', 'Backlink Building']
+            desc: 'Dominate search results and capture high-intent traffic with our technical and creative SEO strategies.',
+            points: ['Keyword Research', 'On-Page Optimization', 'Backlink Building'],
+            image: '/images/strategies/seo_strategy.png',
+            color: 'from-blue-600 to-indigo-600'
         },
         {
             title: 'Social Media Marketing',
-            desc: 'Engage with your audience on platforms where they spend their time.',
-            points: ['Content Creation', 'Community Management', 'Paid Social Campaigns']
+            desc: 'Build a community that converts. We create viral-ready content tailored for every social ecosystem.',
+            points: ['Content Creation', 'Community Management', 'Paid Social Campaigns'],
+            image: '/images/strategies/social_media_strategy.png',
+            color: 'from-pink-600 to-purple-600'
         },
         {
             title: 'Pay-Per-Click (PPC)',
-            desc: 'Immediate visibility and traffic through targeted ad campaigns.',
-            points: ['Google Ads', 'Facebook Ads', 'ROI Tracking']
+            desc: 'Stop wasting ad spend. Get instant visibility with high-performance campaigns that scale with your growth.',
+            points: ['Google Ads', 'Facebook Ads', 'ROI Tracking'],
+            image: '/images/strategies/ppc_strategy.png',
+            color: 'from-green-600 to-emerald-600'
         },
         {
             title: 'Content Marketing',
-            desc: 'Create valuable content that educates and converts your audience.',
-            points: ['Blog Writing', 'Video Production', 'Infographics']
+            desc: 'Tell your brand story with authority. We deliver value that educates, engages, and converts your audience.',
+            points: ['Blog Writing', 'Video Production', 'Infographics'],
+            image: '/images/strategies/content_marketing_strategy.png',
+            color: 'from-orange-600 to-amber-600'
         },
         {
             title: 'Influencer Marketing',
-            desc: 'Partner with trusted influencers to boost brand awareness and drive authentic engagement.',
-            points: ['Brand Collaborations', 'Micro-Influencer Campaigns', 'Influencer ROI Tracking']
+            desc: 'Leverage trust. Partner with authentic voices to amplify your brand message across the right channels.',
+            points: ['Brand Collaborations', 'Influencer ROI Tracking', 'Viral Campaigns'],
+            image: '/images/strategies/influencer_marketing_strategy.png',
+            color: 'from-purple-600 to-blue-600'
         }
     ];
 
@@ -55,64 +65,105 @@ const DigitalMarketing = () => {
     ];
 
     return (
-        <div className="pt-20 min-h-screen bg-gray-50">
+        <div className="pt-20 min-h-screen bg-gray-50/30 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
-                    className="relative bg-indigo-900 rounded-3xl shadow-2xl overflow-hidden text-white p-12 md:p-20 text-center"
+                    className="relative bg-indigo-900 rounded-[40px] shadow-2xl overflow-hidden text-white p-12 md:p-20 text-center"
                 >
                     {/* Background Image with Overlay */}
                     <div className="absolute inset-0 z-0">
-                        <div className="absolute inset-0 bg-indigo-900/80 mix-blend-multiply z-10" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-indigo-900/40 to-black/60 z-10" />
+                        <div className="absolute inset-0 bg-indigo-950/80 mix-blend-multiply z-10" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-indigo-900 via-transparent to-black/20 z-10" />
                         <img
                             src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
                             alt="Digital Marketing Analytics"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover opacity-60"
                         />
                     </div>
 
-                    {/* Decorative circles */}
-                    <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay blur-3xl -translate-x-1/2 -translate-y-1/2 z-10"></div>
-                    <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 opacity-20 rounded-full mix-blend-overlay blur-3xl translate-x-1/3 translate-y-1/3 z-10"></div>
-
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 relative z-10">Digital Marketing Mastery</h1>
-                    <p className="text-xl md:text-2xl mb-10 opacity-90 max-w-2xl mx-auto relative z-10">
-                        We craft data-driven strategies to amplify your brand, drive targeted traffic, and maximize your ROI.
+                    <h1 className="text-5xl md:text-7xl font-black mb-8 relative z-10 tracking-tight leading-tight">Digital Marketing <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Mastery</span></h1>
+                    <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto relative z-10 font-medium">
+                        Accelerate your growth with high-precision, data-driven strategies that turn attention into conversion.
                     </p>
                     <button
                         onClick={goToContact}
-                        className="bg-white text-indigo-600 font-bold py-4 px-10 rounded-full hover:bg-gray-100 transition duration-300 shadow-xl relative z-10"
+                        className="bg-white text-indigo-900 font-black py-4 px-12 rounded-2xl hover:bg-blue-50 transition duration-300 shadow-2xl relative z-10 transform hover:-translate-y-1"
                     >
-                        Get Your Strategy
+                        Scale Your Brand Now
                     </button>
-
                 </motion.div>
 
                 {/* Strategy Grid */}
-                <div className="mt-20">
-                    <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Our Proven Strategies</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="mt-32 relative">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-indigo-600 to-transparent mb-8"></div>
+                    <div className="text-center mb-20 pt-16">
+                        <motion.span 
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-indigo-600 uppercase bg-indigo-50 rounded-full"
+                        >
+                            Our Core Arsenal
+                        </motion.span>
+                        <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tighter">Our Proven Strategies</h2>
+                        <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">We don't follow trends. We set them with high-precision tactics designed for scale.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                         {strategies.map((item, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                style={{ perspective: "1500px" }}
                             >
-                                <h3 className="text-2xl font-bold text-gray-800 mb-3">{item.title}</h3>
-                                <p className="text-gray-600 mb-6">{item.desc}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {item.points.map((point, idx) => (
-                                        <span key={idx} className="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">
-                                            {point}
-                                        </span>
-                                    ))}
-                                </div>
+                                <motion.div
+                                    whileHover={{ rotateY: 8, rotateX: -5, translateZ: 20 }}
+                                    className="bg-white rounded-[40px] overflow-hidden shadow-[0_25px_80px_-20px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col h-full transform-gpu transition-all duration-500 hover:shadow-2xl"
+                                >
+                                    <div className="h-72 relative overflow-hidden group">
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-20 z-10`}></div>
+                                        <img 
+                                            src={item.image} 
+                                            alt={item.title} 
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        />
+                                        <div className="absolute bottom-6 left-6 z-20">
+                                            <span className="bg-white/90 backdrop-blur-md text-gray-900 px-4 py-2 rounded-xl text-sm font-bold shadow-lg flex items-center gap-2">
+                                                <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${item.color}`}></div>
+                                                Strategy Focus
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="p-10 flex-1 flex flex-col">
+                                        <h3 className="text-3xl font-black text-gray-900 mb-5 tracking-tight">{item.title}</h3>
+                                        <p className="text-gray-500 mb-8 text-lg font-medium leading-relaxed flex-1">{item.desc}</p>
+                                        
+                                        <div className="space-y-4">
+                                            <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Key Focus Areas</div>
+                                            <div className="flex flex-wrap gap-3">
+                                                {item.points.map((point, idx) => (
+                                                    <span key={idx} className="bg-gray-50 text-gray-700 px-5 py-2.5 rounded-2xl text-sm font-bold border border-gray-100 group-hover:bg-indigo-50 group-hover:text-indigo-700 transition-colors">
+                                                        {point}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="mt-10 pt-8 border-t border-gray-50 flex justify-between items-center group">
+                                            <span className="text-indigo-600 font-black text-sm uppercase tracking-tighter">Explore Strategy</span>
+                                            <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all transform group-hover:translate-x-1">
+                                                →
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
                             </motion.div>
                         ))}
                     </div>
