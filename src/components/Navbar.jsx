@@ -79,6 +79,17 @@ const Navbar = () => {
                 Home
               </Link>
 
+              <Link
+                to="/pricing"
+                onClick={() => window.scrollTo(0, 0)}
+                className={`transition-colors duration-200 ${isScrolled || !isHomePage
+                  ? 'text-gray-700 hover:text-primary-600'
+                  : 'text-white hover:text-primary-200'
+                  } font-medium`}
+              >
+                Pricing
+              </Link>
+
               {/* Services Dropdown */}
               <div className="relative group">
                 <button
@@ -163,6 +174,17 @@ const Navbar = () => {
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
               >
                 Home
+              </Link>
+
+              <Link
+                to="/pricing"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo(0, 0);
+                }}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
+              >
+                Pricing
               </Link>
 
               {/* Mobile Services Dropdown */}

@@ -16,6 +16,7 @@ import DigitalMarketing from './components/services/DigitalMarketing'
 import ScrollToTop from './components/ScrollToTop'
 import WhatsAppButton from './components/WhatsAppButton'
 import ChatBot from './components/ChatBot'
+import Pricing from './components/Pricing'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               <Contact />
             </>
           } />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/service/web-development" element={<WebDevelopment />} />
           <Route path="/service/hotel-management" element={<HotelManagement />} />
           <Route path="/service/digital-marketing" element={<DigitalMarketing />} />
@@ -48,6 +50,7 @@ function App() {
     </Router>
   )
 }
+
 
 export default App
 
