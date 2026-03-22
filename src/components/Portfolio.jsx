@@ -6,6 +6,24 @@ const Portfolio = () => {
 
   const projects = [
     {
+      id: 7,
+      title: 'Dhivyam Residency',
+      category: 'hotel',
+      description: 'Hospitality website for showcasing rooms, amenities, and direct stay enquiries.',
+      image: '/logos/logo_dhivyam.jpg',
+      link: 'https://www.dhivyamresidency.com/',
+      tags: ['Hotel Website', 'Room Showcase', 'Lead Generation'],
+    },
+    {
+      id: 8,
+      title: 'Mayura Residency',
+      category: 'hotel',
+      description: 'Modern residency website crafted for room discovery, trust-building, and booking-ready presentation.',
+      image: '/logos/mayura-logo.svg',
+      link: 'https://mayuraresidency.netlify.app/',
+      tags: ['Hospitality Branding', 'Responsive UI', 'Booking Flow'],
+    },
+    {
       id: 1,
       title: 'Royal Ayurvedic Body Massage',
       category: 'web',
@@ -16,7 +34,7 @@ const Portfolio = () => {
     },
     {
       id: 2,
-      title: 'Luxury Hotel Booking System',
+      title: 'Sampath Residency',
       category: 'hotel',
       description: 'Complete hotel management and booking platform',
       image: '/logos/logo.jpg',
@@ -25,7 +43,7 @@ const Portfolio = () => {
     },
     {
       id: 3,
-      title: 'Corporate Website',
+      title: 'Just Creative Designs',
       category: 'marketing',
       description: 'Successful social media and SEO campaign',
       image: '/logos/jcd.png',
@@ -34,7 +52,7 @@ const Portfolio = () => {
     },
     {
       id: 4,
-      title: 'Business Website',
+      title: 'Ruthra Digital Solutions',
       category: 'web',
       description: 'Professional corporate website with CMS',
       image: '/logos/ruthra-logo.png',
@@ -43,7 +61,7 @@ const Portfolio = () => {
     },
     {
       id: 5,
-      title: 'Resort Management System',
+      title: 'PVT Residency',
       category: 'hotel',
       description: 'Comprehensive resort booking and management',
       image: '/logos/Logo.jpeg',

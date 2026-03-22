@@ -1,0 +1,22 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="80" fill="#F6F0E5"/>
+  <rect x="48" y="48" width="1104" height="704" rx="56" fill="url(#panelGradient)"/>
+  <circle cx="336" cy="400" r="172" fill="#123629"/>
+  <circle cx="336" cy="400" r="140" fill="#174736"/>
+  <path d="M265 490V314H304L337 409L370 314H409V490H380V362L344 464H330L294 362V490H265Z" fill="#E9C46A"/>
+  <path d="M421 284C458 254 514 258 546 295C577 331 576 387 544 419C518 445 483 450 452 440C482 434 508 419 524 394C550 354 541 303 504 280C477 264 444 265 421 284Z" fill="#1C6B4A"/>
+  <path d="M458 243C505 230 556 248 588 285C621 324 628 380 607 426C596 449 578 469 556 483C575 458 586 429 586 398C586 312 517 243 431 243C440 242 449 241 458 243Z" fill="#2A8C5B"/>
+  <circle cx="520" cy="282" r="22" fill="#E9C46A"/>
+  <circle cx="520" cy="282" r="9" fill="#174736"/>
+  <path d="M597 309C611 348 610 392 593 429" stroke="#E9C46A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M652 306H928" stroke="#DAB866" stroke-width="6" stroke-linecap="round"/>
+  <path d="M652 495H930" stroke="#DAB866" stroke-width="6" stroke-linecap="round"/>
+  <text x="652" y="390" fill="#F8F4EB" font-family="'Georgia', 'Times New Roman', serif" font-size="82" font-weight="700" letter-spacing="2">MAYURA</text>
+  <text x="652" y="462" fill="#E8DCC5" font-family="'Trebuchet MS', 'Arial', sans-serif" font-size="42" font-weight="600" letter-spacing="12">RESIDENCY</text>
+  <defs>
+    <linearGradient id="panelGradient" x1="48" y1="48" x2="1152" y2="752" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#204A3B"/>
+      <stop offset="1" stop-color="#102920"/>
+    </linearGradient>
+  </defs>
+</svg>
