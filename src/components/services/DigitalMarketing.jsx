@@ -185,7 +185,7 @@ const DigitalMarketing = () => {
                             className="flex flex-col items-center"
                         >
                             <div className="text-pink-600 font-bold mb-4 flex items-center"><span className="text-2xl mr-2">📸</span> Instagram Reel Ad</div>
-                            <div className="w-[280px] h-[580px] bg-black rounded-[2rem] border-8 border-gray-900 relative overflow-hidden shadow-2xl">
+                            <div className="w-full max-w-[280px] h-[580px] bg-black rounded-[2rem] border-8 border-gray-900 relative overflow-hidden shadow-2xl">
                                 {/* Video Player */}
                                 <video
                                     className="w-full h-full object-cover"
@@ -229,7 +229,7 @@ const DigitalMarketing = () => {
                             className="flex flex-col items-center"
                         >
                             <div className="text-blue-600 font-bold mb-4 flex items-center"><span className="text-2xl mr-2">f</span> Facebook Feed Ad</div>
-                            <div className="w-[340px] bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
+                            <div className="w-full max-w-[340px] bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
                                 {/* Header */}
                                 <div className="p-3 flex items-center justify-between border-b border-gray-100">
                                     <div className="flex items-center">
@@ -544,12 +544,12 @@ const DigitalMarketing = () => {
                 <div className="mt-24 bg-white py-16 rounded-3xl shadow-sm border border-gray-100">
                     <div className="text-center">
                         <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Happy Clients</h2>
-                        <div className="flex flex-wrap justify-center gap-10 opacity-90 px-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 opacity-90 px-4 justify-items-center">
                             <a
                                 href={client.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-64 h-32 border border-gray-100"
+                                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-full max-w-sm h-auto border border-gray-100"
                             >
                                 <img src={client.logo} alt={client.name} className="max-h-full max-w-full object-contain" />
                             </a>

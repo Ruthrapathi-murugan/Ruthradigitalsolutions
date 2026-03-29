@@ -44,7 +44,7 @@ const WebDevelopment = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-50">
+    <div className="pt-20 min-h-screen bg-gray-50 overflow-x-hidden">
       {/* Hero Section */}
       <div className="relative bg-primary-900 text-white py-32 overflow-hidden">
         {/* Background Image with Overlay */}
@@ -306,16 +306,16 @@ const WebDevelopment = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-12">Our Happy Clients</h2>
           <p className="text-gray-600 mb-10 max-w-2xl mx-auto">We've had the privilege of working with amazing brands and businesses.</p>
-          <div className="flex flex-wrap justify-center gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {clients.map((client, index) => (
               <a
                 key={index}
                 href={client.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-64 h-32 border border-gray-100"
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-full max-w-sm h-auto border border-gray-100"
               >
-                <img src={client.logo} alt={client.name} className="max-h-full max-w-full object-contain" />
+                <img src={client.logo} alt={client.name} className="max-h-24 max-w-full object-contain" />
               </a>
             ))}
           </div>

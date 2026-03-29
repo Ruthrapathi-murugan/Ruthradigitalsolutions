@@ -69,7 +69,7 @@ const HotelManagement = () => {
     };
 
     return (
-        <div className="pt-20 min-h-screen bg-white">
+        <div className="pt-20 min-h-screen bg-white overflow-x-hidden">
             {/* Hero Section */}
             <div className="relative bg-gray-900 text-white py-32">
                 <div className="absolute inset-0">
@@ -91,7 +91,7 @@ const HotelManagement = () => {
                         <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto mb-10 drop-shadow-md">
                             Streamline operations, maximize revenue, and elevate guest experiences with our all-in-one platform.
                         </p>
-                        <div className="flex justify-center space-x-4">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button
                                 onClick={goToContact}
                                 className="bg-primary-600 border border-transparent text-white font-bold py-3 px-8 rounded-md hover:bg-primary-700 transition duration-300 shadow-lg"
@@ -385,12 +385,12 @@ const HotelManagement = () => {
                 <p className="mb-10 opacity-80 max-w-2xl mx-auto">We connect with your favorite tools including OTAs, Payment Gateways, and Accounting Software.</p>
                 <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
                     {integrations.map((integration, i) => (
-                        <div key={i} className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center w-40 h-28">
+                        <div key={i} className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center w-full max-w-[180px] min-h-[120px]">
                             <img 
                                 src={integration.logo} 
                                 alt={integration.name} 
                                 title={integration.name} 
-                                className="max-h-20 max-w-36 object-contain" 
+                                className="max-h-20 max-w-full object-contain" 
                             />
                         </div>
                     ))}
@@ -400,20 +400,20 @@ const HotelManagement = () => {
             {/* Clients Section */}
             <div className="py-20 bg-gray-50 text-center">
                 <h2 className="text-3xl font-bold text-gray-900 mb-12">Trusted by Leading Hotels</h2>
-                <div className="flex flex-wrap justify-center gap-10 px-4">
-                    {clients.map((client, index) => (
-                        <a
-                            key={index}
-                            href={client.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-64 h-32 border border-gray-100"
-                        >
-                            <img src={client.logo} alt={client.name} className="max-h-full max-w-full object-contain" />
-                        </a>
-                    ))}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4">
+                        {clients.map((client, index) => (
+                            <a
+                                key={index}
+                                href={client.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-full max-w-sm h-auto border border-gray-100"
+                            >
+                                <img src={client.logo} alt={client.name} className="max-h-24 max-w-full object-contain" />
+                            </a>
+                        ))}
+                    </div>
                 </div>
-            </div>
 
         </div>
     );
