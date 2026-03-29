@@ -122,12 +122,11 @@ const Navbar = () => {
               </Link>
 
               {/* Services Dropdown */}
-              <div
-                ref={desktopServicesRef}
-                className="relative"
-                onMouseEnter={() => setIsDesktopServicesOpen(true)}
-                onMouseLeave={() => setIsDesktopServicesOpen(false)}
-              >
+             <div
+  ref={desktopServicesRef}
+  className="relative"
+  onMouseEnter={() => setIsDesktopServicesOpen(true)}
+>
                 <button
                   type="button"
                   onClick={() => setIsDesktopServicesOpen((prev) => !prev)}
