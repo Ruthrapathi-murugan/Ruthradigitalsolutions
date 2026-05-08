@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaPhone, FaEnvelope, FaWhatsapp, FaLinkedin, FaCheckCircle, FaTimes, FaPaperPlane, FaClock } from 'react-icons/fa'
+import { FaPhone, FaEnvelope, FaWhatsapp, FaLinkedin, FaCheckCircle, FaTimes, FaPaperPlane, FaClock, FaMapMarkerAlt, FaLocationArrow } from 'react-icons/fa'
 
 const contactMethods = [
   {
@@ -318,27 +318,29 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div
+            <motion.a
+              href="https://maps.app.goo.gl/VDZM63p3LUu1MyEVA"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-indigo-50/50 rounded-[40px] p-8 border border-indigo-100 flex items-center justify-between group"
+              className="bg-slate-50/80 rounded-[40px] p-8 border border-slate-200 flex items-center justify-between group hover:bg-slate-100 transition-colors"
             >
-              <div className="max-w-[70%]">
-                <h4 className="font-black text-gray-900 tracking-tight mb-1">Portfolio Verified</h4>
-                <p className="text-sm font-medium text-gray-500 italic leading-snug">
-                  Integrated with Ruthrapathi's central digital hub. 
+              <div className="max-w-[75%]">
+                <h4 className="font-black text-gray-900 tracking-tight mb-2 flex items-center gap-2">
+                  <FaMapMarkerAlt className="text-blue-600" /> Office Location
+                </h4>
+                <p className="text-sm font-bold text-gray-600 leading-relaxed">
+                  139, Esi hospital backside, Laxmipuram, Palani, Tamil Nadu 624601
                 </p>
               </div>
-              <a 
-                href="https://ruthrapathi-info.netlify.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-indigo-500/20 group-hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-black text-xs">RDS</div>
-              </a>
-            </motion.div>
+              <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/20 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0">
+                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                  <FaLocationArrow className="text-xs" />
+                </div>
+              </div>
+            </motion.a>
           </div>
         </div>
       </div>

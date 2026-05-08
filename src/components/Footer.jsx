@@ -6,11 +6,13 @@ import {
   FaEnvelope,
   FaFacebook,
   FaGlobe,
+  FaInstagram,
   FaLayerGroup,
   FaLinkedin,
   FaPhone,
   FaRocket,
   FaWhatsapp,
+  FaYoutube,
 } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
@@ -81,6 +83,33 @@ const socialLinks = [
     accent: 'from-cyan-300/20 to-blue-500/5',
     border: 'border-cyan-300/20',
     iconColor: 'text-cyan-200',
+  },
+  {
+    label: 'Facebook',
+    value: 'Ruthra Digital Solutions',
+    href: 'https://www.facebook.com/profile.php?id=61588209851570',
+    icon: FaFacebook,
+    accent: 'from-blue-500/20 to-blue-600/5',
+    border: 'border-blue-500/20',
+    iconColor: 'text-blue-300',
+  },
+  {
+    label: 'Instagram',
+    value: 'ruthradigitalsolutions',
+    href: 'https://www.instagram.com/ruthradigitalsolutions/',
+    icon: FaInstagram,
+    accent: 'from-pink-500/20 to-purple-500/5',
+    border: 'border-pink-500/20',
+    iconColor: 'text-pink-300',
+  },
+  {
+    label: 'YouTube',
+    value: '@RuthraDigitalSolutions',
+    href: 'https://www.youtube.com/@RuthraDigitalSolutions',
+    icon: FaYoutube,
+    accent: 'from-red-500/20 to-red-600/5',
+    border: 'border-red-500/20',
+    iconColor: 'text-red-300',
   },
 ]
 
@@ -247,7 +276,7 @@ const Footer = () => {
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Always Within Reach</p>
               <h3 className="mt-4 text-2xl font-semibold text-white">Choose the fastest channel and we will take it from there.</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">
-                Reach us by call, mail, WhatsApp, or LinkedIn. The layout is built for quick action, not buried details.
+                Reach us by call, mail, WhatsApp, or connect on our social channels. The layout is built for quick action, not buried details.
               </p>
 
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -422,19 +451,48 @@ const Footer = () => {
               </Link>
             </div>
 
-            <div className="mt-8 flex items-center gap-3 rounded-[22px] border border-white/10 bg-gradient-to-r from-cyan-300/10 to-emerald-300/10 px-4 py-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-cyan-100">
-                <FaFacebook />
-              </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">Social Presence</p>
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 mb-4">Social Presence</p>
+              <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://www.facebook.com/share/14GojYU8wad/"
+                  href="https://www.linkedin.com/company/ruthra-digital-solutions/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 block truncate text-sm font-medium text-white hover:text-cyan-100"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/25 text-cyan-200 transition-all duration-300 hover:border-cyan-300/30 hover:bg-slate-950/45 hover:-translate-y-1"
                 >
-                  Follow the brand journey on Facebook
+                  <FaLinkedin size={20} />
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61588209851570"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/25 text-blue-400 transition-all duration-300 hover:border-blue-400/30 hover:bg-slate-950/45 hover:-translate-y-1"
+                >
+                  <FaFacebook size={20} />
+                </a>
+                <a
+                  href="https://www.instagram.com/ruthradigitalsolutions/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/25 text-pink-400 transition-all duration-300 hover:border-pink-400/30 hover:bg-slate-950/45 hover:-translate-y-1"
+                >
+                  <FaInstagram size={20} />
+                </a>
+                <a
+                  href="https://www.youtube.com/@RuthraDigitalSolutions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/25 text-red-400 transition-all duration-300 hover:border-red-400/30 hover:bg-slate-950/45 hover:-translate-y-1"
+                >
+                  <FaYoutube size={20} />
+                </a>
+                <a
+                  href="https://wa.me/+919626380310"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/25 text-emerald-400 transition-all duration-300 hover:border-emerald-400/30 hover:bg-slate-950/45 hover:-translate-y-1"
+                >
+                  <FaWhatsapp size={20} />
                 </a>
               </div>
             </div>
