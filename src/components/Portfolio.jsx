@@ -6,6 +6,15 @@ const Portfolio = () => {
 
   const projects = [
     {
+      id: 9,
+      title: 'Shri Valli Residency',
+      category: 'hotel',
+      description: 'Premium hospitality website designed for seamless room discovery, modern amenities showcase, and direct booking enquiries.',
+      image: '/logos/valli-residency.png',
+      link: 'https://www.shrivalliresidency.com/',
+      tags: ['Hotel Website', 'Room Showcase', 'Direct Booking'],
+    },
+    {
       id: 7,
       title: 'Dhivyam Residency',
       category: 'hotel',

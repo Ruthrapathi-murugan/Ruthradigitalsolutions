@@ -2,6 +2,12 @@ import React from "react";
 
 const logos = [
   {
+    id: 8,
+    name: "Shri Valli Residency",
+    logo: "/logos/valli-residency.png",
+    url: "https://www.shrivalliresidency.com/",
+  },
+  {
     id: 1,
     name: "Sampath Residency",
     logo: "/logos/logo.jpg",
