@@ -42,6 +42,9 @@ const HotelManagement = () => {
         { name: 'Sampath Residency Palani', logo: '/logos/logo.jpg', link: 'https://sampathresidency-palani.netlify.app/' },
         { name: 'PVT Residency', logo: '/logos/Logo.jpeg', link: 'https://pvtresidency.netlify.app/' },
         { name: 'Eshwaraa Cottage', logo: '/logos/cottage.jpg', link: 'https://eshwaraacottage.netlify.app/' },
+        { name: 'Shri Valli Residency', logo: '/logos/valli-residency.png', link: 'https://www.shrivalliresidency.com/' },
+        { name: 'Dhivyam Residency', logo: '/logos/logo_dhivyam.jpg', link: 'https://www.dhivyamresidency.com/' },
+        { name: 'Mayura Residency', logo: '/logos/mayura-logo.svg', link: 'https://mayuraresidency.netlify.app/' },
     ];
 
     const integrations = [
@@ -351,13 +354,21 @@ const HotelManagement = () => {
                                     { title: 'Guest Preference Profiles', desc: 'Remember room temperature, pillow type, and dietary preferences.' },
                                     { title: 'Automated Feedback Collection', desc: 'Send review requests post-checkout to boost your ratings.' }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                    <motion.div 
+                                      key={i} 
+                                      className="flex gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+                                      initial={{ opacity: 0, x: -30 }}
+                                      whileInView={{ opacity: 1, x: 0 }}
+                                      viewport={{ once: true, margin: "-50px" }}
+                                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                                      whileHover={{ scale: 1.02, backgroundColor: "#f8f9ff" }}
+                                    >
                                         <div className="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">{i + 1}</div>
                                         <div>
                                             <h4 className="font-semibold text-gray-900">{item.title}</h4>
                                             <p className="text-gray-500 text-sm mt-1">{item.desc}</p>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </motion.div>
@@ -381,38 +392,78 @@ const HotelManagement = () => {
 
             {/* Integrations Section */}
             <div className="bg-indigo-900 py-16 text-white text-center">
-                <h2 className="text-3xl font-bold mb-8">Seamless Integrations & OTAs</h2>
-                <p className="mb-10 opacity-80 max-w-2xl mx-auto">We connect with your favorite tools including OTAs, Payment Gateways, and Accounting Software.</p>
-                <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h2 className="text-3xl font-bold mb-8">Seamless Integrations & OTAs</h2>
+                  <p className="mb-10 opacity-80 max-w-2xl mx-auto">We connect with your favorite tools including OTAs, Payment Gateways, and Accounting Software.</p>
+                </motion.div>
+                <motion.div 
+                  className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ staggerChildren: 0.08, delayChildren: 0.2 }}
+                >
                     {integrations.map((integration, i) => (
-                        <div key={i} className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center w-full max-w-[180px] min-h-[120px]">
+                        <motion.div 
+                          key={i} 
+                          className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center w-full max-w-[180px] min-h-[120px]"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ duration: 0.5 }}
+                          whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+                        >
                             <img 
                                 src={integration.logo} 
                                 alt={integration.name} 
                                 title={integration.name} 
                                 className="max-h-20 max-w-full object-contain" 
                             />
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
 
             {/* Clients Section */}
             <div className="py-20 bg-gray-50 text-center">
-                <h2 className="text-3xl font-bold text-gray-900 mb-12">Trusted by Leading Hotels</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4">
-                        {clients.map((client, index) => (
-                            <a
-                                key={index}
-                                href={client.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-full max-w-sm h-auto border border-gray-100"
-                            >
-                                <img src={client.logo} alt={client.name} className="max-h-24 max-w-full object-contain" />
-                            </a>
-                        ))}
-                    </div>
+                <motion.h2 
+                  className="text-3xl font-bold text-gray-900 mb-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Trusted by Leading Hotels
+                </motion.h2>
+                <motion.div 
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+                >
+                    {clients.map((client, index) => (
+                        <motion.a
+                            key={index}
+                            href={client.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-full max-w-sm h-auto border border-gray-100"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5 }}
+                            whileHover={{ scale: 1.05, y: -5 }}
+                        >
+                            <img src={client.logo} alt={client.name} className="max-h-24 max-w-full object-contain" />
+                        </motion.a>
+                    ))}
+                </motion.div>
                 </div>
 
         </div>

@@ -520,12 +520,28 @@ const DigitalMarketing = () => {
                 </div>
 
                 {/* Platforms Section */}
-                <div className="mt-24 text-center">
+                <motion.div 
+                  className="mt-24 text-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
                     <h2 className="text-3xl font-bold text-gray-900 mb-10">Platforms We Dominate</h2>
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <motion.div 
+                      className="flex flex-wrap justify-center gap-8"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ staggerChildren: 0.08, delayChildren: 0.2 }}
+                    >
                         {platforms.map((platform, index) => (
                             <motion.div
                                 key={index}
+                                initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5 }}
                                 whileHover={{ scale: 1.15, rotate: 3, transition: { type: "spring", stiffness: 300 } }}
                                 className={`flex flex-col items-center p-6 bg-white shadow-lg rounded-2xl w-36 md:w-44 cursor-default border ${platform.border} ${platform.bg} transition-colors duration-300`}
                             >
@@ -537,25 +553,49 @@ const DigitalMarketing = () => {
                                 </span>
                             </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Clients Section */}
-                <div className="mt-24 bg-white py-16 rounded-3xl shadow-sm border border-gray-100">
+                <motion.div 
+                  className="mt-24 bg-white py-16 rounded-3xl shadow-sm border border-gray-100"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
                     <div className="text-center">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Happy Clients</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 opacity-90 px-4 justify-items-center">
-                            <a
+                        <motion.h2 
+                          className="text-3xl font-bold text-gray-900 mb-8"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.6, delay: 0.1 }}
+                        >
+                          Our Happy Clients
+                        </motion.h2>
+                        <motion.div 
+                          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 opacity-90 px-4 justify-items-center"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 0.9 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+                        >
+                            <motion.a
                                 href={client.link}
                                 target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-full max-w-sm h-auto border border-gray-100"
+                                className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 flex items-center justify-center w-full max-w-sm h-auto border border-gray-100"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5 }}
+                                whileHover={{ scale: 1.05, y: -5 }}
                             >
-                                <img src={client.logo} alt={client.name} className="max-h-full max-w-full object-contain" />
-                            </a>
-                        </div>
+                                <img src={client.logo} alt={client.name} className="max-h-20 max-w-full object-contain" />
+                            </motion.a>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Stats Section */}
                 <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">

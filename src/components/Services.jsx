@@ -25,13 +25,14 @@ const Services = () => {
     {
       title: 'Hotel Management',
       href: '/service/hotel-management',
-      description: 'Comprehensive hotel management solutions to streamline operations, manage bookings, and enhance guest experiences.',
+      description: 'Comprehensive hotel management solutions to streamline operations, manage bookings, optimize revenue with dynamic pricing, and enhance guest experiences.',
       icon: <FaHotel />,
       image: '/images/services/hotel_management_service.png',
       gradient: 'from-purple-600 to-pink-600',
       shadow: 'shadow-purple-500/20',
       features: [
         'Booking Management',
+        'Revenue Management & Dynamic Pricing',
         'Room Inventory',
         'Guest Services',
         'Payment Processing',

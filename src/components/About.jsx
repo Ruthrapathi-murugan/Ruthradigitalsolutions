@@ -46,13 +46,31 @@ const About = () => {
             <motion.div variants={itemVariants} className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-indigo-600 uppercase bg-indigo-50 rounded-full">
               Leading the Digital Frontier
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter leading-[1.1]">
+            <motion.h2 
+              variants={itemVariants} 
+              className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter leading-[1.1]"
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
+            >
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Ruthra Digital</span> Solutions
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-xl text-gray-600 mb-8 leading-relaxed font-medium">
+            <motion.p 
+              variants={itemVariants} 
+              className="text-xl text-gray-600 mb-8 leading-relaxed font-medium"
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
               We are architects of the digital age. At Ruthra Digital Solutions, we don't just build websites; we engineer high-performance ecosystems that power growth and redefine industries.
             </motion.p>
-            <motion.p variants={itemVariants} className="text-xl text-gray-600 mb-12 leading-relaxed font-medium opacity-80">
+            <motion.p 
+              variants={itemVariants} 
+              className="text-xl text-gray-600 mb-12 leading-relaxed font-medium opacity-80"
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Our mission is to bridge the gap between imagination and execution. We combine cutting-edge technology with strategic mastery to deliver results that don't just meet goals—they shatter them.
             </motion.p>
 

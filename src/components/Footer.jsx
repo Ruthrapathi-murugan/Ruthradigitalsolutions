@@ -16,11 +16,7 @@ import {
 } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
-const showcaseStats = [
-  { value: '3', label: 'Core service pillars', icon: FaLayerGroup },
-  { value: '360', label: 'Strategy to launch', icon: FaGlobe },
-  { value: '24/7', label: 'WhatsApp access', icon: FaWhatsapp },
-]
+
 
 const serviceLinks = [
   {
@@ -113,20 +109,7 @@ const socialLinks = [
   },
 ]
 
-const deliverySteps = [
-  {
-    title: 'Strategy call',
-    description: 'We align goals, audience, and the fastest path to launch.',
-  },
-  {
-    title: 'Design and build',
-    description: 'We shape the visual system, content flow, and core experience.',
-  },
-  {
-    title: 'Launch and evolve',
-    description: 'We refine performance, messaging, and growth after release.',
-  },
-]
+
 
 const footerReveal = {
   hidden: { opacity: 0 },
@@ -199,34 +182,35 @@ const Footer = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={footerReveal}
-          className="grid gap-8 py-24 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.95fr)]"
+          className="grid gap-8 py-24 lg:grid-cols-2"
         >
+          {/* Card 1: 3D Digital Studio */}
           <motion.div
             variants={footerItem}
             whileHover={{ y: -8, rotateX: 5, rotateY: -5 }}
             transition={{ duration: 0.35 }}
             style={{ transformStyle: 'preserve-3d' }}
-            className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06] p-7 shadow-[0_30px_80px_rgba(2,8,23,0.55)] backdrop-blur-2xl sm:p-10"
+            className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06] p-7 shadow-[0_30px_80px_rgba(2,8,23,0.55)] backdrop-blur-2xl sm:p-8 flex flex-col justify-between"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(125,211,252,0.18),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.14),transparent_24%)]" />
             <div className="absolute right-8 top-8 hidden h-28 w-28 rounded-full border border-white/10 bg-white/[0.04] lg:block" />
             <div className="absolute right-14 top-14 hidden h-28 w-28 rounded-full border border-cyan-300/20 lg:block" />
 
-            <div className="relative">
+            <div className="relative z-10">
               <span className="inline-flex items-center rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-100">
                 3D Digital Studio
               </span>
 
-              <h2 className="mt-6 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl xl:text-6xl">
+              <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-tight text-white sm:text-4xl">
                 Build the next layer of your brand with motion, depth, and clean execution.
               </h2>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
                 Ruthra Digital Solutions designs websites, hotel systems, and marketing experiences that feel premium,
                 perform hard, and stay memorable long after the first scroll.
               </p>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-4">
                 <button
                   onClick={goToContact}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-slate-950 transition-transform duration-300 hover:-translate-y-1"
@@ -240,103 +224,51 @@ const Footer = () => {
                   Explore Pricing <FaChevronRight className="text-xs" />
                 </Link>
               </div>
-
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {showcaseStats.map((stat) => {
-                  const Icon = stat.icon
-
-                  return (
-                    <motion.div
-                      key={stat.label}
-                      whileHover={{ y: -6, rotateX: 6, rotateY: -6 }}
-                      transition={{ duration: 0.25 }}
-                      style={{ transformStyle: 'preserve-3d' }}
-                      className="rounded-[26px] border border-white/10 bg-slate-950/30 p-5 backdrop-blur-md"
-                    >
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/15 bg-cyan-300/10 text-cyan-100">
-                        <Icon />
-                      </div>
-                      <div className="text-3xl font-semibold text-white">{stat.value}</div>
-                      <div className="mt-2 text-sm leading-6 text-slate-300">{stat.label}</div>
-                    </motion.div>
-                  )
-                })}
-              </div>
             </div>
           </motion.div>
 
-          <motion.div variants={footerItem} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-            <motion.div
-              whileHover={{ y: -8, rotateX: 5, rotateY: 5 }}
-              transition={{ duration: 0.35 }}
-              style={{ transformStyle: 'preserve-3d' }}
-              className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_70px_rgba(2,8,23,0.45)] backdrop-blur-2xl sm:p-8"
-            >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/60 to-transparent" />
+          {/* Card 2: Always Within Reach */}
+          <motion.div
+            variants={footerItem}
+            whileHover={{ y: -8, rotateX: 5, rotateY: 5 }}
+            transition={{ duration: 0.35 }}
+            style={{ transformStyle: 'preserve-3d' }}
+            className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_70px_rgba(2,8,23,0.45)] backdrop-blur-2xl sm:p-8 flex flex-col justify-between"
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/60 to-transparent" />
+            <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Always Within Reach</p>
               <h3 className="mt-4 text-2xl font-semibold text-white">Choose the fastest channel and we will take it from there.</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">
                 Reach us by call, mail, WhatsApp, or connect on our social channels. The layout is built for quick action, not buried details.
               </p>
+            </div>
 
-              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {socialLinks.map((item) => {
-                  const Icon = item.icon
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {socialLinks.map((item) => {
+                const Icon = item.icon
 
-                  return (
-                    <motion.a
-                      key={item.label}
-                      href={item.href}
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      whileHover={{ y: -5, rotateX: 8, rotateY: -8 }}
-                      transition={{ duration: 0.25 }}
-                      className={`rounded-[24px] border ${item.border} bg-gradient-to-br ${item.accent} p-4 backdrop-blur-md`}
-                    >
-                      <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-black/20 ${item.iconColor}`}>
-                        <Icon />
-                      </div>
-                      <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-300">
-                        {item.label}
-                      </div>
-                      <div className="mt-2 truncate text-sm font-medium text-white">{item.value}</div>
-                    </motion.a>
-                  )
-                })}
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -8, rotateX: 5, rotateY: -5 }}
-              transition={{ duration: 0.35 }}
-              style={{ transformStyle: 'preserve-3d' }}
-              className="rounded-[32px] border border-white/10 bg-slate-950/45 p-6 shadow-[0_25px_70px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:p-8"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-300/10 text-amber-200">
-                  <FaRocket />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Flight Plan</p>
-                  <h3 className="mt-1 text-2xl font-semibold text-white">A footer that lands with purpose.</h3>
-                </div>
-              </div>
-
-              <div className="mt-8 space-y-5">
-                {deliverySteps.map((step, index) => (
-                  <div key={step.title} className="relative pl-12">
-                    {index < deliverySteps.length - 1 && (
-                      <span className="absolute left-[14px] top-10 h-12 w-px bg-gradient-to-b from-cyan-300/50 to-transparent" />
-                    )}
-                    <div className="absolute left-0 top-0 flex h-7 w-7 items-center justify-center rounded-full border border-cyan-300/30 bg-cyan-300/10 text-xs font-semibold text-cyan-100">
-                      {index + 1}
+                return (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    whileHover={{ y: -5, rotateX: 8, rotateY: -8 }}
+                    transition={{ duration: 0.25 }}
+                    className={`rounded-[24px] border ${item.border} bg-gradient-to-br ${item.accent} p-4 backdrop-blur-md`}
+                  >
+                    <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-black/20 ${item.iconColor}`}>
+                      <Icon />
                     </div>
-                    <h4 className="text-base font-semibold text-white">{step.title}</h4>
-                    <p className="mt-2 text-sm leading-6 text-slate-300">{step.description}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-300">
+                      {item.label}
+                    </div>
+                    <div className="mt-2 truncate text-sm font-medium text-white">{item.value}</div>
+                  </motion.a>
+                )
+              })}
+            </div>
           </motion.div>
         </motion.div>
 

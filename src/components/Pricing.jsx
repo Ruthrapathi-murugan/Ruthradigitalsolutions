@@ -84,6 +84,8 @@ const Pricing = () => {
           name: 'Basic Website',
           price: '8,000',
           bestFor: 'Small businesses, shops, startups',
+          image: '/images/responsive-design.png',
+          imageLabel: 'Responsive starter website',
           features: [
             '3–4 Pages (Home, About, Services, Contact)',
             'Mobile Responsive Design',
@@ -98,6 +100,8 @@ const Pricing = () => {
           name: 'Standard Website',
           price: '12,000',
           bestFor: 'Growing businesses',
+          image: '/images/services/web_development_service.png',
+          imageLabel: 'Custom business website',
           features: [
             '5–6 Pages',
             'Custom Design Layout',
@@ -113,6 +117,8 @@ const Pricing = () => {
           name: 'Premium Website',
           price: '18,000 – 25,000',
           bestFor: 'Advanced businesses / brands',
+          image: '/images/seo-performance.png',
+          imageLabel: 'Performance and lead dashboard',
           features: [
             'All Standard Features',
             'Dynamic Website (Admin Panel)',
@@ -126,6 +132,8 @@ const Pricing = () => {
           name: 'E-Commerce Website',
           price: '20,000 – 35,000',
           bestFor: 'Product-based businesses',
+          image: '/images/ecommerce-website.png',
+          imageLabel: 'Online store experience',
           features: [
             'Product Listing System',
             'Shopping Cart & Checkout',
@@ -149,6 +157,8 @@ const Pricing = () => {
         {
           name: 'Basic Hotel Website',
           price: '12,000',
+          image: '/images/hotel-booking.png',
+          imageLabel: 'Direct hotel booking website',
           features: [
             '4–5 Pages (Home, Rooms, About, Gallery, Contact)',
             'Mobile Responsive Design',
@@ -161,6 +171,8 @@ const Pricing = () => {
         {
           name: 'Advanced Website',
           price: '20,000 – 25,000',
+          image: '/images/hotel-dashboard.png',
+          imageLabel: 'Hotel booking dashboard',
           features: [
             'All Basic Features',
             'Online Booking System',
@@ -173,6 +185,8 @@ const Pricing = () => {
         {
           name: 'OTA Setup (Per Platform)',
           price: '4,000',
+          image: '/images/pricing/hotel_management_mockup.png',
+          imageLabel: 'OTA listing setup',
           features: [
             'Booking.com, MMT, Goibibo',
             'Hotel Listing Creation',
@@ -186,6 +200,8 @@ const Pricing = () => {
         {
           name: 'Combo Offer (Web + OTA)',
           price: '15,000',
+          image: '/images/hotel-guest.png',
+          imageLabel: 'Guest booking experience',
           features: [
             'Website + OTA Setup',
             '1–2 platforms included',
@@ -199,6 +215,44 @@ const Pricing = () => {
         { name: 'Standard Plan', price: '₹5,000/month', features: ['OTA Management', 'Google Review Management', 'Offer Setup'] },
         { name: 'Premium Plan', price: '₹8,000 – ₹10,000/month', features: ['All Standard Features', 'Google Ads / Promotion Support', 'Advanced Growth Strategy'] }
       ],
+      revenueManagement: [
+        {
+          name: 'Starter Revenue Management',
+          price: '₹4,000/month',
+          features: [
+            'Daily Dynamic Rate Updates',
+            'Basic Competitor Rate Tracking (Up to 3)',
+            'Weekend & Seasonal Pricing Adjustments',
+            '1 OTA Channel Sync (e.g., Booking.com / MMT)',
+            'Monthly Performance Summary'
+          ]
+        },
+        {
+          name: 'Growth Revenue Management',
+          price: '₹7,500/month',
+          features: [
+            'Real-Time Dynamic Pricing & Occupancy Rules',
+            'Competitor Tracking & Benchmarking (Up to 5)',
+            'Multi-Channel Rate & Inventory Sync (Up to 3)',
+            'MLOS & CTA/CTD Controls',
+            'Google Hotel Ads Basic Monitoring',
+            'Bi-weekly Revenue Reports & Analytics'
+          ]
+        },
+        {
+          name: 'Premium Yield Optimization',
+          price: '₹12,000/month',
+          features: [
+            'AI-driven Predictive Demand Pricing',
+            'Competitor Intelligence (Up to 10)',
+            'Unlimited OTA Channel Management & Sync',
+            'Advanced Package & Promotion Strategy',
+            'Google Hotel Ads & GMB Profile Optimization',
+            'Weekly Detailed Revenue Analytics',
+            'Dedicated Revenue Manager (Monthly Consultation)'
+          ]
+        }
+      ],
       additional: [
         { name: 'Google Ads Setup', price: '₹3,000 – ₹5,000' },
         { name: 'SEO Optimization', price: '₹5,000/month' },
@@ -211,6 +265,8 @@ const Pricing = () => {
         {
           name: 'Starter Plan',
           price: '3,000/month',
+          image: '/images/strategies/social_media_strategy.png',
+          imageLabel: 'Social media starter kit',
           features: [
             'Social Media Setup / Optimization',
             '8 Posts per Month (IG / FB)',
@@ -222,6 +278,8 @@ const Pricing = () => {
         {
           name: 'Growth Plan',
           price: '5,000/month',
+          image: '/images/strategies/seo_strategy.png',
+          imageLabel: 'Growth and SEO strategy',
           features: [
             '12–15 Posts per Month',
             'Social Media Management (IG+FB)',
@@ -235,6 +293,8 @@ const Pricing = () => {
         {
           name: 'Premium Plan',
           price: '8,000 – 15,000/month',
+          image: '/images/strategies/ppc_strategy.png',
+          imageLabel: 'Paid ads growth system',
           features: [
             '20+ Posts / Reels',
             'Full Social Media Management',
@@ -374,10 +434,30 @@ const Pricing = () => {
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-600 text-white text-sm font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                    <div className="mb-4 self-center rounded-full bg-primary-600 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
                       Most Popular
                     </div>
                   )}
+
+                  {plan.image && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.94, y: 12 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.55, delay: idx * 0.08 }}
+                      className="relative -mx-3 mb-6 overflow-hidden rounded-2xl bg-slate-100"
+                    >
+                      <motion.img
+                        src={plan.image}
+                        alt={plan.imageLabel || plan.name}
+                        className="h-40 w-full object-cover"
+                        whileHover={{ scale: 1.08 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${plan.color} opacity-20`} />
+                    </motion.div>
+                  )}
+
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                   <p className="text-xs text-primary-600 font-medium mb-6 uppercase tracking-widest">{plan.bestFor}</p>
                   
@@ -407,31 +487,86 @@ const Pricing = () => {
 
             {/* Additional Sections for specific tabs */}
             {activeTab === 'hotel' && (
-              <div className="mb-16">
-                <h3 className="text-2xl font-bold text-center mb-10">Monthly Growth Services</h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                  {pricingData.hotel.monthly.map((m, idx) => (
-                    <div key={idx} className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                      <h4 className="font-bold text-lg mb-2">{m.name}</h4>
-                      <p className="text-primary-600 font-bold mb-4">{m.price}</p>
-                      <ul className="space-y-2 mb-6">
-                        {m.features.map((f, fi) => (
-                          <li key={fi} className="text-sm text-gray-600 flex items-center">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary-600 mr-2" />
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                      <button 
-                        onClick={() => handleOpenModal(m)}
-                        className="w-full py-2 rounded-lg font-semibold border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300"
-                      >
-                        Enquire Now
-                      </button>
-                    </div>
-                  ))}
+              <>
+                <div className="mb-16">
+                  <h3 className="text-2xl font-bold text-center mb-10">Monthly Growth Services</h3>
+                  <div className="grid md:grid-cols-3 gap-8">
+                    {pricingData.hotel.monthly.map((m, idx) => (
+                      <div key={idx} className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                        <h4 className="font-bold text-lg mb-2">{m.name}</h4>
+                        <p className="text-primary-600 font-bold mb-4">{m.price}</p>
+                        <ul className="space-y-2 mb-6">
+                          {m.features.map((f, fi) => (
+                            <li key={fi} className="text-sm text-gray-600 flex items-center">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary-600 mr-2" />
+                              {f}
+                            </li>
+                          ))}
+                        </ul>
+                        <button 
+                          onClick={() => handleOpenModal(m)}
+                          className="w-full py-2 rounded-lg font-semibold border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300"
+                        >
+                          Enquire Now
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+
+                <div className="mb-20">
+                  <div className="text-center mb-12">
+                    <span className="inline-block bg-indigo-50 text-indigo-600 text-xs font-extrabold px-4 py-1.5 rounded-full mb-3 uppercase tracking-wider">
+                      📊 RevPAR & Yield Maximization
+                    </span>
+                    <h3 className="text-3xl font-black text-gray-900">Revenue Management Services</h3>
+                    <p className="text-gray-500 mt-2 max-w-xl mx-auto">
+                      Intelligent dynamic pricing and channel optimization to maximize occupancy and daily revenues.
+                    </p>
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-8">
+                    {pricingData.hotel.revenueManagement.map((m, idx) => (
+                      <motion.div 
+                        key={idx} 
+                        whileHover={{ y: -8 }}
+                        className={`relative bg-white p-8 rounded-[32px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] border-2 flex flex-col justify-between transition-all duration-300 ${
+                          idx === 1 ? 'border-indigo-500 shadow-indigo-100/50' : 'border-transparent'
+                        }`}
+                      >
+                        {idx === 1 && (
+                          <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wider">
+                            Most Popular
+                          </span>
+                        )}
+                        <div>
+                          <h4 className="font-extrabold text-xl text-gray-900 mb-2">{m.name}</h4>
+                          <div className="flex items-baseline mb-6">
+                            <span className="text-3xl font-black text-indigo-600">{m.price}</span>
+                          </div>
+                          <ul className="space-y-4 mb-8">
+                            {m.features.map((f, fi) => (
+                              <li key={fi} className="text-sm text-gray-600 flex items-start">
+                                <FaCheckCircle className="text-emerald-500 mt-1 mr-3 flex-shrink-0" />
+                                <span>{f}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <button 
+                          onClick={() => handleOpenModal(m)}
+                          className={`w-full py-4 rounded-xl font-bold transition-all duration-300 shadow-md ${
+                            idx === 1 
+                              ? 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200' 
+                              : 'bg-white border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50'
+                          }`}
+                        >
+                          Enquire Now
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </>
             )}
 
             {activeTab === 'marketing' && (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { FaChevronDown } from 'react-icons/fa'
 
 const FAQ = () => {
@@ -50,52 +51,103 @@ const FAQ = () => {
   return (
     <section id="faq" className="py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            whileInView={{ scale: 1 }}
+            initial={{ scale: 0.95 }}
+            transition={{ duration: 0.6 }}
+          >
             Frequently Asked Questions
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Have questions? We've got answers. Check out our FAQ section below.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="space-y-4">
+        <motion.div 
+          className="space-y-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
+        >
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.01 }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
               >
-                <span className="text-lg font-semibold text-gray-900 pr-4">
+                <motion.span 
+                  className="text-lg font-semibold text-gray-900 pr-4"
+                  whileHover={{ x: 5 }}
+                >
                   {faq.question}
-                </span>
-                <FaChevronDown
-                  className={`w-6 h-6 text-primary-600 flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180' : ''
-                    }`}
-                />
+                </motion.span>
+                <motion.div
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <FaChevronDown
+                    className="w-6 h-6 text-primary-600 flex-shrink-0"
+                  />
+                </motion.div>
               </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'
-                  }`}
+              <motion.div
+                initial={{ height: 0 }}
+                animate={{ height: openIndex === index ? 'auto' : 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
               >
-                <div className="px-6 pb-5 text-gray-600">{faq.answer}</div>
-              </div>
-            </div>
+                <motion.div 
+                  className="px-6 pb-5 text-gray-600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: openIndex === index ? 1 : 0 }}
+                  transition={{ delay: 0.1, duration: 0.3 }}
+                >
+                  {faq.answer}
+                </motion.div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-12 text-center">
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <p className="text-gray-600 mb-4">Still have questions?</p>
-          <a
+          <motion.a
             href="#contact"
             className="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
             Contact Us
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   )

@@ -134,19 +134,37 @@ const WebDevelopment = () => {
       {/* Tech Stack */}
       <div className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">Technologies We Use</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <motion.h2 
+            className="text-3xl font-bold text-gray-900 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Technologies We Use
+          </motion.h2>
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+          >
             {techStack.map((tech, index) => (
               <motion.div
                 key={index}
                 className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-all cursor-pointer border border-gray-100 flex flex-col items-center justify-center transform hover:-translate-y-1"
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
                 <div className="text-4xl mb-3">{tech.icon}</div>
                 <div className="font-semibold text-gray-800">{tech.name}</div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -232,19 +250,33 @@ const WebDevelopment = () => {
               <p className="text-gray-600 text-lg mb-6 leading-relaxed">
                 Launch your online store with a fully customized e-commerce platform. From product catalogs to secure checkout, we build everything you need to sell online and grow your revenue.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <motion.div 
+                className="grid grid-cols-2 gap-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
+              >
                 {[
                   { num: '100%', label: 'Secure Payments' },
                   { num: '50+', label: 'Features Included' },
                   { num: '2-4', label: 'Weeks to Launch' },
                   { num: '99.9%', label: 'Uptime Guarantee' }
                 ].map((stat, i) => (
-                  <div key={i} className="bg-gray-50 p-4 rounded-lg text-center">
+                  <motion.div 
+                    key={i} 
+                    className="bg-gray-50 p-4 rounded-lg text-center"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <div className="text-2xl font-bold text-primary-600">{stat.num}</div>
                     <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

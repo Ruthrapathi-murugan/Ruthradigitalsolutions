@@ -11,31 +11,31 @@ const logos = [
     id: 1,
     name: "Sampath Residency",
     logo: "/logos/logo.jpg",
-    url: "https://www.google.com",
+    url: "https://sampathresidency-palani.netlify.app/",
   },
   {
     id: 2,
     name: "Just Creative Designs",
     logo: "/logos/jcd.png",
-    url: "https://www.google.com",
+    url: "https://www.jcdinterior.com/",
   },
   {
     id: 3,
-    name: "website for business",
+    name: "Ultra Waves NDT Services",
     logo: "/logos/logodheena.jpeg",
     url: "https://ultrawavesndtservices.netlify.app/",
   },
   {
     id: 4,
-    name: "website for business",
+    name: "Ruthra Digital Solutions",
     logo: "/logos/ruthra-logo.png",
-    url: "https://ruthradigitalsolutions.netlify.app/",
+    url: "https://www.ruthradigitalsolutions.com/",
   },
   {
     id: 5,
     name: "PVT Residency",
     logo: "/logos/Logo.jpeg",
-    url: "https://www.google.com",
+    url: "https://pvtresidency.netlify.app/",
   },
   {
     id: 6,
@@ -45,9 +45,21 @@ const logos = [
   },
   {
     id: 7,
-    name: "ayurvedic spa",
+    name: "Royal Ayurvedic Body Massage",
     logo: "/logos/spa_royal.png",
     url: "https://www.royalayurvedicbodymassage.com/",
+  },
+  {
+    id: 9,
+    name: "Dhivyam Residency",
+    logo: "/logos/logo_dhivyam.jpg",
+    url: "https://www.dhivyamresidency.com/",
+  },
+  {
+    id: 10,
+    name: "Mayura Residency",
+    logo: "/logos/mayura-logo.svg",
+    url: "https://mayuraresidency.netlify.app/",
   }
 ];
 

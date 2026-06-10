@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { FaLayerGroup, FaLaptopCode, FaHotel, FaBullhorn, FaExternalLinkAlt, FaTag } from 'react-icons/fa'
 
 const Portfolio = () => {
@@ -85,6 +86,15 @@ const Portfolio = () => {
       image: '/logos/cottage.jpg',
       link: 'https://eshwaraacottage.netlify.app/',
       tags: ['React', 'Tailwind'],
+    },
+    {
+      id: 10,
+      title: 'Ultra Waves NDT Services',
+      category: 'web',
+      description: 'Industrial NDT testing and inspection services website built for professional service showcase and lead acquisition.',
+      image: '/logos/logodheena.jpeg',
+      link: 'https://ultrawavesndtservices.netlify.app/',
+      tags: ['Industrial Website', 'Service Showcase', 'SEO Setup'],
     }
   ]
 
@@ -104,14 +114,30 @@ const Portfolio = () => {
     <section id="portfolio" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            whileInView={{ scale: 1, y: 0 }}
+            initial={{ scale: 0.9, y: 20 }}
+            transition={{ duration: 0.6 }}
+          >
             Our Portfolio
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Explore our successful projects and see how we've helped businesses grow.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -131,51 +157,82 @@ const Portfolio = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <a
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+        >
+          {filteredProjects.map((project, index) => (
+            <motion.a
               key={project.id}
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              whileHover={{ scale: 1.02, y: -8 }}
             >
               <div className="h-56 bg-gray-50 flex items-center justify-center overflow-hidden relative">
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 pointer-events-none" />
-                <img
+                <motion.img
                   src={project.image}
                   alt={project.title}
                   className="h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-110"
+                  whileHover={{ scale: 1.15 }}
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                <motion.div 
+                  className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"
+                  whileHover={{ rotate: 90 }}
+                >
                   <FaExternalLinkAlt className="text-primary-600 w-4 h-4" />
-                </div>
+                </motion.div>
               </div>
 
               <div className="p-8">
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
+                  <motion.h3 
+                    className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors"
+                    whileHover={{ x: 5 }}
+                  >
                     {project.title}
-                  </h3>
+                  </motion.h3>
                 </div>
 
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed">{project.description}</p>
+                <motion.p 
+                  className="text-gray-600 mb-6 text-sm leading-relaxed"
+                  whileInView={{ opacity: 1 }}
+                  initial={{ opacity: 0.7 }}
+                >
+                  {project.description}
+                </motion.p>
 
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
+                <motion.div 
+                  className="flex flex-wrap gap-2 pt-4 border-t border-gray-100"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
                   {project.tags.map((tag, index) => (
-                    <span
+                    <motion.span
                       key={index}
                       className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full"
+                      whileHover={{ backgroundColor: "#dbeafe", color: "#1e40af" }}
+                      transition={{ duration: 0.2 }}
                     >
                       <FaTag className="w-3 h-3 text-gray-400" />
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </div>
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

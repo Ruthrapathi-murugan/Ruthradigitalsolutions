@@ -41,3 +41,35 @@
 .hero-content-layer {
   transform: translateZ(50px);
 }
+
+.hero-scanline {
+  animation: heroScanline 4.8s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes heroScanline {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.55;
+  }
+
+  58% {
+    opacity: 0.28;
+  }
+
+  100% {
+    transform: translateY(520%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scanline {
+    animation: none;
+    opacity: 0;
+  }
+}
