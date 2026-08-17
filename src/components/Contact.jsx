@@ -229,6 +229,7 @@ const Contact = () => {
                     <option value="web-development">web development</option>
                     <option value="hotel-management">hotel management</option>
                     <option value="digital-marketing">digital marketing</option>
+                    <option value="it-support">IT support</option>
                     <option value="other">other</option>
                   </select>
                 </motion.div>
@@ -319,7 +320,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.a
-              href="https://maps.app.goo.gl/VDZM63p3LUu1MyEVA"
+              href="https://maps.app.goo.gl/LbjJhFLPCoaBcc6s6"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
@@ -332,7 +333,7 @@ const Contact = () => {
                   <FaMapMarkerAlt className="text-blue-600" /> Office Location
                 </h4>
                 <p className="text-sm font-bold text-gray-600 leading-relaxed">
-                  139, Esi hospital backside, Laxmipuram, Palani, Tamil Nadu 624601
+                  No 2, 1, Mill Rd, Shanmugapuram, Palani, Tamil Nadu 624601
                 </p>
               </div>
               <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/20 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0">

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FaLaptopCode, FaHotel, FaBullhorn, FaCheck } from 'react-icons/fa'
+import { FaLaptopCode, FaHotel, FaBullhorn, FaHeadset, FaCheck } from 'react-icons/fa'
 
 const Services = () => {
   const services = [
@@ -54,6 +54,22 @@ const Services = () => {
         'Content Marketing',
         'PPC Advertising',
         'Analytics & Reporting',
+      ],
+    },
+    {
+      title: 'IT Support',
+      href: '/service/it-support',
+      description: 'Reliable IT support, managed infrastructure, and security services to keep your systems stable and productive.',
+      icon: <FaHeadset />,
+      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
+      gradient: 'from-sky-600 to-cyan-600',
+      shadow: 'shadow-sky-500/20',
+      features: [
+        '24/7 Helpdesk Support',
+        'Network & Infrastructure',
+        'Security & Compliance',
+        'Managed Systems',
+        'Backup & Recovery',
       ],
     },
   ]

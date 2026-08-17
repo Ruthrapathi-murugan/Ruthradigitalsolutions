@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCode, FaHotel, FaChartLine, FaArrowRight, FaWhatsapp } from 'react-icons/fa';
+import { FaCode, FaHotel, FaChartLine, FaArrowRight, FaWhatsapp, FaHeadset } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 
@@ -53,6 +53,21 @@ const Hero = () => {
       metricLabel: 'Lead strategy',
       cta: 'Boost Revenue',
       link: '/service/digital-marketing'
+    },
+    {
+      id: 'itsupport',
+      image: '/images/services/it_support_bg.svg',
+      title: 'Reliable IT Support Services',
+      subtitle: '24/7 helpdesk, network security, hardware maintenance, and proactive IT management for your business.',
+      icon: <FaHeadset />,
+      badge: 'IT Support',
+      accentClass: 'text-cyan-300',
+      buttonClass: 'bg-cyan-600 hover:bg-cyan-500',
+      chips: ['24/7 Support', 'Network Setup', 'Hardware Repair'],
+      metric: '99.9%',
+      metricLabel: 'Uptime guarantee',
+      cta: 'Get IT Help',
+      link: '/service/it-support'
     }
   ];
 
@@ -104,6 +119,10 @@ const Hero = () => {
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 ${slide.accentClass}`}>
                 <span className="text-xl">{slide.icon}</span>
                 <span className="font-semibold uppercase tracking-wider text-sm">{slide.badge}</span>
+              </div>
+
+              <div className="mb-4 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold uppercase tracking-[0.28em] text-white/80">
+                Web Development • Hotel Solutions • Digital Marketing • IT Support
               </div>
 
               <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tight text-glow">

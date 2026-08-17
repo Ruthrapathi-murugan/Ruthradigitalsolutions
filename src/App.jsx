@@ -14,6 +14,7 @@ import LogoMarquee from './components/LogoMarquee'
 import WebDevelopment from './components/services/WebDevelopment'
 import HotelManagement from './components/services/HotelManagement'
 import DigitalMarketing from './components/services/DigitalMarketing'
+import ITSupport from './components/services/ITSupport'
 import ScrollToTop from './components/ScrollToTop'
 import WhatsAppButton from './components/WhatsAppButton'
 import ChatBot from './components/ChatBot'
@@ -71,6 +72,7 @@ const AnimatedRoutes = () => {
           <Route path="/service/web-development" element={<WebDevelopment />} />
           <Route path="/service/hotel-management" element={<HotelManagement />} />
           <Route path="/service/digital-marketing" element={<DigitalMarketing />} />
+          <Route path="/service/it-support" element={<ITSupport />} />
         </Routes>
       </motion.main>
     </AnimatePresence>

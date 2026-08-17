@@ -37,9 +37,18 @@ const Pricing = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const whatsappNumber = '919626380310';
+    const categoryLabel =
+      activeTab === 'website'
+        ? 'Website Development'
+        : activeTab === 'hotel'
+        ? 'Hotel Services'
+        : activeTab === 'marketing'
+        ? 'Digital Marketing'
+        : 'IT Support';
+
     const text = `*New Booking Inquiry - Ruthra Digital Solutions*%0A%0A` +
       `*Plan:* ${selectedPlan.name} (${selectedPlan.price})%0A` +
-      `*Category:* ${activeTab === 'website' ? 'Website Development' : activeTab === 'hotel' ? 'Hotel Services' : 'Digital Marketing'}%0A%0A` +
+      `*Category:* ${categoryLabel}%0A%0A` +
       `*Client Details:*%0A` +
       `• Name: ${formData.name}%0A` +
       `• Phone: ${formData.phone}%0A` +
@@ -54,7 +63,8 @@ const Pricing = () => {
   const tabs = [
     { id: 'website', label: 'Website Services', icon: <FaGlobe /> },
     { id: 'hotel', label: 'Hotel Services', icon: <FaHotel /> },
-    { id: 'marketing', label: 'Digital Marketing', icon: <FaBullhorn /> }
+    { id: 'marketing', label: 'Digital Marketing', icon: <FaBullhorn /> },
+    { id: 'it-support', label: 'IT Support', icon: <FaShieldAlt /> }
   ];
 // ... rest of variants and data
   const containerVariants = {
@@ -82,7 +92,7 @@ const Pricing = () => {
       plans: [
         {
           name: 'Basic Website',
-          price: '8,000',
+          price: '10,000-20,000',
           bestFor: 'Small businesses, shops, startups',
           image: '/images/responsive-design.png',
           imageLabel: 'Responsive starter website',
@@ -98,7 +108,7 @@ const Pricing = () => {
         },
         {
           name: 'Standard Website',
-          price: '12,000',
+          price: '12,000-25,000',
           bestFor: 'Growing businesses',
           image: '/images/services/web_development_service.png',
           imageLabel: 'Custom business website',
@@ -325,6 +335,70 @@ const Pricing = () => {
           ]
         }
       ]
+    },
+    'it-support': {
+      image: '/images/services/it_support_service.svg',
+      plans: [
+        {
+          name: 'Essential Support',
+          price: '7,000/month',
+          image: '/images/services/it_support_service.svg',
+          imageLabel: 'Essential IT helpdesk',
+          features: [
+            'Remote troubleshooting',
+            'Software installation & licensing',
+            'Email setup (M365 / Google Workspace)',
+            'Printer & scanner support'
+          ],
+          color: 'from-sky-500 to-cyan-600'
+        },
+        {
+          name: 'Managed IT',
+          price: '15,000/month',
+          image: '/images/services/it_support_service.svg',
+          imageLabel: 'Managed IT infrastructure',
+          features: [
+            'Network & Wi-Fi configuration',
+            'Domain, DNS & business email support',
+            'Regular backups & recovery',
+            'Security patch management'
+          ],
+          popular: true,
+          color: 'from-indigo-500 to-blue-600'
+        },
+        {
+          name: 'Pro IT Support',
+          price: '25,000/month',
+          image: '/images/services/it_support_service.svg',
+          imageLabel: 'Proactive IT maintenance',
+          features: [
+            'Virus & malware removal',
+            'On-site and remote support',
+            'Performance monitoring',
+            'Dedicated IT assistance'
+          ],
+          color: 'from-emerald-500 to-teal-600'
+        },
+        {
+          name: 'Enterprise AMC',
+          price: '40,000/month',
+          image: '/images/services/it_support_service.svg',
+          imageLabel: 'Enterprise IT contract',
+          features: [
+            'Annual Maintenance Contract',
+            'Priority response times',
+            'Quarterly system audits',
+            'Dedicated account manager'
+          ],
+          color: 'from-purple-500 to-fuchsia-600'
+        }
+      ],
+      additional: [
+        { name: 'On-site IT Visit', price: '₹3,000/visit' },
+        { name: 'Microsoft 365 Setup', price: '₹4,000' },
+        { name: 'Domain & DNS Setup', price: '₹2,000' },
+        { name: 'AMC Review & Support', price: '₹12,000/month' }
+      ]
     }
   };
 
@@ -463,7 +537,6 @@ const Pricing = () => {
                   
                   <div className="mb-8">
                     <span className="text-3xl font-extrabold">₹{plan.price}</span>
-                    <span className="text-gray-500 text-sm ml-1">{activeTab === 'marketing' ? '/mo' : ''}</span>
                   </div>
 
                   <ul className="flex-1 space-y-4 mb-8">
@@ -593,6 +666,30 @@ const Pricing = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {activeTab === 'it-support' && (
+              <div className="mb-16">
+                <h3 className="text-2xl font-bold text-center mb-10">IT Support Add-ons</h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {pricingData['it-support'].additional.map((add, idx) => (
+                    <div key={idx} className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 group">
+                      <div className="flex justify-between items-start mb-4">
+                        <span className="text-sm font-semibold text-gray-800">{add.name}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-primary-600 font-bold">{add.price}</span>
+                        <button
+                          onClick={() => handleOpenModal(add)}
+                          className="opacity-0 group-hover:opacity-100 text-primary-600 text-xs font-bold hover:underline"
+                        >
+                          Enquire
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 

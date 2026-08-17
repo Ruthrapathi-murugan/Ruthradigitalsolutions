@@ -64,6 +64,7 @@ const Navbar = () => {
     { name: 'Web Development', href: '/service/web-development' },
     { name: 'Hotel Management', href: '/service/hotel-management' },
     { name: 'Digital Marketing', href: '/service/digital-marketing' },
+    { name: 'IT Support', href: '/service/it-support' },
   ]
 
   const closeMobileMenu = () => {

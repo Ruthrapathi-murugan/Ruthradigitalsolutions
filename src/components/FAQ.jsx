@@ -9,7 +9,7 @@ const FAQ = () => {
     {
       question: 'What services does Ruthra Digital Solutions offer?',
       answer:
-        'We offer three main services: Web Development (custom websites, e-commerce platforms), Hotel Management Solutions (booking systems, property management), and Digital Marketing (SEO, social media, content marketing, PPC advertising).',
+        'We offer four main services: Web Development (custom websites, e-commerce platforms), Hotel Management Solutions (booking systems, property management), Digital Marketing (SEO, social media, content marketing, PPC advertising), and IT Support (helpdesk support, network management, security, and managed systems).',
     },
     {
       question: 'How long does it take to complete a project?',
