@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCode, FaHotel, FaChartLine, FaArrowRight, FaWhatsapp, FaHeadset } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import TiltCard from './TiltCard';
 import './Hero.css';
+
+const HeroScene = lazy(() => import('./three/HeroScene'));
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -17,6 +20,7 @@ const Hero = () => {
       icon: <FaCode />,
       badge: 'Development',
       accentClass: 'text-sky-300',
+      accentHex: '#38bdf8',
       buttonClass: 'bg-sky-600 hover:bg-sky-500',
       chips: ['Responsive UI', 'SEO Ready', 'Fast Loading'],
       metric: '98%',
@@ -32,6 +36,7 @@ const Hero = () => {
       icon: <FaHotel />,
       badge: 'Hospitality',
       accentClass: 'text-emerald-300',
+      accentHex: '#34d399',
       buttonClass: 'bg-emerald-600 hover:bg-emerald-500',
       chips: ['OTA Setup', 'Direct Booking', 'Guest Flow'],
       metric: '24/7',
@@ -47,6 +52,7 @@ const Hero = () => {
       icon: <FaChartLine />,
       badge: 'Marketing',
       accentClass: 'text-amber-300',
+      accentHex: '#fbbf24',
       buttonClass: 'bg-amber-600 hover:bg-amber-500',
       chips: ['SEO', 'Paid Ads', 'Social Growth'],
       metric: '3x',
@@ -62,6 +68,7 @@ const Hero = () => {
       icon: <FaHeadset />,
       badge: 'IT Support',
       accentClass: 'text-cyan-300',
+      accentHex: '#22d3ee',
       buttonClass: 'bg-cyan-600 hover:bg-cyan-500',
       chips: ['24/7 Support', 'Network Setup', 'Hardware Repair'],
       metric: '99.9%',
@@ -105,6 +112,14 @@ const Hero = () => {
         </motion.div>
       </AnimatePresence>
 
+      {/* Interactive WebGL 3D layer */}
+      <div className="absolute inset-0 z-[15] pointer-events-none opacity-45 md:opacity-100">
+        <Suspense fallback={null}>
+          <HeroScene accent={slide.accentHex} />
+        </Suspense>
+      </div>
+      <div className="hero-aurora absolute inset-0 z-[16] pointer-events-none" aria-hidden="true" />
+
       <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid items-center lg:grid-cols-[1.05fr_0.95fr] gap-10">
         <div className="max-w-3xl">
           <AnimatePresence mode="wait">
@@ -126,7 +141,18 @@ const Hero = () => {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tight text-glow">
-                {slide.title}
+                {slide.title.split(' ').map((word, i, arr) => (
+                  <motion.span
+                    key={`${slide.id}-${i}`}
+                    initial={{ opacity: 0, y: 40, rotateX: -80 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    transition={{ duration: 0.7, delay: 0.25 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className={`inline-block origin-bottom ${i < arr.length - 1 ? 'mr-[0.25em]' : 'hero-gradient-text'}`}
+                    style={{ transformPerspective: 600 }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed max-w-2xl">
@@ -182,8 +208,9 @@ const Hero = () => {
             transition={{ duration: 0.65, ease: 'easeOut', delay: 0.15 }}
             className="hidden lg:block hero-perspective"
           >
+            <TiltCard max={10} glare={false} className="pointer-events-auto">
             <motion.div
-              animate={{ y: [0, -12, 0], rotateX: [0, 1.5, 0], rotateY: [0, -1.5, 0] }}
+              animate={{ y: [0, -12, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               className="hero-card relative overflow-visible rounded-[2rem] border border-white/20 bg-white/10 p-3 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl"
             >
@@ -202,6 +229,7 @@ const Hero = () => {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ transform: 'translateZ(60px)' }}
                 className="absolute -left-10 top-10 rounded-2xl border border-white/15 bg-slate-950/70 px-5 py-4 shadow-2xl backdrop-blur-md"
               >
                 <div className={`text-3xl font-black ${slide.accentClass}`}>{slide.metric}</div>
@@ -211,6 +239,7 @@ const Hero = () => {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+                style={{ transform: 'translateZ(80px)' }}
                 className="absolute -right-8 top-28 space-y-2 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-md"
               >
                 {slide.chips.map((chip) => (
@@ -221,15 +250,22 @@ const Hero = () => {
                 ))}
               </motion.div>
 
-              <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/15 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-md">
+              <div style={{ transform: 'translateZ(40px)' }} className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/15 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-md">
                 <div className={`mb-2 text-3xl ${slide.accentClass}`}>{slide.icon}</div>
                 <div className="text-sm font-bold uppercase tracking-widest text-white/60">{slide.badge}</div>
                 <div className="mt-1 text-2xl font-black text-white">{slide.title}</div>
               </div>
             </motion.div>
+            </TiltCard>
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Scroll cue */}
+      <a href="#services" className="absolute bottom-24 left-1/2 z-30 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 transition hover:text-white md:flex">
+        <span className="hero-mouse"><span className="hero-mouse-wheel" /></span>
+        Scroll
+      </a>
 
       {/* Slide Indicators */}
       <div className="absolute bottom-10 left-0 right-0 z-30 flex justify-center gap-4">

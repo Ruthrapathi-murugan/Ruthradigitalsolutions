@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./ChatBot.css";
 
+const CHATBOT_API_URL = import.meta.env.VITE_CHATBOT_API_URL || "/api/chat";
+
 function ChatBot() {
 
   const [messages, setMessages] = useState([
@@ -35,7 +37,7 @@ function ChatBot() {
 
     try {
 
-      const res = await axios.post("https://rds-chatbot-backend.onrender.com/chat", {
+      const res = await axios.post(CHATBOT_API_URL, {
         message: input
       });
 

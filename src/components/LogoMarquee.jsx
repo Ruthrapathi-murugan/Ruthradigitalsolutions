@@ -44,12 +44,6 @@ const logos = [
     url: "https://eshwaraacottage.netlify.app/",
   },
   {
-    id: 7,
-    name: "Royal Ayurvedic Body Massage",
-    logo: "/logos/spa_royal.png",
-    url: "https://www.royalayurvedicbodymassage.com/",
-  },
-  {
     id: 9,
     name: "Dhivyam Residency",
     logo: "/logos/logo_dhivyam.jpg",

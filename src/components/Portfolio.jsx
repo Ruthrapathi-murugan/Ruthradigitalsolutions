@@ -34,15 +34,6 @@ const Portfolio = () => {
       tags: ['Hospitality Branding', 'Responsive UI', 'Booking Flow'],
     },
     {
-      id: 1,
-      title: 'Royal Ayurvedic Body Massage',
-      category: 'web',
-      description: 'Ayurvedic spa & wellness website with booking and SEO optimization',
-      image: '/logos/spa_royal.png',
-      link: 'https://www.royalayurvedicbodymassage.com/',
-      tags: ['React', 'SEO', 'Google Analytics'],
-    },
-    {
       id: 2,
       title: 'Sampath Residency',
       category: 'hotel',

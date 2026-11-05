@@ -73,3 +73,69 @@
     opacity: 0;
   }
 }
+
+/* Soft animated colour aurora above the 3D scene */
+.hero-aurora {
+  background:
+    radial-gradient(40% 50% at 20% 80%, rgba(56, 189, 248, 0.18), transparent 70%),
+    radial-gradient(35% 45% at 85% 20%, rgba(129, 140, 248, 0.2), transparent 70%);
+  filter: blur(20px);
+  animation: heroAurora 14s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes heroAurora {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(3%, -4%, 0) scale(1.08); }
+  100% { transform: translate3d(-3%, 3%, 0) scale(1); }
+}
+
+/* Shimmering gradient highlight on the last title word */
+.hero-gradient-text {
+  background: linear-gradient(110deg, #7dd3fc 0%, #a5b4fc 30%, #f0abfc 50%, #a5b4fc 70%, #7dd3fc 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: heroShimmer 6s linear infinite;
+}
+
+@keyframes heroShimmer {
+  to { background-position: -250% 0; }
+}
+
+/* Mouse scroll cue */
+.hero-mouse {
+  display: block;
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  position: relative;
+}
+
+.hero-mouse-wheel {
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 4px;
+  background: #fff;
+  animation: heroWheel 1.8s ease-in-out infinite;
+}
+
+@keyframes heroWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-aurora,
+  .hero-gradient-text,
+  .hero-mouse-wheel {
+    animation: none;
+  }
+}

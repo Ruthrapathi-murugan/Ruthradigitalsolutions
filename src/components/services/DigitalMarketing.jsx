@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from "react-router-dom";
+import { EnquiryModal, InfoModal, MODAL_THEMES, useServiceModals } from '../modals/ServiceModals';
 import { FaFacebook, FaInstagram, FaGoogle, FaLinkedin, FaYoutube, FaWhatsapp } from "react-icons/fa6";
 
 const DigitalMarketing = () => {
     const strategies = [
         {
             title: 'Search Engine Optimization (SEO)',
+            interest: 'SEO',
+            details: ["Technical SEO audit & fixes", "Local SEO & Google Business Profile", "Keyword-targeted landing pages", "Monthly ranking & traffic reports"],
             desc: 'Dominate search results and capture high-intent traffic with our technical and creative SEO strategies.',
             points: ['Keyword Research', 'On-Page Optimization', 'Backlink Building'],
             image: '/images/strategies/seo_strategy.png',
@@ -14,6 +16,8 @@ const DigitalMarketing = () => {
         },
         {
             title: 'Social Media Marketing',
+            interest: 'Social Media Marketing',
+            details: ["Monthly content calendar", "Reels, carousels & post design", "Community replies & DMs", "Growth & engagement reports"],
             desc: 'Build a community that converts. We create viral-ready content tailored for every social ecosystem.',
             points: ['Content Creation', 'Community Management', 'Paid Social Campaigns'],
             image: '/images/strategies/social_media_strategy.png',
@@ -21,6 +25,8 @@ const DigitalMarketing = () => {
         },
         {
             title: 'Pay-Per-Click (PPC)',
+            interest: 'Google & Meta Ads',
+            details: ["Google Search & Performance Max", "Facebook & Instagram lead ads", "Conversion tracking setup", "Weekly budget optimisation"],
             desc: 'Stop wasting ad spend. Get instant visibility with high-performance campaigns that scale with your growth.',
             points: ['Google Ads', 'Facebook Ads', 'ROI Tracking'],
             image: '/images/strategies/ppc_strategy.png',
@@ -28,6 +34,8 @@ const DigitalMarketing = () => {
         },
         {
             title: 'Content Marketing',
+            interest: 'Content Marketing',
+            details: ["SEO blog articles", "Short-form video scripts", "Infographics & carousels", "Email newsletters"],
             desc: 'Tell your brand story with authority. We deliver value that educates, engages, and converts your audience.',
             points: ['Blog Writing', 'Video Production', 'Infographics'],
             image: '/images/strategies/content_marketing_strategy.png',
@@ -35,6 +43,8 @@ const DigitalMarketing = () => {
         },
         {
             title: 'Influencer Marketing',
+            interest: 'Influencer Marketing',
+            details: ["Influencer discovery & vetting", "Campaign briefs & negotiation", "Content approval workflow", "Reach & ROI reporting"],
             desc: 'Leverage trust. Partner with authentic voices to amplify your brand message across the right channels.',
             points: ['Brand Collaborations', 'Influencer ROI Tracking', 'Viral Campaigns'],
             image: '/images/strategies/influencer_marketing_strategy.png',
@@ -42,16 +52,38 @@ const DigitalMarketing = () => {
         }
     ];
 
-    const navigate = useNavigate();
+    const { enquiry, openEnquiry, closeEnquiry, info, openInfo, closeInfo } = useServiceModals();
+    const theme = MODAL_THEMES.emerald;
 
-    const goToContact = () => {
-        navigate("/");
-        setTimeout(() => {
-            document.getElementById("contact")?.scrollIntoView({
-                behavior: "smooth",
-            });
-        }, 150);
+    const marketingInterests = [
+        'SEO',
+        'Social Media Marketing',
+        'Google & Meta Ads',
+        'Content Marketing',
+        'Influencer Marketing',
+        'YouTube / Video Ads',
+        'WhatsApp Marketing',
+        'LinkedIn Marketing',
+    ];
+
+    const platformInterest = {
+        Facebook: 'Google & Meta Ads',
+        Instagram: 'Social Media Marketing',
+        'Google Ads': 'Google & Meta Ads',
+        LinkedIn: 'LinkedIn Marketing',
+        YouTube: 'YouTube / Video Ads',
+        Whatsapp: 'WhatsApp Marketing',
     };
+
+    const openStrategy = (item) =>
+        openInfo({
+            title: item.title,
+            eyebrow: 'Marketing strategy',
+            image: item.image,
+            description: item.desc,
+            points: [...item.points, ...item.details],
+            interest: item.interest,
+        });
 
     const client = { name: 'JCD Interior', logo: '/logos/jcd.png', link: 'https://www.jcdinterior.com/' };
 
@@ -89,7 +121,8 @@ const DigitalMarketing = () => {
                         Accelerate your growth with high-precision, data-driven strategies that turn attention into conversion.
                     </p>
                     <button
-                        onClick={goToContact}
+                        type="button"
+                        onClick={() => openEnquiry({ heading: 'Scale your brand with a free marketing plan' })}
                         className="bg-white text-indigo-900 font-black py-4 px-12 rounded-2xl hover:bg-blue-50 transition duration-300 shadow-2xl relative z-10 transform hover:-translate-y-1"
                     >
                         Scale Your Brand Now
@@ -124,7 +157,8 @@ const DigitalMarketing = () => {
                             >
                                 <motion.div
                                     whileHover={{ rotateY: 8, rotateX: -5, translateZ: 20 }}
-                                    className="bg-white rounded-[40px] overflow-hidden shadow-[0_25px_80px_-20px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col h-full transform-gpu transition-all duration-500 hover:shadow-2xl"
+                                    onClick={() => openStrategy(item)}
+                                    className="cursor-pointer bg-white rounded-[40px] overflow-hidden shadow-[0_25px_80px_-20px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col h-full transform-gpu transition-all duration-500 hover:shadow-2xl"
                                 >
                                     <div className="h-72 relative overflow-hidden group">
                                         <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-20 z-10`}></div>
@@ -156,12 +190,16 @@ const DigitalMarketing = () => {
                                             </div>
                                         </div>
                                         
-                                        <div className="mt-10 pt-8 border-t border-gray-50 flex justify-between items-center group">
+                                        <button
+                                            type="button"
+                                            onClick={(e) => { e.stopPropagation(); openStrategy(item); }}
+                                            className="mt-10 pt-8 border-t border-gray-50 flex w-full justify-between items-center group text-left"
+                                        >
                                             <span className="text-indigo-600 font-black text-sm uppercase tracking-tighter">Explore Strategy</span>
-                                            <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all transform group-hover:translate-x-1">
+                                            <span className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all transform group-hover:translate-x-1" aria-hidden="true">
                                                 →
-                                            </div>
-                                        </div>
+                                            </span>
+                                        </button>
                                     </div>
                                 </motion.div>
                             </motion.div>
@@ -265,7 +303,7 @@ const DigitalMarketing = () => {
                                 {/* CTA Bar */}
                                 <div className="bg-gray-50 px-3 py-2 flex justify-between items-center border-b border-gray-100">
                                     <div className="text-xs text-gray-500">RUTHRADIGITALSOLUTIONS.COM</div>
-                                    <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs px-3 py-1.5 rounded font-semibold transition">Learn More</button>
+                                    <button type="button" onClick={() => openEnquiry({ interest: 'Social Media Marketing', heading: 'Run Facebook ads like this for your brand' })} className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs px-3 py-1.5 rounded font-semibold transition">Learn More</button>
                                 </div>
 
                                 {/* Engagement Footer */}
@@ -428,7 +466,7 @@ const DigitalMarketing = () => {
                                             <p className="text-gray-300 text-xs mt-1">Transform your business with expert digital marketing 🚀</p>
                                         </div>
                                     </div>
-                                    <button className="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2 rounded transition">Visit Website</button>
+                                    <button type="button" onClick={() => openEnquiry({ interest: 'YouTube / Video Ads', heading: 'Get YouTube video ads for your business' })} className="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2 rounded transition">Visit Website</button>
                                 </div>
 
                                 {/* YouTube Controls */}
@@ -503,9 +541,9 @@ const DigitalMarketing = () => {
 
                                 {/* Quick Reply Buttons */}
                                 <div className="bg-[#e5ddd5] px-3 pb-2 pt-1 flex flex-wrap gap-1.5 relative z-10">
-                                    <button className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm">📞 Call Us</button>
-                                    <button className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm">💰 Get Quote</button>
-                                    <button className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm">🌐 Visit Site</button>
+                                    <a href="tel:+919626380310" className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm hover:bg-green-50">📞 Call Us</a>
+                                    <button type="button" onClick={() => openEnquiry({ interest: 'WhatsApp Marketing', heading: 'Get a quote for WhatsApp marketing' })} className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm hover:bg-green-50">💰 Get Quote</button>
+                                    <button type="button" onClick={() => openEnquiry({ interest: 'WhatsApp Marketing', heading: 'Reach customers on WhatsApp' })} className="bg-white text-green-700 text-[10px] font-medium px-3 py-1.5 rounded-full border border-green-200 shadow-sm hover:bg-green-50">🌐 Visit Site</button>
                                 </div>
 
                                 {/* Input Bar */}
@@ -536,14 +574,16 @@ const DigitalMarketing = () => {
                       transition={{ staggerChildren: 0.08, delayChildren: 0.2 }}
                     >
                         {platforms.map((platform, index) => (
-                            <motion.div
+                            <motion.button
+                                type="button"
                                 key={index}
+                                onClick={() => openEnquiry({ interest: platformInterest[platform.name], heading: `Grow your business on ${platform.name}` })}
                                 initial={{ opacity: 0, scale: 0.8, y: 30 }}
                                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.5 }}
                                 whileHover={{ scale: 1.15, rotate: 3, transition: { type: "spring", stiffness: 300 } }}
-                                className={`flex flex-col items-center p-6 bg-white shadow-lg rounded-2xl w-36 md:w-44 cursor-default border ${platform.border} ${platform.bg} transition-colors duration-300`}
+                                className={`flex flex-col items-center p-6 bg-white shadow-lg rounded-2xl w-36 md:w-44 cursor-pointer border ${platform.border} ${platform.bg} transition-colors duration-300`}
                             >
                                 <div className={`text-5xl mb-4 ${platform.color} drop-shadow-sm`}>
                                     {platform.icon}
@@ -551,7 +591,7 @@ const DigitalMarketing = () => {
                                 <span className={`font-bold text-lg ${platform.color} tracking-wide`}>
                                     {platform.name}
                                 </span>
-                            </motion.div>
+                            </motion.button>
                         ))}
                     </motion.div>
                 </motion.div>
@@ -616,7 +656,45 @@ const DigitalMarketing = () => {
                         <div className="text-gray-600 text-sm">Support</div>
                     </div>
                 </div>
+
+                {/* Closing CTA */}
+                <div className="relative mt-20 overflow-hidden rounded-[40px] bg-gradient-to-br from-emerald-600 via-teal-600 to-indigo-700 px-6 py-16 text-center text-white shadow-2xl">
+                    <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" aria-hidden="true" />
+                    <h2 className="relative text-3xl font-black tracking-tight md:text-5xl">Get your free marketing audit</h2>
+                    <p className="relative mx-auto mt-4 max-w-2xl text-lg text-white/85">
+                        We will review your website, Google listing and social pages, then send you a practical growth plan.
+                    </p>
+                    <button
+                        type="button"
+                        onClick={() => openEnquiry({ heading: 'Claim your free marketing audit', subheading: 'Tell us where you are today and we will send a practical plan to grow leads and sales.' })}
+                        className="relative mt-10 rounded-full bg-white px-10 py-4 font-black text-emerald-800 shadow-2xl transition hover:-translate-y-1"
+                    >
+                        Claim Free Audit
+                    </button>
+                </div>
             </div>
+
+            <EnquiryModal
+                open={enquiry.open}
+                onClose={closeEnquiry}
+                service="Digital Marketing"
+                theme={theme}
+                heading={enquiry.heading}
+                subheading={enquiry.subheading}
+                interests={marketingInterests}
+                defaultInterest={enquiry.interest}
+                budgets={['Under ₹10k / month', '₹10k – ₹25k / month', '₹25k – ₹50k / month', '₹50k+ / month', 'Not sure yet']}
+                businessLabel="Business / brand name"
+                submitLabel="Get My Growth Plan"
+            />
+            <InfoModal
+                open={!!info}
+                onClose={closeInfo}
+                item={info}
+                theme={theme}
+                ctaLabel="Start This Strategy"
+                onEnquire={(item) => openEnquiry({ interest: item.interest, heading: `Let's plan your ${item.title}` })}
+            />
         </div>
     );
 };

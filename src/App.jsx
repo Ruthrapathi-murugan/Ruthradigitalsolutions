@@ -19,6 +19,9 @@ import ScrollToTop from './components/ScrollToTop'
 import WhatsAppButton from './components/WhatsAppButton'
 import ChatBot from './components/ChatBot'
 import Pricing from './components/Pricing'
+import TechStack3D from './components/TechStack3D'
+import CTA3D from './components/CTA3D'
+import ScrollProgress from './components/ScrollProgress'
 
 const pageVariants = {
   initial: { opacity: 0, y: 18, filter: 'blur(8px)' },
@@ -59,12 +62,14 @@ const AnimatedRoutes = () => {
             <>
               <Hero />
               <Services />
+              <TechStack3D />
               <Portfolio />
               <Testimonials />
               <LogoMarquee />
               <Process />
               <About />
               <FAQ />
+              <CTA3D />
               <Contact />
             </>
           } />
@@ -83,6 +88,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <ScrollProgress />
       <WhatsAppButton />
         <ChatBot />   {/* AI Chatbot added */}
       <div className="min-h-screen site-canvas">

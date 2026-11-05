@@ -1,21 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from "react-router-dom";
+import { EnquiryModal, InfoModal, MODAL_THEMES, useServiceModals } from '../modals/ServiceModals';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase, FaSearch, FaPalette, FaCode, FaVial, FaRocket } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiMongodb } from 'react-icons/si';
 
 
 const WebDevelopment = () => {
   const techStack = [
-    { name: 'HTML5', icon: <FaHtml5 className="text-orange-600" /> },
-    { name: 'CSS3', icon: <FaCss3Alt className="text-blue-600" /> },
-    { name: 'JavaScript', icon: <FaJs className="text-yellow-500" /> },
-    { name: 'React', icon: <FaReact className="text-blue-400" /> },
-    { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
-    { name: 'Next.js', icon: <SiNextdotjs className="text-black" /> },
-    { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-400" /> },
-    { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
-    { name: 'SQL', icon: <FaDatabase className="text-gray-600" /> },
+    { name: 'HTML5', desc: "Semantic, accessible markup that search engines and screen readers understand.", points: ["Semantic SEO-friendly structure", "Accessibility best practices", "Structured data / schema markup"], icon: <FaHtml5 className="text-orange-600" /> },
+    { name: 'CSS3', desc: "Modern layouts and smooth animations that look sharp on every screen.", points: ["Flexbox & Grid layouts", "Fluid responsive typography", "Hardware-accelerated animations"], icon: <FaCss3Alt className="text-blue-600" /> },
+    { name: 'JavaScript', desc: "Interactive experiences: sliders, forms, calculators and live widgets.", points: ["Form validation & lead capture", "Interactive UI components", "Third-party API integrations"], icon: <FaJs className="text-yellow-500" /> },
+    { name: 'React', desc: "Component-based interfaces for fast, app-like websites and dashboards.", points: ["Reusable UI components", "Single-page app experiences", "Admin dashboards & portals"], icon: <FaReact className="text-blue-400" /> },
+    { name: 'Node.js', desc: "Fast server-side code for APIs, booking engines and business logic.", points: ["REST APIs", "Payment & email integrations", "Real-time features"], icon: <FaNodeJs className="text-green-600" /> },
+    { name: 'Next.js', desc: "Server-rendered React for lightning-fast, SEO-optimised websites.", points: ["Server-side rendering for SEO", "Image & font optimisation", "Static + dynamic pages"], icon: <SiNextdotjs className="text-black" /> },
+    { name: 'Tailwind CSS', desc: "Utility-first styling for consistent, pixel-perfect custom designs.", points: ["Design-system consistency", "Tiny CSS bundles", "Rapid custom UI builds"], icon: <SiTailwindcss className="text-cyan-400" /> },
+    { name: 'MongoDB', desc: "Flexible NoSQL database for catalogues, bookings and user data.", points: ["Product & booking data", "Scalable cloud hosting", "Automated backups"], icon: <SiMongodb className="text-green-500" /> },
+    { name: 'SQL', desc: "Reliable relational databases for transactions, billing and reports.", points: ["Orders & invoicing", "Complex reporting", "Data integrity"], icon: <FaDatabase className="text-gray-600" /> },
   ];
 
   const processSteps = [
@@ -32,16 +32,28 @@ const WebDevelopment = () => {
     { name: 'Ruthra Digital Solutions', logo: '/ruthra-logo.png', link: 'https://www.ruthradigitalsolutions.com/' },
   ];
 
-  const navigate = useNavigate();
+  const { enquiry, openEnquiry, closeEnquiry, info, openInfo, closeInfo } = useServiceModals();
+  const theme = MODAL_THEMES.sky;
 
-  const goToContact = () => {
-    navigate("/");
+  const webInterests = [
+    'Business Website',
+    'Landing Page',
+    'E-commerce Store',
+    'Web Application',
+    'Website Redesign',
+    'SEO & Speed Optimisation',
+    'Maintenance & Hosting',
+  ];
 
-    setTimeout(() => {
-      const el = document.getElementById("contact");
-      el?.scrollIntoView({ behavior: "smooth" });
-    }, 150);
-  };
+  const quoteButton = (interest, label) => (
+    <button
+      type="button"
+      onClick={() => openEnquiry({ interest, heading: `Get a quote: ${interest}` })}
+      className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-600 to-indigo-600 px-7 py-3 font-bold text-white shadow-lg shadow-sky-600/30 transition hover:-translate-y-0.5 hover:shadow-xl"
+    >
+      {label} <span aria-hidden="true">→</span>
+    </button>
+  );
 
   return (
     <div className="pt-20 min-h-screen bg-gray-50 overflow-x-hidden">
@@ -75,7 +87,8 @@ const WebDevelopment = () => {
               Building scalable, high-performance, and beautiful websites that drive growth and engagement.
             </p>
             <button
-              onClick={goToContact}
+              type="button"
+              onClick={() => openEnquiry({ heading: 'Start your website project' })}
               className="bg-white text-primary-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 shadow-lg"
             >
               Start Your Project
@@ -151,9 +164,19 @@ const WebDevelopment = () => {
             transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
           >
             {techStack.map((tech, index) => (
-              <motion.div
+              <motion.button
+                type="button"
                 key={index}
-                className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-all cursor-pointer border border-gray-100 flex flex-col items-center justify-center transform hover:-translate-y-1"
+                onClick={() => openInfo({
+                  title: tech.name,
+                  eyebrow: 'Technology we use',
+                  icon: tech.icon,
+                  description: tech.desc,
+                  points: tech.points,
+                  interest: 'Web Application',
+                })}
+                aria-label={`Learn how we use ${tech.name}`}
+                className="w-full p-6 bg-gray-50 rounded-xl hover:shadow-md transition-all cursor-pointer border border-gray-100 flex flex-col items-center justify-center transform hover:-translate-y-1"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -162,7 +185,8 @@ const WebDevelopment = () => {
               >
                 <div className="text-4xl mb-3">{tech.icon}</div>
                 <div className="font-semibold text-gray-800">{tech.name}</div>
-              </motion.div>
+                <div className="mt-1 text-[11px] font-bold uppercase tracking-wider text-sky-600 opacity-70">Tap for details</div>
+              </motion.button>
             ))}
           </motion.div>
         </div>
@@ -199,6 +223,7 @@ const WebDevelopment = () => {
                   </li>
                 ))}
               </ul>
+              {quoteButton('Business Website', 'Get a Responsive Website')}
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -277,6 +302,7 @@ const WebDevelopment = () => {
                   </motion.div>
                 ))}
               </motion.div>
+              {quoteButton('E-commerce Store', 'Plan My Online Store')}
             </motion.div>
           </div>
         </div>
@@ -314,6 +340,7 @@ const WebDevelopment = () => {
                   </div>
                 ))}
               </div>
+              {quoteButton('SEO & Speed Optimisation', 'Get a Free SEO Audit')}
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -436,7 +463,8 @@ const WebDevelopment = () => {
             Let's discuss your project and create a digital experience that stands out.
           </p>
           <button
-            onClick={goToContact}
+            type="button"
+            onClick={() => openEnquiry({ heading: 'Ready to build your dream website?' })}
             className="bg-white text-primary-900 font-bold py-4 px-10 rounded-full hover:bg-gray-100 transition duration-300 shadow-xl transform hover:scale-105"
           >
             Contact Us Today
@@ -444,6 +472,26 @@ const WebDevelopment = () => {
 
         </div>
       </div>
+
+      <EnquiryModal
+        open={enquiry.open}
+        onClose={closeEnquiry}
+        service="Web Development"
+        theme={theme}
+        heading={enquiry.heading}
+        interests={webInterests}
+        defaultInterest={enquiry.interest}
+        businessLabel="Business / brand name"
+        submitLabel="Request My Quote"
+      />
+      <InfoModal
+        open={!!info}
+        onClose={closeInfo}
+        item={info}
+        theme={theme}
+        ctaLabel="Discuss My Project"
+        onEnquire={(item) => openEnquiry({ interest: item.interest, heading: `Build with ${item.title}` })}
+      />
     </div>
   );
 };

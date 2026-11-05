@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from "react-router-dom";
+import { FaWhatsapp } from 'react-icons/fa';
+import { EnquiryModal, InfoModal, MODAL_THEMES, useServiceModals } from '../modals/ServiceModals';
 import { FaCalendarCheck, FaConciergeBell, FaBroom, FaCreditCard, FaBoxOpen, FaChartLine } from 'react-icons/fa';
 
 
@@ -59,17 +60,45 @@ const HotelManagement = () => {
         { name: 'Razorpay', logo: '/logos/razorpay.svg' },
     ];
 
-    const navigate = useNavigate();
+    const { enquiry, openEnquiry, closeEnquiry, info, openInfo, closeInfo } = useServiceModals();
+    const theme = MODAL_THEMES.indigo;
 
-    const goToContact = () => {
-        navigate("/");
+    const hotelInterests = [
+        'Live Demo',
+        'Hotel Website',
+        'Booking Engine',
+        'OTA Channel Setup',
+        'Property Management (PMS)',
+        'Google Business & SEO',
+        'Revenue Management',
+    ];
 
-        setTimeout(() => {
-            document.getElementById("contact")?.scrollIntoView({
-                behavior: "smooth",
-            });
-        }, 150);
+    // Extra detail shown in each module's popup
+    const moduleDetails = {
+        'Booking Engine': ['Real-time room availability', 'Secure online payments (Razorpay / Stripe)', 'Promo codes & seasonal offers', 'Instant email / WhatsApp confirmation'],
+        'Front Desk Operations': ['One-click check-in & check-out', 'Room assignment & upgrades', 'Guest ID & profile records', 'Night audit reports'],
+        'Housekeeping': ['Live room status board', 'Automatic cleaning task assignment', 'Maintenance issue tracking', 'Staff performance overview'],
+        'Point of Sale (POS)': ['Restaurant & room-service billing', 'Charge to room folio', 'GST-ready invoices', 'Daily sales summary'],
+        'Inventory Management': ['Stock levels for linen & supplies', 'Low-stock alerts', 'Supplier purchase records', 'Consumption reports'],
+        'Analytics & Reporting': ['Occupancy, ADR & RevPAR', 'Revenue by channel', 'Guest demographics', 'Exportable reports'],
+        'Reputation Management': ['Google & TripAdvisor review tracking', 'Automated post-stay review requests', 'Reply templates', 'Rating trend reports'],
+        'Revenue Management': ['Demand-based rate suggestions', 'Seasonal & weekend pricing', 'Competitor rate awareness', 'Minimum-stay rules'],
     };
+
+    const benefitDetails = {
+        'Direct Revenue Growth': ['Commission-free direct bookings', 'Mobile-optimised booking flow', 'Google Hotel Ads ready', 'Abandoned-booking follow-up'],
+        'Superior Guest Loyalty': ['Guest preference profiles', 'Personalised offers for repeat guests', 'Contactless check-in', 'Post-stay feedback collection'],
+        'Zero-Touch Automation': ['Automatic OTA inventory sync', 'Auto-assigned housekeeping tasks', 'Scheduled reports by email', 'Booking confirmations on WhatsApp'],
+    };
+
+    const openDemo = (interest = 'Live Demo') =>
+        openEnquiry({
+            interest,
+            heading: 'Book a free demo of our hotel system',
+            subheading: 'See the booking engine, dashboard and OTA sync in action. Pick what you want to see and we will schedule a walkthrough.',
+        });
+
+    const allModules = [...features.map((f) => f.title), 'Reputation Management', 'Revenue Management'];
 
     return (
         <div className="pt-20 min-h-screen bg-white overflow-x-hidden">
@@ -96,13 +125,25 @@ const HotelManagement = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button
-                                onClick={goToContact}
+                                type="button"
+                                onClick={() => openDemo()}
                                 className="bg-primary-600 border border-transparent text-white font-bold py-3 px-8 rounded-md hover:bg-primary-700 transition duration-300 shadow-lg"
                             >
                                 Request Demo
                             </button>
 
-                            <button className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-gray-900 transition duration-300">
+                            <button
+                                type="button"
+                                onClick={() => openInfo({
+                                    title: 'Everything your hotel needs, in one platform',
+                                    eyebrow: 'Platform modules',
+                                    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=70',
+                                    description: 'Our hotel management system brings bookings, front desk, housekeeping, billing and reporting together, connected to your website and the OTAs your guests already use.',
+                                    points: allModules,
+                                    interest: 'Live Demo',
+                                })}
+                                className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-gray-900 transition duration-300"
+                            >
                                 View Features
                             </button>
                         </div>
@@ -154,7 +195,15 @@ const HotelManagement = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
                                 whileHover={{ y: -10, rotateY: 5, rotateX: -5 }}
-                                className="group relative bg-white rounded-[32px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] border border-gray-100 transform-gpu transition-all duration-500 hover:shadow-2xl"
+                                onClick={() => openInfo({
+                                    title: benefit.title,
+                                    eyebrow: 'Key benefit',
+                                    image: benefit.image,
+                                    description: benefit.desc,
+                                    points: benefitDetails[benefit.title],
+                                    interest: 'Live Demo',
+                                })}
+                                className="cursor-pointer group relative bg-white rounded-[32px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] border border-gray-100 transform-gpu transition-all duration-500 hover:shadow-2xl"
                                 style={{ perspective: '1000px' }}
                             >
                                 <div className="h-64 overflow-hidden relative">
@@ -171,9 +220,23 @@ const HotelManagement = () => {
                                 <div className="p-8">
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors">{benefit.title}</h3>
                                     <p className="text-gray-600 leading-relaxed font-medium">{benefit.desc}</p>
-                                    <div className={`mt-6 inline-flex items-center text-sm font-bold text-indigo-600 group-hover:translate-x-2 transition-transform`}>
-                                        Learn more <span className="ml-2">→</span>
-                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            openInfo({
+                                                title: benefit.title,
+                                                eyebrow: 'Key benefit',
+                                                image: benefit.image,
+                                                description: benefit.desc,
+                                                points: benefitDetails[benefit.title],
+                                                interest: 'Live Demo',
+                                            });
+                                        }}
+                                        className="mt-6 inline-flex items-center text-sm font-bold text-indigo-600 group-hover:translate-x-2 transition-transform"
+                                    >
+                                        Learn more <span className="ml-2" aria-hidden="true">→</span>
+                                    </button>
                                 </div>
                             </motion.div>
                         ))}
@@ -211,7 +274,15 @@ const HotelManagement = () => {
                     ].map((feature, index) => (
                         <motion.div
                             key={index}
-                            className="p-10 bg-white rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] border border-gray-50 hover:border-indigo-100 hover:shadow-xl transition-all duration-300 transform group"
+                            onClick={() => openInfo({
+                                title: feature.title,
+                                eyebrow: 'Hotel system module',
+                                icon: feature.icon,
+                                description: feature.desc,
+                                points: moduleDetails[feature.title],
+                                interest: 'Property Management (PMS)',
+                            })}
+                            className="cursor-pointer p-10 bg-white rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] border border-gray-50 hover:border-indigo-100 hover:shadow-xl transition-all duration-300 transform group"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.05 }}
@@ -223,9 +294,25 @@ const HotelManagement = () => {
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
                             <p className="text-gray-600 leading-relaxed font-medium">{feature.desc}</p>
                             
-                            <div className="mt-8 pt-8 border-t border-gray-50 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="mt-8 pt-8 border-t border-gray-50 flex justify-between items-center">
                                 <span className="text-xs font-bold text-indigo-500 uppercase tracking-tighter">Standard Module</span>
-                                <div className="w-8 h-px bg-indigo-100"></div>
+                                <button
+                                    type="button"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        openInfo({
+                                            title: feature.title,
+                                            eyebrow: 'Hotel system module',
+                                            icon: feature.icon,
+                                            description: feature.desc,
+                                            points: moduleDetails[feature.title],
+                                            interest: 'Property Management (PMS)',
+                                        });
+                                    }}
+                                    className="inline-flex items-center gap-1 text-sm font-bold text-indigo-600 transition group-hover:translate-x-1"
+                                >
+                                    View details <span aria-hidden="true">→</span>
+                                </button>
                             </div>
                         </motion.div>
                     ))}
@@ -262,6 +349,13 @@ const HotelManagement = () => {
                                     </li>
                                 ))}
                             </ul>
+                            <button
+                                type="button"
+                                onClick={() => openDemo('Property Management (PMS)')}
+                                className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-7 py-3 font-bold text-white shadow-lg shadow-indigo-600/30 transition hover:-translate-y-0.5"
+                            >
+                                See the Dashboard Live <span aria-hidden="true">→</span>
+                            </button>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, x: 40 }}
@@ -326,6 +420,13 @@ const HotelManagement = () => {
                                     </div>
                                 ))}
                             </div>
+                            <button
+                                type="button"
+                                onClick={() => openEnquiry({ interest: 'Booking Engine', heading: 'Get your commission-free booking engine' })}
+                                className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-7 py-3 font-bold text-white shadow-lg shadow-purple-600/30 transition hover:-translate-y-0.5"
+                            >
+                                Get Direct Bookings <span aria-hidden="true">→</span>
+                            </button>
                         </motion.div>
                     </div>
                 </div>
@@ -466,6 +567,55 @@ const HotelManagement = () => {
                 </motion.div>
                 </div>
 
+            {/* Closing CTA */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-indigo-900 to-purple-900 py-20 text-center text-white">
+                <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-purple-500/30 blur-[100px]" aria-hidden="true" />
+                <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-sky-500/20 blur-[100px]" aria-hidden="true" />
+                <div className="relative mx-auto max-w-3xl px-4">
+                    <h2 className="text-3xl font-black tracking-tight md:text-5xl">Ready to fill more rooms, directly?</h2>
+                    <p className="mx-auto mt-4 max-w-2xl text-lg text-indigo-100">
+                        Get a free walkthrough of the booking engine, dashboard and OTA setup, tailored to your property.
+                    </p>
+                    <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <button
+                            type="button"
+                            onClick={() => openDemo()}
+                            className="rounded-full bg-white px-8 py-4 font-black text-indigo-900 shadow-2xl transition hover:-translate-y-1"
+                        >
+                            Book a Free Demo
+                        </button>
+                        <a
+                            href="https://wa.me/919626380310?text=Hi%2C%20I%27m%20interested%20in%20your%20hotel%20management%20solutions."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 font-bold backdrop-blur transition hover:bg-white/20"
+                        >
+                            <FaWhatsapp className="text-green-300" /> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <EnquiryModal
+                open={enquiry.open}
+                onClose={closeEnquiry}
+                service="Hotel Management"
+                theme={theme}
+                heading={enquiry.heading}
+                subheading={enquiry.subheading}
+                interests={hotelInterests}
+                defaultInterest={enquiry.interest}
+                businessLabel="Hotel / property name"
+                submitLabel="Request Demo"
+            />
+            <InfoModal
+                open={!!info}
+                onClose={closeInfo}
+                item={info}
+                theme={theme}
+                ctaLabel="Book a Free Demo"
+                onEnquire={(item) => openDemo(item.interest)}
+            />
         </div>
     );
 };

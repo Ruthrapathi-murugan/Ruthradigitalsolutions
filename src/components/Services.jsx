@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import TiltCard from './TiltCard'
 import { FaLaptopCode, FaHotel, FaBullhorn, FaHeadset, FaCheck } from 'react-icons/fa'
 
 const Services = () => {
@@ -105,8 +106,11 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            <span className="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-[0.25em] text-indigo-600 uppercase bg-indigo-50 rounded-full">
+              What We Do
+            </span>
             <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tighter text-center">
-              Our Core Services
+              Our Core <span className="text-gradient-animated">Services</span>
             </h2>
             <div className="h-1.5 w-24 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mb-8 text-center"></div>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium text-center">
@@ -133,13 +137,8 @@ const Services = () => {
                 to={service.href}
                 className="block relative h-full"
               >
-                <motion.div
-                  whileHover={{ 
-                    rotateY: 8,
-                    rotateX: -5,
-                    translateZ: 30,
-                    scale: 1.02
-                  }}
+                <TiltCard max={9} className="rounded-[40px]">
+                <div
                   className={`bg-white rounded-[40px] overflow-hidden shadow-[0_30px_70px_-15px_rgba(0,0,0,0.1)] hover:${service.shadow} border border-gray-100 h-full relative z-10 transition-all duration-500 transform-gpu group`}
                 >
                   {/* Mockup Image Header */}
@@ -185,7 +184,8 @@ const Services = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
+                </TiltCard>
               </Link>
             </motion.div>
           ))}
